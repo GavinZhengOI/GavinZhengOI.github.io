@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://GavinZhengOI.github.io</id>
     <title>GVZ&apos;s Blog</title>
-    <updated>2020-03-02T12:06:29.819Z</updated>
+    <updated>2020-03-02T13:32:13.843Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://GavinZhengOI.github.io"/>
     <link rel="self" href="https://GavinZhengOI.github.io/atom.xml"/>
@@ -18,10 +18,11 @@
         <content type="html"><![CDATA[<blockquote>
 <p>计算几何的本质就是背板 ——卢爷</p>
 </blockquote>
-<h2 id="基础技能">基础技能</h2>
-<h3 id="叉积和点积">叉积和点积</h3>
-<p><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200302165551.jpg" alt="" loading="lazy"><br>
-<img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200302165552.jpg" alt="" loading="lazy"></p>
+<p><strong>特此鸣谢为我们讲课/布置作业的LJZ学长</strong></p>
+<h1 id="基础技能">基础技能</h1>
+<h2 id="叉积和点积">叉积和点积</h2>
+<img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200302165551.jpg" style="zoom:33%;" />
+<img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200302165552.jpg" style="zoom:33%;" />
 <p>这里是向量运算模块的代码：</p>
 <pre><code class="language-cpp">struct Point {
 	double x, y;
@@ -38,9 +39,29 @@ double dot(Point a, Point b) {
     return a.x * b.x + a.y * b.y;
 }
 </code></pre>
-<h3 id="求两条直线交点">求两条直线交点</h3>
-<figure data-type="image" tabindex="1"><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200302193129.jpg" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="2"><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200302193143.png" alt="" loading="lazy"></figure>
+<h2 id="求两条直线交点">求两条直线交点</h2>
+<img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200302193129.jpg" style="zoom:33%;" />
+<img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200302193143.png" style="zoom: 67%;" />
+<h2 id="判断线段是否相交">判断线段是否相交</h2>
+<figure data-type="image" tabindex="1"><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200302212522.png" alt="" loading="lazy"></figure>
+<p>对于线段CD来说，判断AB是否在其两侧的方法就很简单了。如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mrow><mi>C</mi><mi>A</mi></mrow><mo stretchy="true">→</mo></mover></mrow><annotation encoding="application/x-tex">\overrightarrow {CA}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.20533em;vertical-align:0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.20533em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">A</span></span></span><span class="svg-align" style="top:-3.6833299999999998em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg width='400em' height='0.522em' viewBox='0 0 400000 522' preserveAspectRatio='xMaxYMin slice'><path d='M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z'/></svg></span></span></span></span></span></span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mrow><mi>C</mi><mi>B</mi></mrow><mo stretchy="true">→</mo></mover></mrow><annotation encoding="application/x-tex">\overrightarrow{CB}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.20533em;vertical-align:0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.20533em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span><span class="svg-align" style="top:-3.6833299999999998em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg width='400em' height='0.522em' viewBox='0 0 400000 522' preserveAspectRatio='xMaxYMin slice'><path d='M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z'/></svg></span></span></span></span></span></span></span></span></span>异号就证明AB在CD两侧。（参考叉积的几何意义）</p>
+<p>另外对于线段共线（叉积为0）的情况就要特殊判断一下了，具体方法可以在文末参考文献中找到。</p>
+<p>一道例题：<a href="http://poj.org/problem?id=1066">POJ1066</a></p>
+<h1 id="参考文献">参考文献</h1>
+<p>LJZ爷爷的课件</p>
+<p><a href="https://blog.csdn.net/liangzhaoyang1/article/details/51090336">计算几何----判断线段相交（一）</a></p>
 ]]></content>
     </entry>
     <entry>
