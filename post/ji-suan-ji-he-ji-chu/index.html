@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://GavinZhengOI.github.io/favicon.ico?v=1583143567287">
+<link rel="shortcut icon" href="https://GavinZhengOI.github.io/favicon.ico?v=1583150776626">
 <link rel="stylesheet" href="https://GavinZhengOI.github.io/styles/main.css">
 
 
@@ -25,8 +25,11 @@
 叉积和点积
 
 
-求两条直线交点
-..." />
+这里是向量运算模块的代码：
+struct Point {
+	double x, y;
+	Point(double x=0,double y=0){}
+	friend Point..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -36,7 +39,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://GavinZhengOI.github.io">
-        <img src="https://GavinZhengOI.github.io/images/avatar.png?v=1583143567287" class="site-logo">
+        <img src="https://GavinZhengOI.github.io/images/avatar.png?v=1583150776626" class="site-logo">
         <h1 class="site-title">GVZ&#39;s Blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -112,7 +115,25 @@
 <h3 id="叉积和点积">叉积和点积</h3>
 <p><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200302165551.jpg" alt="" loading="lazy"><br>
 <img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200302165552.jpg" alt="" loading="lazy"></p>
+<p>这里是向量运算模块的代码：</p>
+<pre><code class="language-cpp">struct Point {
+	double x, y;
+	Point(double x=0,double y=0){}
+	friend Point operator + (const Point &amp;a, const Point &amp;b) {return Point(a.x + b.x, a.y + b.y);}
+	friend Point operator - (const Point &amp;a, const Point &amp;b) {return Point(a.x - b.x, a.y - b.y);}
+	friend Point operator * (const Point &amp;a, const double &amp;b) {return Point(a.x * b, a.y * b);}
+	double norm() {return sqr(x) + sqr(y);}
+} p[maxn];
+double det(Point a, Point b) {
+    return a.x * b.y - a.y * b.x;
+}
+double dot(Point a, Point b) {
+    return a.x * b.x + a.y * b.y;
+}
+</code></pre>
 <h3 id="求两条直线交点">求两条直线交点</h3>
+<figure data-type="image" tabindex="1"><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200302193129.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200302193143.png" alt="" loading="lazy"></figure>
 
             </div>
             
