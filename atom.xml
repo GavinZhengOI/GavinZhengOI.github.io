@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wzmhtr.coding-pages.com</id>
     <title>GVZ&apos;s Blog</title>
-    <updated>2020-03-04T06:03:02.523Z</updated>
+    <updated>2020-03-04T08:40:55.861Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wzmhtr.coding-pages.com"/>
     <link rel="self" href="https://wzmhtr.coding-pages.com/atom.xml"/>
@@ -77,6 +77,7 @@ double dot(Point a, Point b) {
 <h3 id="极角的定义">极角的定义</h3>
 <figure data-type="image" tabindex="5"><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200304135703.png" alt="" loading="lazy"></figure>
 <p>就是按照从X正半轴开始绕着原点逆时针旋转遍历到的顺序进行排序。</p>
+<p>需要注意的一点是，极角的坐标系会常常根据实际应用进行变化。而不是一直平行于平面直角坐标系</p>
 <h3 id="实现">实现</h3>
 <p>向量<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mi>A</mi><mo stretchy="true">→</mo></mover></mrow><annotation encoding="application/x-tex">\overrightarrow A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.20533em;vertical-align:0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.20533em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathdefault">A</span></span><span class="svg-align" style="top:-3.6833299999999998em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg width='400em' height='0.522em' viewBox='0 0 400000 522' preserveAspectRatio='xMaxYMin slice'><path d='M0 241v40h399891c-47.3 35.3-84 78-110 128
 -16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
@@ -104,7 +105,8 @@ double dot(Point a, Point b) {
 -12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
  151.7 139 205zm0 0v40h399900v-40z'/></svg></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span></p>
 <p>证明显然</p>
-<p><a href="http://poj.org/problem?id=1696">POJ1696-极角排序板子</a></p>
+<p>需要注意的一点是，如果用叉积进行极角排序且所有点不是集中在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>18</mn><msup><mn>0</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">180^\circ</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.674115em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">8</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.674115em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∘</span></span></span></span></span></span></span></span></span></span></span>，需要将极坐标系分成上下两块（和X轴叉积为正则在上半块）进行分别进行排序。至于为啥，显然。</p>
+<p><a href="http://poj.org/problem?id=1696">POJ1696-极角排序板子题</a></p>
 <h1 id="参考文献">参考文献</h1>
 <p>LJZ爷爷的课件</p>
 <p><a href="https://blog.csdn.net/liangzhaoyang1/article/details/51090336">计算几何----判断线段相交（一）</a></p>
