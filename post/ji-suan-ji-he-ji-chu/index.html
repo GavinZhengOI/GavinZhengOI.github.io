@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>计算几何基础 | GVZ&#39;s Blog</title>
-<link rel="shortcut icon" href="https://wzmhtr.coding-pages.com/favicon.ico?v=1583311250930">
+<link rel="shortcut icon" href="https://wzmhtr.coding-pages.com/favicon.ico?v=1583384465445">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://wzmhtr.coding-pages.com/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="计算几何基础 | GVZ&#39;s Blog - Atom Feed" href="https://wzmhtr.coding-pages.com/atom.xml">
@@ -16,13 +16,12 @@
 
 特此鸣谢为我们讲课/布置作业的LJZ学长
 基础技能
-叉积和点积
+输出时的精度控制
 
+输出前要加上eps（有的时候除法会造成浮点数末尾是一串连续的9的情况）
+POJ这种毒瘤OJ，输出double的格式控制符是%f
 
-这里是向量运算模块的代码：
-struct Point {
-	double x, y;
-	Point(double x=0,double..." />
+..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -32,7 +31,7 @@ struct Point {
       <div class="main-content">
         <div class="site-header">
   <a href="https://wzmhtr.coding-pages.com">
-  <img class="avatar" src="https://wzmhtr.coding-pages.com/images/avatar.png?v=1583311250930" alt="">
+  <img class="avatar" src="https://wzmhtr.coding-pages.com/images/avatar.png?v=1583384465445" alt="">
   </a>
   <h1 class="site-title">
     GVZ&#39;s Blog
@@ -106,7 +105,7 @@ struct Point {
                 2020-03-02
               </span>
               <span>
-                3 min read
+                5 min read
               </span>
               
             </div>
@@ -120,6 +119,32 @@ struct Point {
 </blockquote>
 <p><strong>特此鸣谢为我们讲课/布置作业的LJZ学长</strong></p>
 <h1 id="基础技能">基础技能</h1>
+<h2 id="输出时的精度控制">输出时的精度控制</h2>
+<ul>
+<li>输出前要加上eps（有的时候除法会造成浮点数末尾是一串连续的9的情况）</li>
+<li>POJ这种毒瘤OJ，输出<code>double</code>的格式控制符是<code>%f</code></li>
+</ul>
+<p>下面介绍一下标准输入输出流输出浮点数的方法：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+using namespace std;
+
+int main()
+{
+    const double value = 12.3456789;
+
+    cout &lt;&lt; value &lt;&lt; endl; // 默认以6精度，所以输出为 12.3457
+    cout &lt;&lt; setprecision(4) &lt;&lt; value &lt;&lt; endl; // 改成4精度，所以输出为12.35
+    cout &lt;&lt; setprecision(8) &lt;&lt; value &lt;&lt; endl; // 改成8精度，所以输出为12.345679
+    cout &lt;&lt; fixed &lt;&lt; setprecision(4) &lt;&lt; value &lt;&lt; endl; // 加了fixed意味着是固定点方式显示，所以这里的精度指的是小数位，输出为12.3457
+    cout &lt;&lt; value &lt;&lt; endl; // fixed和setprecision的作用还在，依然显示12.3457
+    cout.unsetf( ios::fixed ); // 去掉了fixed，所以精度恢复成整个数值的有效位数，显示为12.35
+    cout &lt;&lt; value &lt;&lt; endl;
+    cout.precision( 6 ); // 恢复成原来的样子，输出为12.3457
+    cout &lt;&lt; value &lt;&lt; endl;
+}
+</code></pre>
+<p>更详细的信息参见：<a href="https://blog.csdn.net/JIEJINQUANIL/article/details/51394167">C++ 标准输出控制小数点后位数的方法</a>和<a href="https://blog.csdn.net/xidian13071185/article/details/4672344">C++ 标准输出如何控制小数点后位数</a></p>
 <h2 id="叉积和点积">叉积和点积</h2>
 <img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200302165551.jpg" style="zoom:33%;" />
 <img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200302165552.jpg" style="zoom:33%;" />
@@ -211,12 +236,15 @@ double dot(Point a, Point b) {
 <p>LJZ爷爷的课件</p>
 <p><a href="https://blog.csdn.net/liangzhaoyang1/article/details/51090336">计算几何----判断线段相交（一）</a></p>
 <p><a href="https://sumygg.com/2013/07/30/Sorting-Points-by-Polar-Angle/">SumyGG的博客</a></p>
+<p><a href="https://blog.csdn.net/JIEJINQUANIL/article/details/51394167">C++ 标准输出控制小数点后位数的方法</a></p>
+<p><a href="https://blog.csdn.net/xidian13071185/article/details/4672344">C++ 标准输出如何控制小数点后位数</a></p>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li><a href="#%E5%9F%BA%E7%A1%80%E6%8A%80%E8%83%BD">基础技能</a>
 <ul>
+<li><a href="#%E8%BE%93%E5%87%BA%E6%97%B6%E7%9A%84%E7%B2%BE%E5%BA%A6%E6%8E%A7%E5%88%B6">输出时的精度控制</a></li>
 <li><a href="#%E5%8F%89%E7%A7%AF%E5%92%8C%E7%82%B9%E7%A7%AF">叉积和点积</a></li>
 <li><a href="#%E6%B1%82%E4%B8%A4%E6%9D%A1%E7%9B%B4%E7%BA%BF%E4%BA%A4%E7%82%B9">求两条直线交点</a></li>
 <li><a href="#%E5%88%A4%E6%96%AD%E7%BA%BF%E6%AE%B5%E6%98%AF%E5%90%A6%E7%9B%B8%E4%BA%A4">判断线段是否相交</a></li>
