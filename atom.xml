@@ -2,13 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wzmhtr.coding-pages.com</id>
     <title>GVZ&apos;s Blog</title>
-    <updated>2020-03-05T13:36:20.877Z</updated>
+    <updated>2020-03-06T05:52:02.344Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wzmhtr.coding-pages.com"/>
     <link rel="self" href="https://wzmhtr.coding-pages.com/atom.xml"/>
     <logo>https://wzmhtr.coding-pages.com/images/avatar.png</logo>
     <icon>https://wzmhtr.coding-pages.com/favicon.ico</icon>
     <rights>All rights reserved 2020, GVZ&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[凸包的处理]]></title>
+        <id>https://wzmhtr.coding-pages.com/post/tu-bao-de-chu-li/</id>
+        <link href="https://wzmhtr.coding-pages.com/post/tu-bao-de-chu-li/">
+        </link>
+        <updated>2020-03-06T05:26:16.000Z</updated>
+        <content type="html"><![CDATA[<p><strong>本文全文转自 <a href="http://www.csie.ntnu.edu.tw/~u91029/ConvexHull.html">Convex Hull</a></strong></p>
+<figure data-type="image" tabindex="1"><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200306134951.png" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[计算几何基础]]></title>
         <id>https://wzmhtr.coding-pages.com/post/ji-suan-ji-he-ji-chu/</id>
@@ -155,6 +165,16 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
 <p>证明显然</p>
 <p>需要注意的一点是，如果用叉积进行极角排序且所有点不是集中在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>18</mn><msup><mn>0</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">180^\circ</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.674115em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">8</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.674115em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∘</span></span></span></span></span></span></span></span></span></span></span>，需要将极坐标系分成上下两块（和X轴叉积为正则在上半块）进行分别进行排序。至于为啥，显然。</p>
 <p><a href="http://poj.org/problem?id=1696">POJ1696-极角排序板子题</a></p>
+<h2 id="稳定凸包">稳定凸包</h2>
+<p>本节转自：<a href="https://blog.csdn.net/u013480600/article/details/40055413">POJ 1228 Grandpa's Estate(凸包应用:稳定凸包)</a></p>
+<h3 id="定义">定义</h3>
+<p>如果一个凸包边界的点正好能确定唯一一个凸包，则称之为稳定凸包</p>
+<h3 id="性质">性质</h3>
+<p>n个凸包边界的点正好能确定唯一一个凸包的 <strong>充要条件是</strong> 这n个点确定的凸包每条边上至少有3个点。</p>
+<p>因为如果当前n个点形成的凸包上,假如有一条边只有两个点,那么你可以添加一个凸包外的点使得该凸包变大,<strong>且</strong>以前的n个点都还是在凸包的<strong>边界</strong>上.</p>
+<figure data-type="image" tabindex="9"><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200306102320.png" alt="" loading="lazy"></figure>
+<h3 id="判断凸包稳定性">判断凸包稳定性</h3>
+<p>就利用这个性质根据实际情况自己想办法判断就好了。一些比较细节的问题可以看<a href="https://blog.csdn.net/u013480600/article/details/40055413">POJ 1228 Grandpa's Estate(凸包应用:稳定凸包)</a></p>
 <h1 id="参考文献">参考文献</h1>
 <p>LJZ爷爷的课件</p>
 <p><a href="https://blog.csdn.net/liangzhaoyang1/article/details/51090336">计算几何----判断线段相交（一）</a></p>
