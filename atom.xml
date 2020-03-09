@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wzmhtr.coding-pages.com</id>
     <title>GVZ&apos;s Blog</title>
-    <updated>2020-03-09T15:43:17.251Z</updated>
+    <updated>2020-03-09T16:00:19.152Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wzmhtr.coding-pages.com"/>
     <link rel="self" href="https://wzmhtr.coding-pages.com/atom.xml"/>
@@ -164,18 +164,18 @@ double dot(Point a, Point b) {
 \end{aligned}\right.
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mop"><span class="mord mathrm">s</span><span class="mord mathrm" style="margin-right:0.01389em;">g</span><span class="mord mathrm">n</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:4.500000000000002em;vertical-align:-2.000000000000001em;"></span><span class="minner"><span class="mopen"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.35002em;"><span style="top:-2.19999em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎩</span></span></span><span style="top:-2.19999em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-3.1500100000000004em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎨</span></span></span><span style="top:-4.30001em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-4.60002em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎧</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.8500199999999998em;"><span></span></span></span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.5000000000000004em;"><span style="top:-4.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">−</span><span class="mord">1</span></span></span><span style="top:-3.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span></span></span><span style="top:-1.6599999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.000000000000001em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.5000000000000004em;"><span style="top:-4.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mspace" style="margin-right:1em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">0</span></span></span><span style="top:-3.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mspace" style="margin-right:1em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">0</span></span></span><span style="top:-1.6599999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mspace" style="margin-right:1em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.000000000000001em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
 <p>​	如果两个叉积的积的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>g</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">sgn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span></span></span></span>为-1，则一定有交点。为1，则一定不交。如果为0，那么有一定几率在线段端点处交，也可能不交。因为一条线段的端点落在另一条线段上，或者另一条线段的延长线上都会出现0的情况。比如：</p>
-<figure data-type="image" tabindex="2"><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200303205357.png" alt="" loading="lazy"></figure>
+<img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200303205357.png" style="zoom:33%;" />
 <p>因此我们只需要特判一下即可。</p>
 <p>代码（不算端点交）：</p>
-<figure data-type="image" tabindex="3"><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200303204118.png" alt="" loading="lazy"></figure>
+<img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200303204118.png" style="zoom:75%;" />
 <p>算端点交：</p>
-<figure data-type="image" tabindex="4"><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200304123104.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200304123104.png" alt="" loading="lazy"></figure>
 <h2 id="判断点和线段相对位置">判断点和线段相对位置</h2>
-<figure data-type="image" tabindex="5"><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200305160406.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200305160406.png" alt="" loading="lazy"></figure>
 <p>先用叉积判断一下不在线段的延长线上的情况，然后用点积判断在线段前方和后方的情况。（因为点积的几何意义是前一个向量在后一个向量上投影长度和后一个向量长度的积）</p>
 <p>另外 判断在前方不需要图中的判断模长，只需要把起点终点swap一下即可。</p>
 <h2 id="判断点是否在多边形内部">判断点是否在多边形内部</h2>
-<figure data-type="image" tabindex="6"><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200305161013.jpg" alt="" loading="lazy"></figure>
+<img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200305161013.jpg" style="zoom:33%;" />
 <h2 id="点到直线距离">点到直线距离</h2>
 <p>直线L方程为：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mi>x</mi><mo>+</mo><mi>B</mi><mi>y</mi><mo>+</mo><mi>C</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A x+B y+C=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>，那么距离为：</p>
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mo fence="true">∣</mo><mi>A</mi><msub><mi>x</mi><mn>0</mn></msub><mo>+</mo><mi>B</mi><msub><mi>y</mi><mn>0</mn></msub><mo>+</mo><mi>C</mi><mo fence="true">∣</mo></mrow><msqrt><mrow><msup><mi>A</mi><mn>2</mn></msup><mo>+</mo><msup><mi>B</mi><mn>2</mn></msup></mrow></msqrt></mfrac></mrow><annotation encoding="application/x-tex">\frac{\left|A x_{0}+B y_{0}+C\right|}{\sqrt{A^{2}+B^{2}}}
@@ -191,10 +191,41 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi><mo>=</mo><mi>X</mi><mn>1</mn><mo>−</mo><mi>X</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">B=X 1-X 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord">2</span></span></span></span><br>
 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo>=</mo><mi>X</mi><mn>2</mn><mo>⋅</mo><mi>Y</mi><mn>1</mn><mo>−</mo><mi>X</mi><mn>1</mn><mo>⋅</mo><mi>Y</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">C=X 2 \cdot Y 1-X 1\cdot Y 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mord">2</span></span></span></span></p>
 <h2 id="点在直线上的投影">点在直线上的投影</h2>
-<figure data-type="image" tabindex="7"><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200305171935.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200305171935.png" alt="" loading="lazy"></figure>
+<h2 id="多边形面积">多边形面积</h2>
+<figure data-type="image" tabindex="5"><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200309235334.png" alt="" loading="lazy"></figure>
+<p>我们有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mover accent="true"><mi>S</mi><mo>⃗</mo></mover><mrow><mi mathvariant="normal">△</mi><mi>P</mi><mi>A</mi><mi>B</mi></mrow></msub><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>∗</mo><mover accent="true"><mrow><mi>P</mi><mi>A</mi></mrow><mo stretchy="true">→</mo></mover><mo>∗</mo><mover accent="true"><mrow><mi>P</mi><mi>B</mi></mrow><mo stretchy="true">→</mo></mover><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>∗</mo><mrow><mo fence="true">(</mo><msub><mi>X</mi><mi>a</mi></msub><msub><mi>Y</mi><mi>b</mi></msub><mo>−</mo><msub><mi>X</mi><mi>b</mi></msub><msub><mi>Y</mi><mi>a</mi></msub><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\vec{S}_{\triangle P A B}=\frac{1}{2} * \overrightarrow{P A} * \overrightarrow{P B}=\frac{1}{2} *\left(X_{a} Y_{b}-X_{b} Y_{a}\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.252438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9663299999999999em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span><span style="top:-3.25233em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.15216em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg width='0.471em' height='0.714em' style='width:0.471em' viewBox='0 0 471 714' preserveAspectRatio='xMinYMin'><path d='M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">△</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">P</span><span class="mord mathdefault mtight">A</span><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.20533em;vertical-align:0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.20533em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault">A</span></span></span><span class="svg-align" style="top:-3.6833299999999998em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg width='400em' height='0.522em' viewBox='0 0 400000 522' preserveAspectRatio='xMaxYMin slice'><path d='M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z'/></svg></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.20533em;vertical-align:0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.20533em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span><span class="svg-align" style="top:-3.6833299999999998em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg width='400em' height='0.522em' viewBox='0 0 400000 522' preserveAspectRatio='xMaxYMin slice'><path d='M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z'/></svg></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">a</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">a</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span></span></span></span></p>
+<p>同时<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mo>=</mo><msubsup><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><msub><mover accent="true"><mi>S</mi><mo>⃗</mo></mover><mrow><mi mathvariant="normal">△</mi><mi>P</mi><mi>X</mi><mi>Y</mi></mrow></msub><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>∗</mo><msubsup><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mi>n</mi></msubsup><mrow><mo fence="true">(</mo><msub><mi>X</mi><mi>k</mi></msub><msub><mi>Y</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>X</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><msub><mi>Y</mi><mi>k</mi></msub><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">S=\sum_{k=1}^{n} \vec{S}_{\triangle P X Y}=\frac{1}{2} * \sum_{k=0}^{n}\left(X_{k} Y_{k+1}-X_{k+1} Y_{k}\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.2660399999999998em;vertical-align:-0.29971000000000003em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.804292em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9663299999999999em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span><span style="top:-3.25233em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.15216em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg width='0.471em' height='0.714em' style='width:0.471em' viewBox='0 0 471 714' preserveAspectRatio='xMinYMin'><path d='M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">△</span><span class="mord mathdefault mtight" style="margin-right:0.13889em;">P</span><span class="mord mathdefault mtight" style="margin-right:0.07847em;">X</span><span class="mord mathdefault mtight" style="margin-right:0.22222em;">Y</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.104002em;vertical-align:-0.29971000000000003em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.804292em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mrel mtight">=</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span></span></span></span></p>
+<p>选择一个多边形外的点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span></span></span></span>，然后算<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span></span></span></span>和每条边围成的面积。直接用叉积算就好了。</p>
+<h2 id="皮克定理">皮克定理</h2>
+<img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200309235903.jpg" style="zoom: 33%;" />
 <h2 id="极角排序">极角排序</h2>
 <h3 id="极角的定义">极角的定义</h3>
-<figure data-type="image" tabindex="8"><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200304135703.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200304135703.png" alt="" loading="lazy"></figure>
 <p>就是按照从X正半轴开始绕着原点逆时针旋转遍历到的顺序进行排序。</p>
 <p>d需要注意的一点是，极角的坐标系会常常根据实际应用进行变化。而不是一直平行于平面直角坐标系</p>
 <h3 id="实现">实现</h3>
@@ -226,6 +257,9 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
 <p>证明显然</p>
 <p>需要注意的一点是，如果用叉积进行极角排序且所有点不是集中在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>18</mn><msup><mn>0</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">180^\circ</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.674115em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">8</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.674115em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∘</span></span></span></span></span></span></span></span></span></span></span>，需要将极坐标系分成上下两块（和X轴叉积为正则在上半块）进行分别进行排序。至于为啥，显然。</p>
 <p><a href="http://poj.org/problem?id=1696">POJ1696-极角排序板子题</a></p>
+<h1 id="凸包">凸包</h1>
+<h2 id="凸包求解">凸包求解</h2>
+<p>放在这里了：<a href="https://orzzh.icu/post/tu-bao-de-chu-li/">凸包的处理</a></p>
 <h2 id="稳定凸包">稳定凸包</h2>
 <p>本节转自：<a href="https://blog.csdn.net/u013480600/article/details/40055413">POJ 1228 Grandpa's Estate(凸包应用:稳定凸包)</a></p>
 <h3 id="定义">定义</h3>
@@ -233,15 +267,177 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
 <h3 id="性质">性质</h3>
 <p>n个凸包边界的点正好能确定唯一一个凸包的 <strong>充要条件是</strong> 这n个点确定的凸包每条边上至少有3个点。</p>
 <p>因为如果当前n个点形成的凸包上,假如有一条边只有两个点,那么你可以添加一个凸包外的点使得该凸包变大,<strong>且</strong>以前的n个点都还是在凸包的<strong>边界</strong>上.</p>
-<figure data-type="image" tabindex="9"><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200306102320.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200306102320.png" alt="" loading="lazy"></figure>
 <h3 id="判断凸包稳定性">判断凸包稳定性</h3>
 <p>就利用这个性质根据实际情况自己想办法判断就好了。一些比较细节的问题可以看<a href="https://blog.csdn.net/u013480600/article/details/40055413">POJ 1228 Grandpa's Estate(凸包应用:稳定凸包)</a></p>
+<h1 id="半平面交">半平面交</h1>
+<p>贴两个板子</p>
+<h2 id="si算法">S&amp;I算法</h2>
+<p>复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n\log n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span></span></span></span></p>
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+using namespace std;
+const int maxn=1000;
+const double eps=1e-8;
+typedef double db;
+struct Point {
+    db x,y;
+    friend Point operator+(Point a,Point b){return (Point){a.x+b.x,a.y+b.y};}
+    friend Point operator-(Point a,Point b){return (Point){a.x-b.x,a.y-b.y};}
+    friend Point operator*(Point a,db b){return (Point){a.x*b,a.y*b};}
+    friend db operator^(Point a,Point b){return a.x*b.y-a.y*b.x;}
+};
+struct Line {
+    Point a,b;
+    db angle;
+    Line(){}
+    Line(Point vec1,Point vec2){a=vec1,b=vec2,angle=atan2(vec2.y,vec2.x);}
+    friend bool operator&lt;(Line a,Line b){return a.angle&lt;b.angle;}
+}line[maxn];
+Point cross_point(Line l1,Line l2) {
+    Point a=l1.a,b=l1.a+l1.b,c=l2.a,d=l2.a+l2.b;
+    db rate=((d-c)^(c-a))/((d-c)^(b-a));
+    return a+(b-a)*rate;
+}
+int tot_line;
+inline int sgn(db x) {
+    if(fabs(x)&lt;eps)return 0;else if(x&gt;0)return 1;else if(x&lt;0)return -1;
+}
+Line q0[maxn];//deque0 for line, deque1 for cross_point
+Point q1[maxn];
+int hd=1,tl=1;
+void get_convex_hull() {
+    q0[hd]=line[1];
+    for(int i=2;i&lt;=tot_line;i++) {
+        while(hd&lt;tl&amp;&amp;sgn(line[i].b^(q1[tl-1]-line[i].a))==-1)tl--;//test
+        while(hd&lt;tl&amp;&amp;sgn(line[i].b^(q1[hd]-line[i].a))==-1)hd++;
+        q0[++tl]=line[i];
+        if(!sgn(q0[tl].b^q0[tl-1].b)) {
+            tl--;
+            if(sgn(line[i].b^(q0[tl].a-line[i].a))!=1) {
+                q0[tl]=line[i];
+            }
+        }
+        if(hd&lt;tl) {
+            q1[tl-1]=cross_point(q0[tl],q0[tl-1]);
+        }
+    }
+    while(hd&lt;tl&amp;&amp;sgn(q0[hd].b^(q1[tl-1]-q0[hd].a))==-1)tl--;//test
+    if((tl-hd+1)&lt;3)return;
+    q1[tl]=cross_point(q0[tl],q0[hd]);
+}
+int main() {
+    int n;scanf(&quot;%d&quot;,&amp;n);
+    Point tmp[maxn];
+    for(int i=1;i&lt;=n;i++) {
+        int num;scanf(&quot;%d&quot;,&amp;num);
+        for(int j=1;j&lt;=num;j++)scanf(&quot;%lf%lf&quot;,&amp;tmp[j].x,&amp;tmp[j].y);
+        for(int j=1;j&lt;=num;j++) {
+            int p=j-1;if(!p)p=num;
+            line[++tot_line]=Line(tmp[p],tmp[j]-tmp[p]);
+        }
+    }
+    sort(line+1,line+1+tot_line);
+    get_convex_hull();
+    db s=0;
+    for(int i=hd;i&lt;=tl;i++) {
+
+        int p=i-1;if(p&lt;hd)p=tl;
+        s+=q1[p]^q1[i];
+    }
+    printf(&quot;%.3lf&quot;,s/2);
+    return 0;
+}
+</code></pre>
+<h2 id="朴素算法">朴素算法</h2>
+<p>复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+typedef long double db;
+const int maxn=1000;
+const db inf=1e10;
+const db eps=1e-17;
+int data[maxn][3],cnt1,cnt2=0;
+struct Point {
+    db x,y;
+    friend Point operator+(Point a,Point b){return (Point){a.x+b.x,a.y+b.y};}
+    friend Point operator-(Point a,Point b){return (Point){a.x-b.x,a.y-b.y};}
+    friend Point operator*(Point a,db b){return (Point){a.x*b,a.y*b};}
+    friend db operator^(Point a,Point b){return a.x*b.y-a.y*b.x;}
+    Point(){}
+    Point(db X,db Y){x=X,y=Y;}
+}pt1[maxn],pt2[maxn];
+struct Line {
+    Point a,b;
+    db angle;
+    Line(){}
+    Line(Point vec1,Point vec2){a=vec1,b=vec2,angle=atan2(vec2.y,vec2.x);}
+    friend bool operator&lt;(Line a,Line b){return a.angle&lt;b.angle;}
+};
+inline int sgn(db x){if(fabs(x)&lt;eps)return 0;if(x&gt;0)return 1;return -1;}
+Point cross_point(Point s,Point t,db a,db b,db c) {
+    double u=fabs(a*s.x+b*s.y+c);
+    double v=fabs(a*t.x+b*t.y+c);
+    Point an;
+    an.x=(s.x*v+t.x*u)/(u+v);an.y=(s.y*v+t.y*u)/(u+v);
+    return an;
+}
+int n;
+db get_s(int cnt) {
+    db ans=0;
+    for(int i=1;i&lt;=cnt;i++) {
+        int p=i-1;if(!p)p=cnt;
+        ans+=pt1[p]^pt1[i];
+    }
+    return ans/2;
+}
+int main() {
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;=n;i++)scanf(&quot;%d%d%d&quot;,&amp;data[i][0],&amp;data[i][1],&amp;data[i][2]);
+    for(int i=1;i&lt;=n;i++) {//枚举获胜者
+        pt1[1]=Point(0,0);
+        pt1[2]=Point(inf,0);
+        pt1[3]=Point(inf,inf);
+        pt1[4]=Point(0,inf);
+        cnt1=4;
+        bool flag=0;
+        for(int j=1;j&lt;=n;j++) {
+            if(i==j)continue;
+            db a=(1.0*data[j][0]-data[i][0])/(1.0*data[j][0]*data[i][0]),b=(1.0*data[j][1]-data[i][1])/(1.0*data[j][1]*data[i][1]),c=(1.0*data[j][2]-data[i][2])/(1.0*data[j][2]*data[i][2]);
+            if(!sgn(a)&amp;&amp;!sgn(b)&amp;&amp;sgn(c)&gt;=0){printf(&quot;No\n&quot;);flag=1;break;}
+            cnt2=0;
+            for(int k=1;k&lt;=cnt1;k++) {
+                if(sgn(a*pt1[k].x+b*pt1[k].y+c)&lt;=0)pt2[++cnt2]=pt1[k];
+                else {
+                    int p=k-1,ne=k+1;if(!p)p=cnt1;if(ne&gt;cnt1)ne=1;
+                    if(sgn(a*pt1[p].x+b*pt1[p].y+c)&lt;0)pt2[++cnt2]=cross_point(pt1[k],pt1[p],a,b,c);
+                    if(sgn(a*pt1[ne].x+b*pt1[ne].y+c)&lt;0)pt2[++cnt2]=cross_point(pt1[k],pt1[ne],a,b,c);
+                }
+            }
+            memcpy(pt1,pt2,sizeof(pt2));
+            cnt1=cnt2;
+        }
+        if(flag)continue;
+        if(sgn(get_s(cnt1))&lt;=0)printf(&quot;No\n&quot;);
+        else printf(&quot;Yes\n&quot;);
+    }
+    return 0;
+}
+</code></pre>
 <h1 id="参考文献">参考文献</h1>
 <p>LJZ爷爷的课件</p>
 <p><a href="https://blog.csdn.net/liangzhaoyang1/article/details/51090336">计算几何----判断线段相交（一）</a></p>
 <p><a href="https://sumygg.com/2013/07/30/Sorting-Points-by-Polar-Angle/">SumyGG的博客</a></p>
 <p><a href="https://blog.csdn.net/JIEJINQUANIL/article/details/51394167">C++ 标准输出控制小数点后位数的方法</a></p>
 <p><a href="https://blog.csdn.net/xidian13071185/article/details/4672344">C++ 标准输出如何控制小数点后位数</a></p>
+<p><a href="https://blog.csdn.net/waple_0820/article/details/53837868">已知各顶点坐标求多边形面积</a></p>
 ]]></content>
     </entry>
     <entry>
