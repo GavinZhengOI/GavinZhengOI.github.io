@@ -2,13 +2,26 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wzmhtr.coding-pages.com</id>
     <title>GVZ&apos;s Blog</title>
-    <updated>2020-03-23T05:51:57.378Z</updated>
+    <updated>2020-03-30T14:05:25.449Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wzmhtr.coding-pages.com"/>
     <link rel="self" href="https://wzmhtr.coding-pages.com/atom.xml"/>
     <logo>https://wzmhtr.coding-pages.com/images/avatar.png</logo>
     <icon>https://wzmhtr.coding-pages.com/favicon.ico</icon>
     <rights>All rights reserved 2020, GVZ&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[一些Flag]]></title>
+        <id>https://wzmhtr.coding-pages.com/post/yi-xie-flag/</id>
+        <link href="https://wzmhtr.coding-pages.com/post/yi-xie-flag/">
+        </link>
+        <updated>2020-03-30T13:57:15.000Z</updated>
+        <content type="html"><![CDATA[<p>一些很好的但是我不太想做的题</p>
+<ul>
+<li><a href="http://www.zhengruioi.com/contest/526/problem/1257">2020省选十连测附加赛-C-数据结构</a>维护一些互相干扰tag的一些方法</li>
+<li><a href="https://www.luogu.com.cn/problem/CF938G">CF938G Shortest Path Queries</a>线性积+可持久化并查集+线段树分治 三个数据结构都不太熟练就咕咕咕了</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[博弈论-从入门到入土]]></title>
         <id>https://wzmhtr.coding-pages.com/post/bo-yi-lun-cong-ru-men-dao-ru-tu/</id>
