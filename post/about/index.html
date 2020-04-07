@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>关于 | GVZ&#39;s Blog</title>
-<link rel="shortcut icon" href="https://wzmhtr.coding-pages.com/favicon.ico?v=1586264353314">
+<link rel="shortcut icon" href="https://wzmhtr.coding-pages.com/favicon.ico?v=1586266319460">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://wzmhtr.coding-pages.com/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="关于 | GVZ&#39;s Blog - Atom Feed" href="https://wzmhtr.coding-pages.com/atom.xml">
@@ -23,7 +23,55 @@ orzzh -&gt; icu
 🍑
 ..." />
     <meta name="keywords" content="" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config" aria-hidden="true" >
+    		MathJax.Hub.Config({
+    			skipStartupTypeset: true,
+    			jax: ["input/TeX", "output/SVG"],
+    			extensions: ["tex2jax.js", "toMathML.js"],
+    			TeX: {
+    				extensions: ["noUndefined.js", "autoload-all.js", "AMSmath.js", "AMSsymbols.js", "mediawiki-texvc.js"],
+    				mhchem: { legacy: false }
+    			},
+    			SVG: {
+    				useGlobalCache: false,
+    				merrorStyle: {
+    					fontSize:"90%", color:"red", background:"",
+          				border: "1px solid red", padding:"2px"
+    				},
+    				scale: 100,
+    				minScaleAdjust: 80,
+    				blacker: 0,
+    				matchFontHeight: false
+    			},
+    			showProcessingMessages: false,
+    			tex2jax: {
+    				displayMath: [['$$\n', '\n$$'], ['$$\r\n', '\r\n$$']],
+    				inlineMath: [ ['$','$'], ['$$', '$$']],
+    				processEscapes: true,
+    				preview: "none",
+    				skipTags: ["script","noscript","style","textarea","pre","code", "span"],
+    				processClass: "md-inline-math|inline-math-export-jax"
+    			},
+    			menuSettings: {
+    				inTabOrder: false
+    			},
+    			showMathMenu: false,
+    			positionToHash: false
+    		});
+    		MathJax.Hub.processSectionDelay = 0;
+    		MathJax.Hub.processUpdateTime = 25;
+    		MathJax.Hub.processUpdateDelay = 0;
+    		MathJax.Hub.Queue(["setRenderer", MathJax.Hub, "SVG"]);
+    		MathJax.Hub.Register.StartupHook("TeX autoload-all Ready", function () {
+    		  var MACROS = MathJax.InputJax.TeX.Definitions.macros;
+    		  MACROS.color = "Color";
+    		  delete MACROS.colorbox;
+    		  delete MACROS.fcolorbox;
+    		});
+    </script>
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
@@ -31,7 +79,7 @@ orzzh -&gt; icu
       <div class="main-content">
         <div class="site-header">
   <a href="https://wzmhtr.coding-pages.com">
-  <img class="avatar" src="https://wzmhtr.coding-pages.com/images/avatar.png?v=1586264353314" alt="">
+  <img class="avatar" src="https://wzmhtr.coding-pages.com/images/avatar.png?v=1586266319460" alt="">
   </a>
   <h1 class="site-title">
     GVZ&#39;s Blog
