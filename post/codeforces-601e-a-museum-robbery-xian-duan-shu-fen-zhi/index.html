@@ -2,21 +2,17 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>一些Flag | GVZ&#39;s Blog</title>
+<title>Codeforces 601E-A Museum Robbery 线段树分治 | GVZ&#39;s Blog</title>
 <link rel="shortcut icon" href="https://wzmhtr.coding-pages.com/favicon.ico?v=1587301266770">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://wzmhtr.coding-pages.com/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="一些Flag | GVZ&#39;s Blog - Atom Feed" href="https://wzmhtr.coding-pages.com/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="Codeforces 601E-A Museum Robbery 线段树分治 | GVZ&#39;s Blog - Atom Feed" href="https://wzmhtr.coding-pages.com/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="一些很好的但是我不太想做的题
-
-2020省选十连测附加赛-C-数据结构维护一些互相干扰tag的一些方法
-CF938G Shortest Path Queries线性积+可持久化并查集+线段树分治 三个数据结构都不太熟练就咕咕咕了
-
-..." />
+    <meta name="description" content="考虑线段树分治。
+线段树分治实际上就是将把时间按照线段树的方法分治下去。线段树的每个节点都是一个时间区间，预处理的时候如果一个操作的“存活时间”完全覆盖这个时间区间，就给这个时间区间打上标记并返回。然后在线段树上DFS，每次向下走到一个节点..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -93,27 +89,112 @@ CF938G Shortest Path Queries线性积+可持久化并查集+线段树分治 三�
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              一些Flag
+              Codeforces 601E-A Museum Robbery 线段树分治
             </h2>
             <div class="post-info">
               <span>
-                2020-03-30
+                2020-04-19
               </span>
               <span>
-                1 min read
+                4 min read
               </span>
               
             </div>
             
-              <img class="post-feature-image" src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200330220238.jpg" alt="">
-            
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>一些很好的但是我不太想做的题</p>
-<ul>
-<li><a href="http://www.zhengruioi.com/contest/526/problem/1257">2020省选十连测附加赛-C-数据结构</a>维护一些互相干扰tag的一些方法</li>
-<li><a href="https://www.luogu.com.cn/problem/CF938G">CF938G Shortest Path Queries</a>线性积+可持久化并查集+线段树分治 三个数据结构都不太熟练就咕咕咕了</li>
-</ul>
+                <p>考虑线段树分治。</p>
+<p>线段树分治实际上就是将把时间按照线段树的方法分治下去。线段树的每个节点都是一个时间区间，预处理的时候如果一个操作的“存活时间”完全覆盖这个时间区间，就给这个时间区间打上标记并返回。然后在线段树上DFS，每次向下走到一个节点将这个节点的操作加入，离开时删除即可。</p>
+<p>线段树分治大多数情况就是用来解决：加入某个元素之后删除这个元素很麻烦，但是按照插入的顺序从后到前“撤销”很方便。（类似栈的结构：只能弹出顶部，不能删除中间的。）</p>
+<p>而这道题 是满足这个条件的。每次递归之前只需要把递归之前的状态复制一个“备份”。然后暴力的把“备份”还原即可。</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#define vi vector&lt;int&gt;
+#define pb push_back
+#define mk make_pair
+#define pii pair&lt;int,int&gt;
+#define rep(i,a,b) for(int i=(a),i##end=(b);i&lt;=i##end;i++)
+#define fi first
+#define se second
+typedef long long ll;
+using namespace std;
+const int maxn=41000;
+const int p=1e7+19;
+const int q=1e9+7;
+int ed[maxn],st[maxn];
+pii item[maxn];
+bool query[maxn];
+int pro[maxn];
+int k;
+vi add[maxn*4];
+void update(int l,int r,int rt,int tl,int tr,int node){
+    if(tl&lt;=l&amp;&amp;r&lt;=tr){
+        add[rt].pb(node);return;
+    }
+    int mid=(l+r)&gt;&gt;1;
+    if(tl&lt;=mid)update(l,mid,rt&lt;&lt;1,tl,tr,node);
+    if(tr&gt;=mid+1)update(mid+1,r,rt&lt;&lt;1|1,tl,tr,node);
+}
+ll ksm(ll num,ll t){
+    ll res=1;num%=q;
+    for(;t;t&gt;&gt;=1,num=num*num%q){
+        if(t&amp;1)res=res*num%q;
+    }
+    return res;
+}
+int tmp[1005];
+void solve(int l,int r,int rt){
+    int buc[1005]={0};
+    rep(i,0,(int)add[rt].size()-1){
+        int id=add[rt][i];
+        for(int j=k;j&gt;=0;j--){
+            if(j+item[id].se&lt;=k)tmp[j+item[id].se]=max(tmp[j+item[id].se],tmp[j]+item[id].fi);
+        }
+    }
+    if(l==r){
+        if(query[l]){
+            ll ans=0;
+            rep(m,1,k){
+                ans+=1ll*tmp[m]*pro[m-1]%q;ans%=q;
+            }
+            printf(&quot;%lld\n&quot;,ans);
+        }
+        return;
+    }
+    int mid=(l+r)&gt;&gt;1;
+    memcpy(buc,tmp,sizeof(tmp));
+    solve(l,mid,rt&lt;&lt;1);
+    memcpy(tmp,buc,sizeof(tmp));
+    solve(mid+1,r,rt&lt;&lt;1|1);
+}
+int main(){
+    rep(i,0,1005)pro[i]=ksm(p,i);
+    int n;scanf(&quot;%d%d&quot;,&amp;n,&amp;k);
+    rep(i,1,n)
+    {scanf(&quot;%d%d&quot;,&amp;item[i].fi,&amp;item[i].se);st[i]=1;}
+    int q;scanf(&quot;%d&quot;,&amp;q);int item_cnt=n;
+    rep(i,1,q){
+        int ty;scanf(&quot;%d&quot;,&amp;ty);
+        if(ty==1){
+            ++item_cnt;scanf(&quot;%d%d&quot;,&amp;item[item_cnt].fi,&amp;item[item_cnt].se);st[item_cnt]=i;
+        }
+        else if(ty==2){
+            int x;scanf(&quot;%d&quot;,&amp;x);ed[x]=i;
+        }
+        else query[i]=1;
+    }
+    rep(i,1,item_cnt)if(!ed[i])ed[i]=q;
+    rep(i,1,item_cnt)
+    update(1,q,1,st[i],ed[i],i);
+    solve(1,q,1);
+    return 0;
+}
+</code></pre>
 
               </div>
               <div class="toc-container">
@@ -126,9 +207,9 @@ CF938G Shortest Path Queries线性积+可持久化并查集+线段树分治 三�
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://wzmhtr.coding-pages.com/post/bo-yi-lun-cong-ru-men-dao-ru-tu/">
+            <a href="https://wzmhtr.coding-pages.com/post/cheng-wai-lian-ce-9-a/">
               <h3 class="post-title">
-                博弈论-从入门到入土
+                成外联测9-A
               </h3>
             </a>
           </div>
