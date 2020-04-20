@@ -1,0 +1,214 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Codeforces 613D-Kingdom and its Cities 虚树 | GVZ&#39;s Blog</title>
+<link rel="shortcut icon" href="https://wzmhtr.coding-pages.com/favicon.ico?v=1587341325807">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wzmhtr.coding-pages.com/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Codeforces 613D-Kingdom and its Cities 虚树 | GVZ&#39;s Blog - Atom Feed" href="https://wzmhtr.coding-pages.com/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="一道虚树板子题。
+虚树的作用就是：有的时候解决一些树上问题时，整棵树大小很大，但是所需要的“关键点”大小很小。为了节省时间 对有kkk个关键点的虚树进行处理，能使得整棵树的大小变成2k2k2k。
+虚树在这里：OIWIKI-虚树有很详细的介绍..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wzmhtr.coding-pages.com">
+  <img class="avatar" src="https://wzmhtr.coding-pages.com/images/avatar.png?v=1587341325807" alt="">
+  </a>
+  <h1 class="site-title">
+    GVZ&#39;s Blog
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://wzmhtr.coding-pages.com/post/you-lian" class="menu">
+          友链
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/GavinZhengOI" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/yIIJfce0wywQQOb" target="_blank">
+          <i class="ri-twitter-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Codeforces 613D-Kingdom and its Cities 虚树
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-04-20
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>一道虚树板子题。</p>
+<p>虚树的作用就是：有的时候解决一些树上问题时，整棵树大小很大，但是所需要的“关键点”大小很小。为了节省时间 对有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>个关键点的虚树进行处理，能使得整棵树的大小变成<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mi>k</mi></mrow><annotation encoding="application/x-tex">2k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>。</p>
+<p>虚树在这里：<a href="https://oi-wiki.org/graph/virtual-tree/#cf613d-kingdom-and-its-cities">OIWIKI-虚树</a>有很详细的介绍。</p>
+<p>其实就是利用栈维护树上的一条链。然后考虑栈顶节点和下一个关键点的关系，如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>c</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">lca</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span></span></span></span>等于栈顶（在同一条链）就直接入栈。否则分类讨论栈中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>o</mi><mi>p</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">top-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault">p</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>的节点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>c</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">lca</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span></span></span></span>的关系：</p>
+<ol>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>f</mi><mi>s</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>&gt;</mo><mi>d</mi><mi>f</mi><mi>s</mi><mo>(</mo><mi>l</mi><mi>c</mi><mi>a</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">dfs(x)&gt;dfs(lca)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span><span class="mclose">)</span></span></span></span>这代表<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>和栈顶节点构成的链在树的“分叉点”下面的情况（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>c</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">lca</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span></span></span></span>为分叉点）。所以直接加入<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>和栈顶之间的边，然后弹栈顶。注意 这一步显然需要用<code>while</code>执行多次。</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>f</mi><mi>s</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>&lt;</mo><mi>d</mi><mi>f</mi><mi>s</mi><mo>(</mo><mi>l</mi><mi>c</mi><mi>a</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">dfs(x)&lt;dfs(lca)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span><span class="mclose">)</span></span></span></span>这代表<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>和栈顶节点构成的链（不包含两端，因为这里<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>c</mi><mi>a</mi><mi mathvariant="normal">≠</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">lca\neq x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mrel"><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="rlap"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="inner"><span class="mrel"></span></span><span class="fix"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>，前面又判断了<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>c</mi><mi>a</mi><mi mathvariant="normal">≠</mi><mi>s</mi><mi>t</mi><mi>k</mi><mo>[</mo><mi>t</mi><mi>o</mi><mi>p</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">lca\neq stk[top]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mrel"><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="rlap"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="inner"><span class="mrel"></span></span><span class="fix"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mopen">[</span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault">p</span><span class="mclose">]</span></span></span></span>）上的一个节点就是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>c</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">lca</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span></span></span></span>。所以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>c</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">lca</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span></span></span></span>没入栈，因此添加栈顶和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>c</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">lca</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span></span></span></span>的边，栈顶出栈，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>c</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">lca</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span></span></span></span>入栈即可。</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>f</mi><mi>s</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>d</mi><mi>f</mi><mi>s</mi><mo>(</mo><mi>l</mi><mi>c</mi><mi>a</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">dfs(x)=dfs(lca)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span><span class="mclose">)</span></span></span></span>这代表<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>c</mi><mi>a</mi><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">lca=x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>。因此加入边<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>l</mi><mi>c</mi><mi>a</mi><mo separator="true">,</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(lca,x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>，然后出栈即可。</li>
+</ol>
+<p>这里有个实现的小技巧：在每次入栈一个新的节点时进行临接表初始化即可。</p>
+<p>最后不要忘了将栈中剩余的节点代表的链加进去。</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wzmhtr.coding-pages.com/post/codeforces-601e-a-museum-robbery-xian-duan-shu-fen-zhi/">
+              <h3 class="post-title">
+                Codeforces 601E-A Museum Robbery 线段树分治
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+
+          
+            <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script>
+
+var options = {
+  shortname: 'gvablog',
+  apikey: 'GaTDI1iKdBspu9eatH3bb3vkRipD45khhPrE1OZvNtqC43gwRa22Noy6Yx2WW1YQ',
+}
+if ('https://disqus.skk.moe/disqus/') {
+  options.api = 'https://disqus.skk.moe/disqus/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://wzmhtr.coding-pages.com/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
