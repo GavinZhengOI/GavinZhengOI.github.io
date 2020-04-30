@@ -1,0 +1,419 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Codeforces 540E-Infinite Inversions | GVZ&#39;s Blog</title>
+<link rel="shortcut icon" href="https://wzmhtr.coding-pages.com/favicon.ico?v=1588238946797">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wzmhtr.coding-pages.com/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Codeforces 540E-Infinite Inversions | GVZ&#39;s Blog - Atom Feed" href="https://wzmhtr.coding-pages.com/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="前置知识
+线段树合并
+本部分转自Parsnip
+对于一类问题中，假如我们有若干棵权值线段树，它们都维护相同的值域区间[1,n][1,n][1,n]，我们希望能够将这些线段树对应区间的关键值进行相加，同时继续维护区间最大值/最小值等信息，这就..." />
+    <meta name="keywords" content="线段树合并,SAM-后缀自动机" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wzmhtr.coding-pages.com">
+  <img class="avatar" src="https://wzmhtr.coding-pages.com/images/avatar.png?v=1588238946797" alt="">
+  </a>
+  <h1 class="site-title">
+    GVZ&#39;s Blog
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://wzmhtr.coding-pages.com/post/you-lian" class="menu">
+          友链
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/GavinZhengOI" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/yIIJfce0wywQQOb" target="_blank">
+          <i class="ri-twitter-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Codeforces 540E-Infinite Inversions
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-04-27
+              </span>
+              <span>
+                9 min read
+              </span>
+              
+                <a href="https://wzmhtr.coding-pages.com/tag/K2bz5S858/" class="post-tag">
+                  # 线段树合并
+                </a>
+              
+                <a href="https://wzmhtr.coding-pages.com/tag/TwIpKy_ft2/" class="post-tag">
+                  # SAM-后缀自动机
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="前置知识">前置知识</h1>
+<h2 id="线段树合并">线段树合并</h2>
+<p><strong>本部分转自<a href="https://www.cnblogs.com/Parsnip/p/10901862.html">Parsnip</a></strong></p>
+<p>对于一类问题中，假如我们有若干棵权值线段树，它们都维护相同的值域区间<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mn>1</mn><mo separator="true">,</mo><mi>n</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[1,n]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">]</span></span></span></span>，我们希望能够将这些线段树对应区间的关键值进行相加，同时继续维护区间最大值/最小值等信息，这就需要用到线段树合并算法。</p>
+<p>一般来说，我们会用如下的方式来实现线段树合并：</p>
+<blockquote>
+<p>我们用两个指针<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mo separator="true">,</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p,q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span></span></span></span>分别从两个线段树的根节点出发，同步地遍历两棵线段树，并且合并相同区间的有关信息</p>
+<ol>
+<li>
+<p>若<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mo separator="true">,</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p,q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span></span></span></span>之一为空，则以非空的那个节点作为合并后的节点</p>
+</li>
+<li>
+<p>若<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mo separator="true">,</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p,q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span></span></span></span>均不为空，则递归地合并<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mo separator="true">,</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p,q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span></span></span></span>的左右子节点，左后删除节点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span></span></span></span>，并自底向上更新关键信息，留下节点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span>作为合并后的节点。如果已经递归到了叶节点，直接将关键值相加即可。</p>
+</li>
+</ol>
+</blockquote>
+<p>Code：</p>
+<pre><code class="language-CPP">//不可持久化
+inline int merge(int p,int q,int l,int r)//两个指针为p，q，当前节点维护的区间为[l,r]
+{
+    if ( !p || !q ) return p|q;
+    if ( l == r )
+    {
+        cnt(p) += cnt(q);
+        return p;
+    }
+    int mid = l+r &gt;&gt; 1;
+    ls(p) = merge( ls(p) , ls(q) , l , mid );
+    rs(p) = merge( rs(p) , rs(q) , mid+1 , r );
+    updata(p);
+    return p;
+}
+</code></pre>
+<pre><code class="language-CPP">//可持久化
+int merge(int x,int y,int l,int r) {
+        if(!x||!y)return x|y;
+        if(l==r){sum[x]+=sum[y];return x;}
+        int mid=(l+r)&gt;&gt;1,z=++cnt;
+        ls[z]=merge(ls[x],ls[y],l,mid);
+        rs[z]=merge(rs[x],rs[y],mid+1,r);
+        pushup(z);
+        return z;
+    }
+</code></pre>
+<p>更多的例题与讲解可以去原作者博客看看。</p>
+<p>另外还有个从 <a href="https://zhongyuwei.github.io/2020/03/01/NOI2018-%E4%BD%A0%E7%9A%84%E5%90%8D%E5%AD%97/">钟神博客</a>上放过来的可持久化线段树合并空间复杂度的证明：</p>
+<p>可能有锅，欢迎指正。</p>
+<p>分成两个部分：</p>
+<ol>
+<li>将 $n $个节点插进 $n $棵不同的树。</li>
+<li>合并两棵树，并复制两棵树的公共部分，得到一棵新的树。</li>
+</ol>
+<p>第一部分会用到至多$ n⌈log_2⁡n⌉ $个节点。</p>
+<p>第二部分中，考虑每个非叶子节点：每一次复制它，它子树内的叶子节点数量一定变多了，所以它被复制的次数至多是它子树内的叶子节点数量。每个叶子至多在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⌈</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mi mathvariant="normal">⁡</mi><mi>n</mi><mo>⌉</mo></mrow><annotation encoding="application/x-tex">⌈log_2⁡n⌉</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌈</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">⁡</span><span class="mord mathdefault">n</span><span class="mclose">⌉</span></span></span></span> 个节点的子树中，所以复制节点的次数至多是 $n⌈log_2⁡n⌉ $次。</p>
+<h2 id="sam-后缀自动机">SAM-后缀自动机</h2>
+<p>这个可以直接去LSJ爷爷的博客康康 : <a href="https://planarg.top/2019/03/21/%E5%90%8E%E7%BC%80%E8%87%AA%E5%8A%A8%E6%9C%BA/">后缀自动机</a></p>
+<p>其他的讲解也很多 自己看看就好了。</p>
+<p>有一个本题要用的很基础的套路就是：一个子串的出现次数就是这个子串在SAM上的fail树的子树内的节点个数。（因为子树内的所有点的后缀都包含了当前这个串，而每个节点的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>e</mi><mi>n</mi><mi>d</mi><mi>p</mi><mi>o</mi><mi>s</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">endpose</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span></span></span></span>相同，所以就是节点个数）</p>
+<h1 id="本题思路">本题思路</h1>
+<p>首先看到“出现次数最多”，可以想到上面那个套路。那么一个子串在其他串中的出现次数就可以先“定位”子串。（就顺着字典树走出这个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mo>[</mo><mn>1</mn><mi mathvariant="normal">，</mi><msub><mi>p</mi><mi>r</mi></msub><mo>]</mo></mrow><annotation encoding="application/x-tex">S[1，p_r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mopen">[</span><span class="mord">1</span><span class="mord cjk_fallback">，</span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span>，然后向上倍增的跳，走到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mo>[</mo><msub><mi>p</mi><mi>l</mi></msub><mo separator="true">,</mo><msub><mi>p</mi><mi>r</mi></msub><mo>]</mo></mrow><annotation encoding="application/x-tex">S[p_l,p_r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.01968em;">l</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span>）</p>
+<p>但是这样就出现了一个问题：我们需要对每个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>A</mi><mi>M</mi></mrow><annotation encoding="application/x-tex">SAM</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span>上的节点维护所有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>T</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">T_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>包含的节点在子树内的出现次数。这样每个节点就需要开一个长度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>的数组。显然是会炸掉的。那么我们就需要用到线段树合并维护这个东西就好了。</p>
+<p>线段树维护一个<code>pair</code>，第一个元素记录出现次数的最大值，第二个元素记录最大值是哪个子串即可。因为这是个权值线段树，所以非叶子节点就记录区间内出现次数最多的那个叶子就好了。</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#define vi vector&lt;int&gt;
+#define pb push_back
+#define mk make_pair
+#define pii pair&lt;int,int&gt;
+#define rep(i,a,b) for(int i=(a),i##end=(b);i&lt;=i##end;i++)
+#define fi first
+#define se second
+typedef long long ll;
+using namespace std;
+const int maxn=1e6+2e5+1000;
+
+struct segment_tree{
+	pii ori[maxn&lt;&lt;4];//???? ??????? 
+	int ls[maxn&lt;&lt;4],rs[maxn&lt;&lt;4],cnt;
+	segment_tree(){cnt=0;}
+	void push_up(int rt)
+	{ori[rt]=max(ori[ls[rt]],ori[rs[rt]]);}
+	int merge(int rt1,int rt2,int l,int r){
+		if(!rt1||!rt2)return rt1|rt2;
+		int cur=++cnt;
+		if(l==r){
+			ori[cur]=ori[rt1];ori[cur].fi+=ori[rt2].fi;
+			return cur;
+		}
+		int mid=(l+r)&gt;&gt;1;
+		ls[cur]=merge(ls[rt1],ls[rt2],l,mid);
+		rs[cur]=merge(rs[rt1],rs[rt2],mid+1,r);
+		push_up(cur);
+		return cur;
+	}
+	int add(int l,int r,int rt,int tar,int val){
+		if(!rt){rt=++cnt;}
+		if(l==r){
+			ori[rt].se=-l;ori[rt].fi+=val;return rt;
+		}
+		int mid=(l+r)&gt;&gt;1;
+		if(tar&lt;=mid)ls[rt]=add(l,mid,ls[rt],tar,val);
+		if(tar&gt;=mid+1)rs[rt]=add(mid+1,r,rs[rt],tar,val);
+		push_up(rt);
+		return rt;
+	}
+	pii query(int l,int r,int rt,int tl,int tr){
+		if(tl&lt;=l&amp;&amp;r&lt;=tr){return ori[rt];}
+		int mid=(l+r)&gt;&gt;1;
+		pii tmp=mk(0,0);
+		if(tl&lt;=mid)tmp=max(tmp,query(l,mid,ls[rt],tl,tr));
+		if(tr&gt;=mid+1)tmp=max(tmp,query(mid+1,r,rs[rt],tl,tr));
+		return tmp;
+	}
+
+}t;
+int rt[maxn];
+int n;
+struct SAM{
+	int ch[maxn][27],link[maxn],cnt,last,len[maxn],pos[maxn];//pos?????????????????¦Ë?? 
+	SAM(){cnt=last=1;}
+	void insert(int c){
+		int p=last,cur=++cnt;len[cur]=len[last]+1;
+		while(p&amp;&amp;!ch[p][c])ch[p][c]=cur,p=link[p];
+		if(!p)link[cur]=1;
+		else{
+			int q=ch[p][c];
+			if(len[p]+1==len[q])link[cur]=q;
+			else{
+				int cl=++cnt;len[cl]=len[p]+1;
+				memcpy(ch[cl],ch[q],sizeof(ch[cl]));
+				link[cl]=link[q];
+				link[q]=link[cur]=cl;
+				while(p&amp;&amp;ch[p][c]==q){ch[p][c]=cl,p=link[p];}
+			}
+		}
+		last=cur;
+	}
+	vi side[maxn];int f[maxn][23];
+	void addall(){
+		rep(i,2,cnt)side[link[i]].pb(i);
+	}
+	void dfs(int u,int fa){
+		//int top=0,stk[100]={0};	
+		f[u][0]=fa;
+		for(int i=0;i&lt;side[u].size();i++){
+			int v=side[u][i];dfs(v,u);rt[u]=t.merge(rt[v],rt[u],1,n);
+			//cout&lt;&lt;v&lt;&lt;' ';
+			//stk[++top]=v;
+		}
+		//cout&lt;&lt;&quot;Now :&quot;&lt;&lt;u&lt;&lt;&quot;  Son: &quot;;
+		//rep(i,1,top)cout&lt;&lt;u&lt;&lt;' '&lt;&lt;stk[i]&lt;&lt;' '&lt;&lt;endl;
+		//cout&lt;&lt;endl;
+	}
+	void init(){
+		rep(j,1,22)rep(i,1,cnt)f[i][j]=f[f[i][j-1]][j-1];
+	}
+	int jump(int x,int l){
+		for(int i=22;i&gt;=0;i--)if(len[f[x][i]]&gt;=l)x=f[x][i];
+		return x;
+	}
+}sam;
+
+char m[maxn],s[maxn];
+
+int main(){
+//	freopen(&quot;in&quot;,&quot;r&quot;,stdin);
+	scanf(&quot;%s&quot;,m+1);int len=strlen(m+1);
+	rep(i,1,len){
+		sam.insert(m[i]-'a');sam.pos[i]=sam.last;
+	}
+	scanf(&quot;%d&quot;,&amp;n);
+	rep(i,1,n){
+		scanf(&quot;%s&quot;,s+1);len=strlen(s+1);sam.last=1;
+		rep(j,1,len){
+			sam.insert(s[j]-'a');
+			rt[sam.last]=t.add(1,n,rt[sam.last],i,1);
+		}
+	}
+	sam.addall();
+	sam.dfs(1,0);
+	sam.init();
+	int q;scanf(&quot;%d&quot;,&amp;q);
+	rep(i,1,q){
+		int l,r,pl,pr;scanf(&quot;%d%d%d%d&quot;,&amp;l,&amp;r,&amp;pl,&amp;pr);
+		int x=sam.pos[pr];
+		x=sam.jump(x,pr-pl+1);
+		pii ans=t.query(1,n,rt[x],l,r);
+		if(!ans.fi)printf(&quot;%d %d\n&quot;,l,ans.fi);
+		else printf(&quot;%d %d\n&quot;,-ans.se,ans.fi);
+	}
+	return 0;
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86">前置知识</a>
+<ul>
+<li><a href="#%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%90%88%E5%B9%B6">线段树合并</a></li>
+<li><a href="#sam-%E5%90%8E%E7%BC%80%E8%87%AA%E5%8A%A8%E6%9C%BA">SAM-后缀自动机</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9C%AC%E9%A2%98%E6%80%9D%E8%B7%AF">本题思路</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wzmhtr.coding-pages.com/post/scoi2020-mo-ni-2-ju-zhen-qiu-he/">
+              <h3 class="post-title">
+                [SCOI2020模拟2] 矩阵求和
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+
+          
+            <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script>
+
+var options = {
+  shortname: 'gvablog',
+  apikey: 'GaTDI1iKdBspu9eatH3bb3vkRipD45khhPrE1OZvNtqC43gwRa22Noy6Yx2WW1YQ',
+}
+if ('https://disqus.skk.moe/disqus/') {
+  options.api = 'https://disqus.skk.moe/disqus/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://wzmhtr.coding-pages.com/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
