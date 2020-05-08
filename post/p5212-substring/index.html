@@ -1,0 +1,353 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>P5212 SubString | GVZ&#39;s Blog</title>
+<link rel="shortcut icon" href="https://wzmhtr.coding-pages.com/favicon.ico?v=1588900086492">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wzmhtr.coding-pages.com/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="P5212 SubString | GVZ&#39;s Blog - Atom Feed" href="https://wzmhtr.coding-pages.com/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="一道套路题。看到“字符串sss在当前字符串中出现了几次”显然是个SAM的操作。但是有个问题 因为一个点出现次数等于failfailfail树子树内节点个数，统计一次是O(n)O(n)O(n)的。如何快速求子树和？想到LCT。
+那么算法的雏形..." />
+    <meta name="keywords" content="LCT-Link Cut Tree,SAM-后缀自动机" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wzmhtr.coding-pages.com">
+  <img class="avatar" src="https://wzmhtr.coding-pages.com/images/avatar.png?v=1588900086492" alt="">
+  </a>
+  <h1 class="site-title">
+    GVZ&#39;s Blog
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://wzmhtr.coding-pages.com/post/you-lian" class="menu">
+          友链
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/GavinZhengOI" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/yIIJfce0wywQQOb" target="_blank">
+          <i class="ri-twitter-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              P5212 SubString
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-05-07
+              </span>
+              <span>
+                6 min read
+              </span>
+              
+                <a href="https://wzmhtr.coding-pages.com/tag/OWJjASk_Z/" class="post-tag">
+                  # LCT-Link Cut Tree
+                </a>
+              
+                <a href="https://wzmhtr.coding-pages.com/tag/TwIpKy_ft2/" class="post-tag">
+                  # SAM-后缀自动机
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>一道套路题。看到“字符串<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span>在当前字符串中出现了几次”显然是个SAM的操作。但是有个问题 因为一个点出现次数等于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi><mi>i</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">fail</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span>树子树内节点个数，统计一次是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>的。如何快速求子树和？想到LCT。</p>
+<p>那么算法的雏形就有了：在SAM涉及到修改<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi><mi>i</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">fail</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span>树操作时，利用LCT解决。当SAM上一个点设置<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi><mi>i</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">fail</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span>为另外一个节点时，需要把自己到祖先这条链（不包含自己），全部加上当前点的子树大小，就是<code>link</code>操作，<code>cut</code>操作同理。</p>
+<p>注意查询答案之前需要把查询点的祖先全部的标记下推，所以需要<code>access</code>再<code>splay</code>一下。QAQ</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;string&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#include&lt;set&gt;
+#define vi vector&lt;int&gt;
+#define pb push_back
+#define mk make_pair
+#define pii pair&lt;int,int&gt;
+#define rep(i,a,b) for(int i=(a),i##end=(b);i&lt;=i##end;i++)
+#define fi first
+#define se second
+typedef long long ll;
+using namespace std;
+const int maxn=2*6e5+1000;
+struct LCT{
+	int val[maxn],f[maxn],ch[maxn][2],tag[maxn],stk[maxn];
+	bool isrt(int u){return (ch[f[u]][0]!=u)&amp;&amp;(ch[f[u]][1]!=u);}
+	void push_down(int u){
+		if(!tag[u])return;
+		val[ch[u][0]]+=tag[u],val[ch[u][1]]+=tag[u];
+		tag[ch[u][0]]+=tag[u],tag[ch[u][1]]+=tag[u];
+		tag[u]=0;
+	}
+	void rotate(int u){
+		
+		int x=u,y=f[x],z=f[y],o=ch[y][1]==x,w=ch[x][o^1];
+		bool flag=isrt(y);
+	//	cout&lt;&lt;&quot;&gt;&gt;&quot;&lt;&lt;x&lt;&lt;' '&lt;&lt;y&lt;&lt;' '&lt;&lt;z&lt;&lt;' '&lt;&lt;o&lt;&lt;' '&lt;&lt;w&lt;&lt;' '&lt;&lt;flag&lt;&lt;endl;
+		ch[y][o]=w;
+		f[w]=y;
+		ch[x][o^1]=y;
+		f[y]=x;
+		if(!flag)ch[z][ch[z][1]==y]=x;
+		f[x]=z;
+	}
+	void splay(int u){
+		int top=0;
+		//cout&lt;&lt;endl&lt;&lt;&quot;&gt;&gt; : &quot;;
+		for(int y=u;;y=f[y]){
+			//cout&lt;&lt;y&lt;&lt;' '&lt;&lt;f[y]&lt;&lt;' '&lt;&lt;isrt(y)&lt;&lt;endl;
+			stk[++top]=y;if(isrt(y))break;
+		}
+		while(top)push_down(stk[top--]);
+		for(;!isrt(u);rotate(u)){
+			int y=f[u];
+			if(isrt(y))continue;
+			rotate(((ch[f[u]][0]==u)==(ch[f[y]][0]==y))?y:u);
+		}
+	}
+	void access(int x){
+		for(int y=0;x;y=x,x=f[x]){
+			splay(x);ch[x][1]=y;
+		}
+	}
+	void add(int x,int w){val[x]+=w,tag[x]+=w;}
+	void link(int u,int fa){
+		access(u);
+		splay(u);
+		f[u]=fa;
+		
+		access(fa);
+		splay(fa);
+		add(fa,val[u]);
+	}
+	void cut(int u){
+		access(u);splay(u);add(ch[u][0],-val[u]);
+		f[ch[u][0]]=0;
+		ch[u][0]=0;
+	}
+}t;
+struct SAM{
+	int ch[maxn][2],len[maxn],link[maxn],cnt,last;
+	SAM(){cnt=last=1;}
+	void insert(int c){
+		int p=last,cur=++cnt;len[cur]=len[p]+1;t.val[cur]=1;
+		while(p&amp;&amp;!ch[p][c])
+		ch[p][c]=cur,p=link[p];
+		if(!p)link[cur]=1,t.link(cur,1);
+		else{
+			int q=ch[p][c];
+			if(len[p]+1==len[q])link[cur]=q,t.link(cur,q);
+			else{
+				int cl=++cnt;len[cl]=len[p]+1;
+				memcpy(ch[cl],ch[q],sizeof(ch[cl]));
+				t.cut(q);
+				t.link(cl,link[q]);link[cl]=link[q];t.link(q,cl);t.link(cur,cl);link[q]=link[cur]=cl;
+			
+				while(p&amp;&amp;ch[p][c]==q)ch[p][c]=cl,p=link[p];
+			}
+		}
+		last=cur;
+	}
+}sam;
+string decodeWithMask(string s, int mask) {
+	//char[] chars = s.toCharArray();
+	int lim=s.length();
+//	for (int j = 0; j &lt; chars.length; j++) {
+	for (int j = 0; j &lt; lim ; j++){
+		mask = (mask * 131 + j) % lim;
+		char t = s[j];
+		s[j] = s[mask];
+		s[mask] = t;
+	}
+	return s;
+}
+string s,init,ty;
+int main(){
+//	freopen(&quot;in&quot;,&quot;r&quot;,stdin);
+	ios::sync_with_stdio(0);
+	int mask=0;int q;cin&gt;&gt;q;
+	cin&gt;&gt;init;int l1=init.length();
+	rep(i,0,l1-1)
+	sam.insert(init[i]-'A');
+	rep(i,1,q){
+		cin&gt;&gt;ty&gt;&gt;s;s=decodeWithMask(s,mask);
+		int l2=s.length();
+		if(ty[0]=='A'){
+			rep(j,0,l2-1)sam.insert(s[j]-'A');
+		}
+		else{
+			int u=1;bool flag=0;
+			rep(j,0,l2-1){
+				int c=s[j]-'A';
+				if(!sam.ch[u][c]){cout&lt;&lt;&quot;0&quot;&lt;&lt;endl;mask^=0;flag=1;break;}
+				else u=sam.ch[u][c];
+			}
+			if(flag)continue;
+			t.access(u);t.splay(u);
+			ll ans=t.val[u];mask^=ans;
+			cout&lt;&lt;ans&lt;&lt;endl;
+		}
+	}
+	return 0;
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wzmhtr.coding-pages.com/post/scoi-mo-ni-5c/">
+              <h3 class="post-title">
+                [北大集训2019 D4T2] N门问题 
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+
+          
+            <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script>
+
+var options = {
+  shortname: 'gvablog',
+  apikey: 'GaTDI1iKdBspu9eatH3bb3vkRipD45khhPrE1OZvNtqC43gwRa22Noy6Yx2WW1YQ',
+}
+if ('https://disqus.skk.moe/disqus/') {
+  options.api = 'https://disqus.skk.moe/disqus/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://wzmhtr.coding-pages.com/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
