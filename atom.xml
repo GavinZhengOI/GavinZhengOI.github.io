@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wzmhtr.coding-pages.com</id>
     <title>GVZ&apos;s Blog</title>
-    <updated>2020-05-09T00:30:46.288Z</updated>
+    <updated>2020-05-10T13:33:01.691Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wzmhtr.coding-pages.com"/>
     <link rel="self" href="https://wzmhtr.coding-pages.com/atom.xml"/>
@@ -23,6 +23,167 @@
 </ul>
 <p>考虑插入一个字符会对答案造成的影响：显然会把<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>经过<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>的所有祖先最后到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mi>o</mi><mi>o</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">root</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">o</span><span class="mord mathdefault">o</span><span class="mord mathdefault">t</span></span></span></span>的这条路径上的节点的最晚起始位置进行更新。这样就出现了一个问题：虽然LCT能进行链加/链覆盖，但是区间查询却做不到。那就考虑再维护一个线段树，线段树第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>位代表<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>t</mi><mi>a</mi><mi>r</mi><mi>t</mi><mi>p</mi><mi>o</mi><mi>s</mi><mo>=</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">startpos=i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>的本质不同子串的个数。</p>
 <p>当先加入一个节点的时候，我们需要再线段树上移除会被更改的节点原来的贡献并加入新的贡献。而一个很显然的性质就是当<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>A</mi><mi>M</mi></mrow><annotation encoding="application/x-tex">SAM</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span>上一条从儿子到祖先路径代表的所有子串的最后一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>e</mi><mi>n</mi><mi>d</mi><mi>p</mi><mi>o</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">endpos</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span></span></span></span>是相同的时，那么他们的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>t</mi><mi>a</mi><mi>r</mi><mi>t</mi><mi>p</mi><mi>o</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">startpos</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span></span></span></span>就是一段连续的区间。而根据LCT的性质，一个点到根的路径上只有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>log</mi><mo>⁡</mo></mrow><annotation encoding="application/x-tex">\log</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span></span></span></span>个<code>splay</code>，所以我们可以根据某个节点属于哪个<code>splay</code>将路径上节点分为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>log</mi><mo>⁡</mo></mrow><annotation encoding="application/x-tex">\log</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span></span></span></span>个类，每个类进行一次修改都能转化成线段树的区间加操作，然后就做完了。复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>m</mi><msup><mi>log</mi><mo>⁡</mo><mn>2</mn></msup><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(m\log^2n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.148448em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8984479999999999em;"><span style="top:-3.1473400000000002em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>。</p>
+<p>有个地方需要注意一下：<br>
+因为我们定义下的<code>LCT</code>是需要满足每个<code>splay</code>中的所有点的最大的<code>endpos</code>均相同，所以我们不能到处<code>access</code>，只有在修改的时候才能做一次<code>access</code>。</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#include&lt;set&gt;
+#define vi vector&lt;int&gt;
+#define pb push_back
+#define mk make_pair
+#define pii pair&lt;int,int&gt;
+#define rep(i,a,b) for(int i=(a),i##end=(b);i&lt;=i##end;i++)
+#define fi first
+#define se second
+#define int long long
+typedef long long ll;
+using namespace std;
+const int maxn=2e5+10000;
+int n,len[maxn];
+struct segment_tree{
+	ll val[maxn&lt;&lt;2],tag[maxn&lt;&lt;2];
+	segment_tree(){memset(val,0,sizeof(val));memset(tag,0,sizeof(tag));}
+	void push_down(int rt,int l,int r){
+		if(tag[rt]){
+			int mid=(l+r)&gt;&gt;1;
+			tag[rt&lt;&lt;1]+=tag[rt],tag[rt&lt;&lt;1|1]+=tag[rt];
+			val[rt&lt;&lt;1]+=tag[rt]*(mid-l+1);val[rt&lt;&lt;1|1]+=tag[rt]*(r-(mid+1)+1);
+			tag[rt]=0;
+		}
+	}
+	void push_up(int rt){
+		val[rt]=val[rt&lt;&lt;1]+val[rt&lt;&lt;1|1];
+	}
+	void add(int l,int r,int rt,int tl,int tr,ll w){
+		if(tl&lt;=l&amp;&amp;r&lt;=tr){
+			tag[rt]+=w;val[rt]+=w*(r-l+1);return;
+		}
+		push_down(rt,l,r);
+		int mid=(l+r)&gt;&gt;1;
+		if(tl&lt;=mid)add(l,mid,rt&lt;&lt;1,tl,tr,w);
+		if(tr&gt;=mid+1)add(mid+1,r,rt&lt;&lt;1|1,tl,tr,w);
+		push_up(rt);
+	}
+	ll query(int l,int r,int rt,int tl,int tr){
+		if(tl&lt;=l&amp;&amp;r&lt;=tr){return val[rt];}
+		push_down(rt,l,r);
+		int mid=(l+r)&gt;&gt;1;ll ans=0;
+		if(tl&lt;=mid)ans+=query(l,mid,rt&lt;&lt;1,tl,tr);
+		if(tr&gt;=mid+1)ans+=query(mid+1,r,rt&lt;&lt;1|1,tl,tr);
+		return ans;
+	}
+}t;
+struct LCT{
+	int ch[maxn][2],f[maxn],tag[maxn],endpos[maxn],stk[maxn];
+	bool isrt(int rt){return (ch[f[rt]][0]!=rt)&amp;&amp;(ch[f[rt]][1]!=rt);}
+	void rotate(int rt){
+		int x=rt,y=f[x],z=f[y],o=ch[y][1]==x,w=ch[x][o^1];
+		bool flag=isrt(y);
+		ch[y][o]=w;
+		f[w]=y;
+		ch[x][o^1]=y;
+		f[y]=x;
+		if(!flag)ch[z][ch[z][1]==y]=x;
+		f[x]=z;
+	}
+	void push_down(int rt){
+		if(tag[rt]){
+			tag[ch[rt][0]]=tag[ch[rt][1]]=tag[rt];
+			endpos[ch[rt][0]]=endpos[ch[rt][1]]=tag[rt];
+			tag[rt]=0;
+		}
+	}
+	void splay(int rt){
+		int top=0,x=rt;
+		for(int y=rt;;y=f[y]){
+			stk[++top]=y;if(isrt(y))break;
+		}
+		while(top)push_down(stk[top--]);
+		for(;!isrt(x);rotate(x)){
+			int y=f[x];if(isrt(y))continue;
+			rotate((ch[f[x]][1]==x)==(ch[f[y]][1]==y)?y:x);
+		}
+	}
+	void chain_update(int x1,int x2,int edpos,bool dodel,int ck){
+		if(dodel){
+			for(int y=0,x=(ck)?ck:x2;x;y=x,x=f[x]){
+				
+				splay(x);ch[x][1]=y;int st_l=len[f[x]]+1,ed_l=len[x];
+				if(ed_l)t.add(1,n,1,endpos[x]-ed_l+1,endpos[x]-st_l+1,-1);
+			}
+		}
+		for(int y=0,x=x1;x;y=x,x=f[x]){
+			splay(x);ch[x][1]=y;int st_l=len[f[x]]+1,ed_l=len[x];
+			if(ed_l)t.add(1,n,1,edpos-ed_l+1,edpos-st_l+1,1);
+		}
+	}
+	void add(int x,int val){
+		endpos[x]=val,tag[x]=val;
+	}
+	void link(int x,int fa,int edpos,int ty,int ck=0){
+		splay(x);f[x]=fa;
+		if(ty)
+		chain_update(x,fa,edpos,edpos!=1,ck);
+		if(ty){splay(x);add(x,edpos);}
+	}
+	void cut(int x,int st_l,int ed_l){
+		splay(x);
+		if(ed_l){t.add(1,n,1,endpos[x]-ed_l+1,endpos[x]-st_l+1,-1);}
+		f[ch[x][0]]=f[x],ch[x][0]=0;
+	}
+}lct;
+struct SAM{
+	int link[maxn],ch[maxn][27],cnt,last;
+	SAM(){cnt=last=1;}
+	void insert(int c,int edpos){
+		int p=last,cur=++cnt;len[cur]=len[p]+1;
+		while(p&amp;&amp;!ch[p][c])ch[p][c]=cur,p=link[p];
+		if(!p)link[cur]=1,lct.link(cur,1,edpos,1);
+		else{
+			int q=ch[p][c];
+			if(len[p]+1==len[q])link[cur]=q,lct.link(cur,q,edpos,1);
+			else{
+				int cl=++cnt;len[cl]=len[p]+1;lct.splay(q);lct.endpos[cl]=lct.endpos[q];
+				memcpy(ch[cl],ch[q],sizeof(ch[cl]));
+				lct.cut(q,len[link[q]]+1,len[cl]);
+				link[cl]=link[q];lct.link(cl,link[q],edpos,0);
+				lct.link(cur,cl,edpos,1,link[cl]);
+				lct.link(q,cl,edpos,0);
+				link[cur]=link[q]=cl;
+				while(p&amp;&amp;ch[p][c]==q)ch[p][c]=cl,p=link[p];
+			}
+		}
+		last=cur;
+	}
+}sam;
+char s[maxn];
+struct QAQ{
+	int l,r,id;
+}query[maxn];
+bool cmp(QAQ a,QAQ b){return a.r&lt;b.r;}
+ll out[maxn];
+signed main(){
+	scanf(&quot;%s&quot;,s+1);n=strlen(s+1);
+	int q;scanf(&quot;%lld&quot;,&amp;q);
+	rep(i,1,q){
+		scanf(&quot;%lld%lld&quot;,&amp;query[i].l,&amp;query[i].r);query[i].id=i;
+	}
+	sort(query+1,query+1+q,cmp);
+	int top=0;
+	rep(i,1,q){
+		while(top&lt;query[i].r)sam.insert(s[top+1]-'a',top+1),top++;
+		ll ans=t.query(1,n,1,query[i].l,query[i].r);
+		out[query[i].id]=ans;
+	}
+	rep(i,1,q)printf(&quot;%lld\n&quot;,out[i]);
+	return 0;
+}
+</code></pre>
 ]]></content>
     </entry>
     <entry>
