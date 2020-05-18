@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wzmhtr.coding-pages.com</id>
     <title>GVZ&apos;s Blog</title>
-    <updated>2020-05-18T02:06:15.787Z</updated>
+    <updated>2020-05-18T02:18:37.301Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wzmhtr.coding-pages.com"/>
     <link rel="self" href="https://wzmhtr.coding-pages.com/atom.xml"/>
@@ -499,8 +499,8 @@ int main() {
 #include&lt;vector&gt;
 #include&lt;queue&gt;
 #include&lt;set&gt;
-#define ls (rt&lt;&lt;1)
-#define rs (rt&lt;&lt;1|1)
+//#define ls (rt&lt;&lt;1)
+//#define rs (rt&lt;&lt;1|1)
 #define vi vector&lt;int&gt;
 #define pb push_back
 #define mk make_pair
