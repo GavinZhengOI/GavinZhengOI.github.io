@@ -2,13 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wzmhtr.coding-pages.com</id>
     <title>GVZ&apos;s Blog</title>
-    <updated>2020-05-10T13:33:01.691Z</updated>
+    <updated>2020-05-18T02:06:15.787Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wzmhtr.coding-pages.com"/>
     <link rel="self" href="https://wzmhtr.coding-pages.com/atom.xml"/>
     <logo>https://wzmhtr.coding-pages.com/images/avatar.png</logo>
     <icon>https://wzmhtr.coding-pages.com/favicon.ico</icon>
     <rights>All rights reserved 2020, GVZ&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[[专题]斜率优化]]></title>
+        <id>https://wzmhtr.coding-pages.com/post/zhuan-ti-xie-lu-you-hua/</id>
+        <link href="https://wzmhtr.coding-pages.com/post/zhuan-ti-xie-lu-you-hua/">
+        </link>
+        <updated>2020-05-11T00:19:00.000Z</updated>
+        <content type="html"><![CDATA[<p>很久很久没写过斜率优化了，我自己都有点忘了。先复习一下斜率优化的基本思想。<br>
+斜率优化的作用是优化转移，从而可以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>的进行转移决策。斜率优化的本质是将两种决策抽象成两条直线，把从“哪里转移过来”抽象成两个点。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[P6292 区间本质不同子串个数]]></title>
         <id>https://wzmhtr.coding-pages.com/post/p6292-qu-jian-ben-zhi-bu-tong-zi-chuan-ge-shu/</id>
@@ -489,6 +499,8 @@ int main() {
 #include&lt;vector&gt;
 #include&lt;queue&gt;
 #include&lt;set&gt;
+#define ls (rt&lt;&lt;1)
+#define rs (rt&lt;&lt;1|1)
 #define vi vector&lt;int&gt;
 #define pb push_back
 #define mk make_pair
@@ -1031,106 +1043,6 @@ int main(){
         printf(&quot;%lld\n&quot;,dp(1,0));
         roll_back(k);
     }
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Codeforces 601E-A Museum Robbery 线段树分治]]></title>
-        <id>https://wzmhtr.coding-pages.com/post/codeforces-601e-a-museum-robbery-xian-duan-shu-fen-zhi/</id>
-        <link href="https://wzmhtr.coding-pages.com/post/codeforces-601e-a-museum-robbery-xian-duan-shu-fen-zhi/">
-        </link>
-        <updated>2020-04-19T10:44:42.000Z</updated>
-        <content type="html"><![CDATA[<p>考虑线段树分治。</p>
-<p>线段树分治实际上就是将把时间按照线段树的方法分治下去。线段树的每个节点都是一个时间区间，预处理的时候如果一个操作的“存活时间”完全覆盖这个时间区间，就给这个时间区间打上标记并返回。然后在线段树上DFS，每次向下走到一个节点将这个节点的操作加入，离开时删除即可。</p>
-<p>线段树分治大多数情况就是用来解决：加入某个元素之后删除这个元素很麻烦，但是按照插入的顺序从后到前“撤销”很方便。（类似栈的结构：只能弹出顶部，不能删除中间的。）</p>
-<p>而这道题 是满足这个条件的。每次递归之前只需要把递归之前的状态复制一个“备份”。然后暴力的把“备份”还原即可。</p>
-<pre><code class="language-cpp">#include&lt;iostream&gt;
-#include&lt;cstdio&gt;
-#include&lt;algorithm&gt;
-#include&lt;cmath&gt;
-#include&lt;cstring&gt;
-#include&lt;vector&gt;
-#include&lt;queue&gt;
-#define vi vector&lt;int&gt;
-#define pb push_back
-#define mk make_pair
-#define pii pair&lt;int,int&gt;
-#define rep(i,a,b) for(int i=(a),i##end=(b);i&lt;=i##end;i++)
-#define fi first
-#define se second
-typedef long long ll;
-using namespace std;
-const int maxn=41000;
-const int p=1e7+19;
-const int q=1e9+7;
-int ed[maxn],st[maxn];
-pii item[maxn];
-bool query[maxn];
-int pro[maxn];
-int k;
-vi add[maxn*4];
-void update(int l,int r,int rt,int tl,int tr,int node){
-    if(tl&lt;=l&amp;&amp;r&lt;=tr){
-        add[rt].pb(node);return;
-    }
-    int mid=(l+r)&gt;&gt;1;
-    if(tl&lt;=mid)update(l,mid,rt&lt;&lt;1,tl,tr,node);
-    if(tr&gt;=mid+1)update(mid+1,r,rt&lt;&lt;1|1,tl,tr,node);
-}
-ll ksm(ll num,ll t){
-    ll res=1;num%=q;
-    for(;t;t&gt;&gt;=1,num=num*num%q){
-        if(t&amp;1)res=res*num%q;
-    }
-    return res;
-}
-int tmp[1005];
-void solve(int l,int r,int rt){
-    int buc[1005]={0};
-    rep(i,0,(int)add[rt].size()-1){
-        int id=add[rt][i];
-        for(int j=k;j&gt;=0;j--){
-            if(j+item[id].se&lt;=k)tmp[j+item[id].se]=max(tmp[j+item[id].se],tmp[j]+item[id].fi);
-        }
-    }
-    if(l==r){
-        if(query[l]){
-            ll ans=0;
-            rep(m,1,k){
-                ans+=1ll*tmp[m]*pro[m-1]%q;ans%=q;
-            }
-            printf(&quot;%lld\n&quot;,ans);
-        }
-        return;
-    }
-    int mid=(l+r)&gt;&gt;1;
-    memcpy(buc,tmp,sizeof(tmp));
-    solve(l,mid,rt&lt;&lt;1);
-    memcpy(tmp,buc,sizeof(tmp));
-    solve(mid+1,r,rt&lt;&lt;1|1);
-}
-int main(){
-    rep(i,0,1005)pro[i]=ksm(p,i);
-    int n;scanf(&quot;%d%d&quot;,&amp;n,&amp;k);
-    rep(i,1,n)
-    {scanf(&quot;%d%d&quot;,&amp;item[i].fi,&amp;item[i].se);st[i]=1;}
-    int q;scanf(&quot;%d&quot;,&amp;q);int item_cnt=n;
-    rep(i,1,q){
-        int ty;scanf(&quot;%d&quot;,&amp;ty);
-        if(ty==1){
-            ++item_cnt;scanf(&quot;%d%d&quot;,&amp;item[item_cnt].fi,&amp;item[item_cnt].se);st[item_cnt]=i;
-        }
-        else if(ty==2){
-            int x;scanf(&quot;%d&quot;,&amp;x);ed[x]=i;
-        }
-        else query[i]=1;
-    }
-    rep(i,1,item_cnt)if(!ed[i])ed[i]=q;
-    rep(i,1,item_cnt)
-    update(1,q,1,st[i],ed[i],i);
-    solve(1,q,1);
-    return 0;
 }
 </code></pre>
 ]]></content>
