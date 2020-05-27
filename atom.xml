@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wzmhtr.coding-pages.com</id>
     <title>GVZ&apos;s Blog</title>
-    <updated>2020-05-18T02:18:37.301Z</updated>
+    <updated>2020-05-27T02:32:25.678Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wzmhtr.coding-pages.com"/>
     <link rel="self" href="https://wzmhtr.coding-pages.com/atom.xml"/>
@@ -10,13 +10,13 @@
     <icon>https://wzmhtr.coding-pages.com/favicon.ico</icon>
     <rights>All rights reserved 2020, GVZ&apos;s Blog</rights>
     <entry>
-        <title type="html"><![CDATA[[专题]斜率优化]]></title>
-        <id>https://wzmhtr.coding-pages.com/post/zhuan-ti-xie-lu-you-hua/</id>
-        <link href="https://wzmhtr.coding-pages.com/post/zhuan-ti-xie-lu-you-hua/">
+        <title type="html"><![CDATA[杜教筛]]></title>
+        <id>https://wzmhtr.coding-pages.com/post/du-jiao-shai/</id>
+        <link href="https://wzmhtr.coding-pages.com/post/du-jiao-shai/">
         </link>
-        <updated>2020-05-11T00:19:00.000Z</updated>
-        <content type="html"><![CDATA[<p>很久很久没写过斜率优化了，我自己都有点忘了。先复习一下斜率优化的基本思想。<br>
-斜率优化的作用是优化转移，从而可以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>的进行转移决策。斜率优化的本质是将两种决策抽象成两条直线，把从“哪里转移过来”抽象成两个点。</p>
+        <updated>2020-05-27T02:29:08.000Z</updated>
+        <content type="html"><![CDATA[<p><a href="https://gypsophila.blog.luogu.org/dls-tql">浅谈杜教筛</a><br>
+写得很好 不重复造轮子是OIer的传统美德</p>
 ]]></content>
     </entry>
     <entry>
