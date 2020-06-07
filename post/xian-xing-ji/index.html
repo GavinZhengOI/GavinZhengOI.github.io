@@ -2,30 +2,23 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>友链 | GVZ&#39;s Blog</title>
+<title>线性基 | GVZ&#39;s Blog</title>
 <link rel="shortcut icon" href="https://wzmhtr.coding-pages.com/favicon.ico?v=1591536786613">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://wzmhtr.coding-pages.com/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="友链 | GVZ&#39;s Blog - Atom Feed" href="https://wzmhtr.coding-pages.com/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="线性基 | GVZ&#39;s Blog - Atom Feed" href="https://wzmhtr.coding-pages.com/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="
-    
-        
-        
-            An_Account
-            杰哥神仙
-        
-    
-
-
-    
-        
-        
-            yijan..." />
-    <meta name="keywords" content="" />
+    <meta name="description" content="线性基-OIWIKI
+算法｜线性基学习笔记
+struct basis{
+	ll a[64];
+	void reset(){memset(a,0,sizeof(a));}
+	void insert(ll x){
+		for(int i=63;..." />
+    <meta name="keywords" content="线性基" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -107,56 +100,51 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              友链
+              线性基
             </h2>
             <div class="post-info">
               <span>
-                2020-03-03
+                2020-06-07
               </span>
               <span>
                 1 min read
               </span>
               
+                <a href="https://wzmhtr.coding-pages.com/tag/JAiiwvYbT/" class="post-tag">
+                  # 线性基
+                </a>
+              
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <div class="friends">
-    <a class="a-friend" target="_blank" style="background-color:white;color:black" href="https://www.planarg.cf/">
-        <img class="blog-avatar" src="https://sr7h8m.coding-pages.com//images/avatar.png">
-        <div class="text-container">
-            <div class="name">An_Account</div>
-            <div class="description">杰哥神仙</div>
-        </div>
-    </a>
-</div>
-<div class="friends">
-    <a class="a-friend" target="_blank" style="background-color:white;color:black" href="https://yijan.co/">
-        <img class="blog-avatar" src="https://8vr0sq.coding-pages.com/images/avatar.png?v=1583213821035">
-        <div class="text-container">
-            <div class="name">yijan</div>
-            <div class="description">janjan NB!</div>
-        </div>
-    </a>
-</div>
-<div class="friends">
-    <a class="a-friend" target="_blank" style="background-color:white;color:black" href="https://sshwy.name">
-        <img class="blog-avatar" src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200303134511.png">
-        <div class="text-container">
-            <div class="name">sshwy</div>
-            <div class="description">人生赢家hwy</div>
-        </div>
-    </a>
-</div>
-<div class="friends">
-    <a class="a-friend" target="_blank" style="background-color:white;color:black" href="https://zhongyuwei.github.io/">
-        <img class="blog-avatar" src="https://gvz-blog.oss-cn-chengdu.aliyuncs.com/img/20200316094331.jpg">
-        <div class="text-container">
-            <div class="name">zyw</div>
-            <div class="description">钟神/se</div>
-        </div>
-    </a>
-</div>
+                <p><a href="https://oi-wiki.org/math/basis/">线性基-OIWIKI</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/68575986">算法｜线性基学习笔记</a></p>
+<pre><code class="language-cpp">struct basis{
+	ll a[64];
+	void reset(){memset(a,0,sizeof(a));}
+	void insert(ll x){
+		for(int i=63;i&gt;=0;i--){
+			if(x&amp;(1ll&lt;&lt;i)){
+				if(!a[i]){
+					a[i]=x;break;
+				}
+				x^=a[i];
+			}
+		}
+	}
+	bool exist(ll x){
+		for(int i=63;i&gt;=0;i--){
+			if(x&amp;(1ll&lt;&lt;i)){
+				if(a[i])x^=a[i];
+				else {return 0;}
+			}
+		}
+		return 1;
+	}
+}t;
+</code></pre>
+
               </div>
               <div class="toc-container">
                 
@@ -165,6 +153,15 @@
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wzmhtr.coding-pages.com/post/si-te-lin-shu-he-si-te-lin-fan-yan/">
+              <h3 class="post-title">
+                斯特林数和斯特林反演
+              </h3>
+            </a>
+          </div>
         
 
         
