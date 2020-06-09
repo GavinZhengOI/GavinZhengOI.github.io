@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wzmhtr.coding-pages.com</id>
     <title>GVZ&apos;s Blog</title>
-    <updated>2020-06-07T13:33:10.039Z</updated>
+    <updated>2020-06-09T11:51:27.271Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wzmhtr.coding-pages.com"/>
     <link rel="self" href="https://wzmhtr.coding-pages.com/atom.xml"/>
@@ -535,7 +535,16 @@ int main() {
         <link href="https://wzmhtr.coding-pages.com/post/tou-wen-jian-ji-hong-ding-yi/">
         </link>
         <updated>2020-05-02T13:15:01.000Z</updated>
-        <content type="html"><![CDATA[<pre><code class="language-cpp">#include&lt;iostream&gt;
+        <content type="html"><![CDATA[<pre><code class="language-cpp">/*
+                                                  
+  _|_|                              _|  _|    _|  
+_|    _|  _|  _|_|  _|_|_|_|        _|  _|  _|    
+_|    _|  _|_|          _|          _|  _|_|      
+_|    _|  _|          _|      _|    _|  _|  _|    
+  _|_|    _|        _|_|_|_|    _|_|    _|    _|  
+                                                                                                    
+*/ 
+#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
 #include&lt;algorithm&gt;
 #include&lt;cmath&gt;
