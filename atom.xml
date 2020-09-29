@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wzmhtr.coding-pages.com</id>
     <title>GVZ&apos;s Blog</title>
-    <updated>2020-09-29T01:22:38.713Z</updated>
+    <updated>2020-09-29T01:23:28.654Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wzmhtr.coding-pages.com"/>
     <link rel="self" href="https://wzmhtr.coding-pages.com/atom.xml"/>
@@ -757,6 +757,18 @@ _|    _|  _|          _|      _|    _|  _|  _|
 #define se second
 typedef long long ll;
 using namespace std;
+</code></pre>
+<p>快速读入</p>
+<pre><code class="language-cpp">inline char nc(){
+    static char buf[100000],*p1=buf,*p2=buf;
+    return p1==p2&amp;&amp;(p2=(p1=buf)+fread(buf,1,100000,stdin),p1==p2)?EOF:*p1++;
+}
+inline int _read(){
+    char ch=nc();int sum=0;
+    while(!(ch&gt;='0'&amp;&amp;ch&lt;='9'))ch=nc();
+    while(ch&gt;='0'&amp;&amp;ch&lt;='9')sum=sum*10+ch-48,ch=nc();
+    return sum;
+}
 </code></pre>
 ]]></content>
     </entry>
