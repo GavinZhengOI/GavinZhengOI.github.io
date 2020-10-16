@@ -1,0 +1,247 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>二分图的最大独立集 | GVZ&#39;s Blog</title>
+<link rel="shortcut icon" href="https://wzmhtr.coding-pages.com/favicon.ico?v=1602849642460">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wzmhtr.coding-pages.com/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="二分图的最大独立集 | GVZ&#39;s Blog - Atom Feed" href="https://wzmhtr.coding-pages.com/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="众所周知，一般图的最大独立集是NP-hard的。但是二分图的最大独立集是可以做的。
+首先有一个结论：对于任何图，最大独立集=n-最小点覆盖=二分图最大匹配
+最大独立集=n-最小点覆盖
+我们考虑把最小点覆盖选择的点全部删去，剩余的图将不会存在..." />
+    <meta name="keywords" content="最大独立集,图论,网络流,二分图匹配" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wzmhtr.coding-pages.com">
+  <img class="avatar" src="https://wzmhtr.coding-pages.com/images/avatar.png?v=1602849642460" alt="">
+  </a>
+  <h1 class="site-title">
+    GVZ&#39;s Blog
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://wzmhtr.coding-pages.com/post/you-lian" class="menu">
+          友链
+        </a>
+      
+    
+      
+        <a href="https://wzmhtr.coding-pages.com/post/tou-wen-jian-ji-hong-ding-yi" class="menu">
+          头文件
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/GavinZhengOI" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/yIIJfce0wywQQOb" target="_blank">
+          <i class="ri-twitter-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              二分图的最大独立集
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-10-16
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://wzmhtr.coding-pages.com/tag/VlZQMJreC/" class="post-tag">
+                  # 最大独立集
+                </a>
+              
+                <a href="https://wzmhtr.coding-pages.com/tag/nLBCJajrI5/" class="post-tag">
+                  # 图论
+                </a>
+              
+                <a href="https://wzmhtr.coding-pages.com/tag/fOZFkkAE-Y/" class="post-tag">
+                  # 网络流
+                </a>
+              
+                <a href="https://wzmhtr.coding-pages.com/tag/1--UJaSZVJ/" class="post-tag">
+                  # 二分图匹配
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>众所周知，一般图的最大独立集是NP-hard的。但是二分图的最大独立集是可以做的。<br>
+首先有一个结论：对于任何图，最大独立集=n-最小点覆盖=二分图最大匹配</p>
+<h2 id="最大独立集n-最小点覆盖">最大独立集=n-最小点覆盖</h2>
+<p>我们考虑把最小点覆盖选择的点全部删去，剩余的图将不会存在边（否则存在一条边未被覆盖）。所以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>−</mo><mi mathvariant="normal">最</mi><mi mathvariant="normal">小</mi><mi mathvariant="normal">点</mi><mi mathvariant="normal">覆</mi><mi mathvariant="normal">盖</mi></mrow><annotation encoding="application/x-tex">n-最小点覆盖</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">最</span><span class="mord cjk_fallback">小</span><span class="mord cjk_fallback">点</span><span class="mord cjk_fallback">覆</span><span class="mord cjk_fallback">盖</span></span></span></span>一定是一个独立集。而最小点覆盖删去的点最少，所以剩下的点最多，所以这个独立集一定是最大独立集。</p>
+<h2 id="最大独立集二分图最大匹配">最大独立集=二分图最大匹配</h2>
+<p>二分图最大匹配的问题可以用这样一个网络流算法解决：左边所有点连源点，容量为1，右边所有点连汇点，容量也为1。中间点按照原图连边，容量为inf。这样跑最大流出来是最大匹配。<br>
+而我们考虑最大独立集如何用最小割解决：还是那张图，如果一个点连向源点/汇点的边被割掉，代表这个点不选择，否则代表选择。因为二分图上的点之间的连边是无法删除的，所以任意一条二分图上的边连接的两个点同时存在，就不合法。所以只要图联通就不合法。当图不联通时，就一定不会存在一条<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mo>−</mo><mo>&gt;</mo><mi mathvariant="normal">左</mi><mi mathvariant="normal">边</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">点</mi><mo>−</mo><mo>&gt;</mo><mi mathvariant="normal">右</mi><mi mathvariant="normal">边</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">点</mi><mo>−</mo><mo>&gt;</mo><mi>T</mi></mrow><annotation encoding="application/x-tex">S-&gt;左边的点-&gt;右边的点-&gt;T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord cjk_fallback">左</span><span class="mord cjk_fallback">边</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">点</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord cjk_fallback">右</span><span class="mord cjk_fallback">边</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">点</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span>的路径，所以不连通图代表的方案一定是个独立集。所以最小割=最大流=二分图最大匹配=最大独立集。<br>
+BTW，一个最大流最小割定理的感性理解：跑完最大流后把满流的边全部挑出来，让这条边容量-1，重新跑，可能有两种情况：</p>
+<ol>
+<li>对答案没有影响，另外一条/一组没有满流的边接替了这条边的作用。</li>
+<li>答案-1，没有其他替代方案。</li>
+</ol>
+<p>我们把第二种边全部删掉，那么最大流会变为0，即图不连通。所以最大流=最小割。</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E6%9C%80%E5%A4%A7%E7%8B%AC%E7%AB%8B%E9%9B%86n-%E6%9C%80%E5%B0%8F%E7%82%B9%E8%A6%86%E7%9B%96">最大独立集=n-最小点覆盖</a></li>
+<li><a href="#%E6%9C%80%E5%A4%A7%E7%8B%AC%E7%AB%8B%E9%9B%86%E4%BA%8C%E5%88%86%E5%9B%BE%E6%9C%80%E5%A4%A7%E5%8C%B9%E9%85%8D">最大独立集=二分图最大匹配</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wzmhtr.coding-pages.com/post/er-fen-he-cdqsplay-pei-he-xie-lu-you-hua-1/">
+              <h3 class="post-title">
+                二分和CDQ/Splay配合斜率优化
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+
+          
+            <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script>
+
+var options = {
+  shortname: 'gvablog',
+  apikey: 'GaTDI1iKdBspu9eatH3bb3vkRipD45khhPrE1OZvNtqC43gwRa22Noy6Yx2WW1YQ',
+}
+if ('https://disqus.skk.moe/disqus/') {
+  options.api = 'https://disqus.skk.moe/disqus/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://wzmhtr.coding-pages.com/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

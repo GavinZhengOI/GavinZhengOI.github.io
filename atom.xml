@@ -2,13 +2,34 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wzmhtr.coding-pages.com</id>
     <title>GVZ&apos;s Blog</title>
-    <updated>2020-10-14T13:23:52.125Z</updated>
+    <updated>2020-10-16T12:00:45.991Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wzmhtr.coding-pages.com"/>
     <link rel="self" href="https://wzmhtr.coding-pages.com/atom.xml"/>
     <logo>https://wzmhtr.coding-pages.com/images/avatar.png</logo>
     <icon>https://wzmhtr.coding-pages.com/favicon.ico</icon>
     <rights>All rights reserved 2020, GVZ&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[二分图的最大独立集]]></title>
+        <id>https://wzmhtr.coding-pages.com/post/er-fen-tu-de-zui-da-du-li-ji/</id>
+        <link href="https://wzmhtr.coding-pages.com/post/er-fen-tu-de-zui-da-du-li-ji/">
+        </link>
+        <updated>2020-10-16T01:45:55.000Z</updated>
+        <content type="html"><![CDATA[<p>众所周知，一般图的最大独立集是NP-hard的。但是二分图的最大独立集是可以做的。<br>
+首先有一个结论：对于任何图，最大独立集=n-最小点覆盖=二分图最大匹配</p>
+<h2 id="最大独立集n-最小点覆盖">最大独立集=n-最小点覆盖</h2>
+<p>我们考虑把最小点覆盖选择的点全部删去，剩余的图将不会存在边（否则存在一条边未被覆盖）。所以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>−</mo><mi mathvariant="normal">最</mi><mi mathvariant="normal">小</mi><mi mathvariant="normal">点</mi><mi mathvariant="normal">覆</mi><mi mathvariant="normal">盖</mi></mrow><annotation encoding="application/x-tex">n-最小点覆盖</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">最</span><span class="mord cjk_fallback">小</span><span class="mord cjk_fallback">点</span><span class="mord cjk_fallback">覆</span><span class="mord cjk_fallback">盖</span></span></span></span>一定是一个独立集。而最小点覆盖删去的点最少，所以剩下的点最多，所以这个独立集一定是最大独立集。</p>
+<h2 id="最大独立集二分图最大匹配">最大独立集=二分图最大匹配</h2>
+<p>二分图最大匹配的问题可以用这样一个网络流算法解决：左边所有点连源点，容量为1，右边所有点连汇点，容量也为1。中间点按照原图连边，容量为inf。这样跑最大流出来是最大匹配。<br>
+而我们考虑最大独立集如何用最小割解决：还是那张图，如果一个点连向源点/汇点的边被割掉，代表这个点不选择，否则代表选择。因为二分图上的点之间的连边是无法删除的，所以任意一条二分图上的边连接的两个点同时存在，就不合法。所以只要图联通就不合法。当图不联通时，就一定不会存在一条<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mo>−</mo><mo>&gt;</mo><mi mathvariant="normal">左</mi><mi mathvariant="normal">边</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">点</mi><mo>−</mo><mo>&gt;</mo><mi mathvariant="normal">右</mi><mi mathvariant="normal">边</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">点</mi><mo>−</mo><mo>&gt;</mo><mi>T</mi></mrow><annotation encoding="application/x-tex">S-&gt;左边的点-&gt;右边的点-&gt;T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord cjk_fallback">左</span><span class="mord cjk_fallback">边</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">点</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord cjk_fallback">右</span><span class="mord cjk_fallback">边</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">点</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span>的路径，所以不连通图代表的方案一定是个独立集。所以最小割=最大流=二分图最大匹配=最大独立集。<br>
+BTW，一个最大流最小割定理的感性理解：跑完最大流后把满流的边全部挑出来，让这条边容量-1，重新跑，可能有两种情况：</p>
+<ol>
+<li>对答案没有影响，另外一条/一组没有满流的边接替了这条边的作用。</li>
+<li>答案-1，没有其他替代方案。</li>
+</ol>
+<p>我们把第二种边全部删掉，那么最大流会变为0，即图不连通。所以最大流=最小割。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[二分和CDQ/Splay配合斜率优化]]></title>
         <id>https://wzmhtr.coding-pages.com/post/er-fen-he-cdqsplay-pei-he-xie-lu-you-hua-1/</id>
@@ -753,55 +774,6 @@ int main() {
     //	cout&lt;&lt;tmp[0]&lt;&lt;' '&lt;&lt;n&lt;&lt;endl;
     printf(&quot;%.6lf&quot;, (double)dfs(tmp, n));
     return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[头文件及宏定义]]></title>
-        <id>https://wzmhtr.coding-pages.com/post/tou-wen-jian-ji-hong-ding-yi/</id>
-        <link href="https://wzmhtr.coding-pages.com/post/tou-wen-jian-ji-hong-ding-yi/">
-        </link>
-        <updated>2020-05-02T13:15:01.000Z</updated>
-        <content type="html"><![CDATA[<pre><code class="language-cpp">/*
-                                                  
-  _|_|                              _|  _|    _|  
-_|    _|  _|  _|_|  _|_|_|_|        _|  _|  _|    
-_|    _|  _|_|          _|          _|  _|_|      
-_|    _|  _|          _|      _|    _|  _|  _|    
-  _|_|    _|        _|_|_|_|    _|_|    _|    _|  
-                                                                                                    
-*/ 
-#include&lt;iostream&gt;
-#include&lt;cstdio&gt;
-#include&lt;algorithm&gt;
-#include&lt;cmath&gt;
-#include&lt;cstring&gt;
-#include&lt;vector&gt;
-#include&lt;queue&gt;
-#include&lt;set&gt;
-//#define ls (rt&lt;&lt;1)
-//#define rs (rt&lt;&lt;1|1)
-#define vi vector&lt;int&gt;
-#define pb push_back
-#define mk make_pair
-#define pii pair&lt;int,int&gt;
-#define rep(i,a,b) for(int i=(a),i##end=(b);i&lt;=i##end;i++)
-#define fi first
-#define se second
-typedef long long ll;
-using namespace std;
-</code></pre>
-<p>快速读入</p>
-<pre><code class="language-cpp">inline char nc(){
-    static char buf[100000],*p1=buf,*p2=buf;
-    return p1==p2&amp;&amp;(p2=(p1=buf)+fread(buf,1,100000,stdin),p1==p2)?EOF:*p1++;
-}
-inline int _read(){
-    char ch=nc();int sum=0;
-    while(!(ch&gt;='0'&amp;&amp;ch&lt;='9'))ch=nc();
-    while(ch&gt;='0'&amp;&amp;ch&lt;='9')sum=sum*10+ch-48,ch=nc();
-    return sum;
 }
 </code></pre>
 ]]></content>
