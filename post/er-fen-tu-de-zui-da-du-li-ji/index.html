@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>二分图的最大独立集 | GVZ&#39;s Blog</title>
-<link rel="shortcut icon" href="https://wzmhtr.coding-pages.com/favicon.ico?v=1602849642460">
+<link rel="shortcut icon" href="https://wzmhtr.coding-pages.com/favicon.ico?v=1602850031923">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://wzmhtr.coding-pages.com/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="二分图的最大独立集 | GVZ&#39;s Blog - Atom Feed" href="https://wzmhtr.coding-pages.com/atom.xml">
@@ -24,7 +24,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://wzmhtr.coding-pages.com">
-  <img class="avatar" src="https://wzmhtr.coding-pages.com/images/avatar.png?v=1602849642460" alt="">
+  <img class="avatar" src="https://wzmhtr.coding-pages.com/images/avatar.png?v=1602850031923" alt="">
   </a>
   <h1 class="site-title">
     GVZ&#39;s Blog
@@ -140,6 +140,7 @@ BTW，一个最大流最小割定理的感性理解：跑完最大流后把满�
 <li>答案-1，没有其他替代方案。</li>
 </ol>
 <p>我们把第二种边全部删掉，那么最大流会变为0，即图不连通。所以最大流=最小割。</p>
+<p>最小割方案输出就是，从<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>开始在残余网络上DFS。对于一条边，如果他一个节点被跑到了，另一个没跑到，就要割掉。</p>
 
               </div>
               <div class="toc-container">
