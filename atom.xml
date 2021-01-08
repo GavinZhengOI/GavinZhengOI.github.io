@@ -2,13 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wzmhtr.coding-pages.com</id>
     <title>GVZ&apos;s Blog</title>
-    <updated>2020-11-06T07:00:58.055Z</updated>
+    <updated>2021-01-08T23:36:57.042Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wzmhtr.coding-pages.com"/>
     <link rel="self" href="https://wzmhtr.coding-pages.com/atom.xml"/>
     <logo>https://wzmhtr.coding-pages.com/images/avatar.png</logo>
     <icon>https://wzmhtr.coding-pages.com/favicon.ico</icon>
-    <rights>All rights reserved 2020, GVZ&apos;s Blog</rights>
+    <rights>All rights reserved 2021, GVZ&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[CF1140F Extending Set of Points]]></title>
+        <id>https://wzmhtr.coding-pages.com/post/cf1140f-extending-set-of-points/</id>
+        <link href="https://wzmhtr.coding-pages.com/post/cf1140f-extending-set-of-points/">
+        </link>
+        <updated>2021-01-08T13:06:24.000Z</updated>
+        <content type="html"><![CDATA[<p>一看到二维点之间的关系，首先考虑下转化成二分图的形式。即左边的点代表行，右边的点代表列，二分图的边代表原图上的点。题目描述的规则就变成了：对于任意一条边连接的点对<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a,b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span></span></span></span>，与<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span>点之间有边的点集为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span></span></span></span>，与<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span>点之间有边的点集为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>。 那么点集<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>中的点必定两两有边。所以对于一个二分图上连通块，二分图两边的点必定有边。</p>
+<p>因为题意中的点是一个一个加入的，那就相当于每次加入一条边。我们只需要合并这两个边连接的连通块就好了。因为我们需要数二分图有多少边，所以我们需要只需要维护一下一个连通块左边和右边分别有多少个点即可。</p>
+<p>问题转化为了：每次加边/删边，询问连通块的一些信息。那么显然用一个按秩合并可撤销并查集+线段树分治即可。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[exgcd]]></title>
         <id>https://wzmhtr.coding-pages.com/post/exgcd/</id>
@@ -514,16 +525,6 @@ int main(){
 	}
 }t;
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[杜教筛]]></title>
-        <id>https://wzmhtr.coding-pages.com/post/du-jiao-shai/</id>
-        <link href="https://wzmhtr.coding-pages.com/post/du-jiao-shai/">
-        </link>
-        <updated>2020-05-27T02:29:08.000Z</updated>
-        <content type="html"><![CDATA[<p><a href="https://gypsophila.blog.luogu.org/dls-tql">浅谈杜教筛</a><br>
-写得很好 不重复造轮子是OIer的传统美德</p>
 ]]></content>
     </entry>
 </feed>
