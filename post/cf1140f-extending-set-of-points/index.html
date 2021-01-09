@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CF1140F Extending Set of Points | GVZ&#39;s Blog</title>
-<link rel="shortcut icon" href="https://wzmhtr.coding-pages.com/favicon.ico?v=1610149013289">
+<link rel="shortcut icon" href="https://wzmhtr.coding-pages.com/favicon.ico?v=1610152531217">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://wzmhtr.coding-pages.com/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="CF1140F Extending Set of Points | GVZ&#39;s Blog - Atom Feed" href="https://wzmhtr.coding-pages.com/atom.xml">
@@ -21,7 +21,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://wzmhtr.coding-pages.com">
-  <img class="avatar" src="https://wzmhtr.coding-pages.com/images/avatar.png?v=1610149013289" alt="">
+  <img class="avatar" src="https://wzmhtr.coding-pages.com/images/avatar.png?v=1610152531217" alt="">
   </a>
   <h1 class="site-title">
     GVZ&#39;s Blog
@@ -101,7 +101,7 @@
                 2021-01-08
               </span>
               <span>
-                1 min read
+                5 min read
               </span>
               
                 <a href="https://wzmhtr.coding-pages.com/tag/rimO8NLO4/" class="post-tag">
@@ -119,6 +119,123 @@
                 <p>一看到二维点之间的关系，首先考虑下转化成二分图的形式。即左边的点代表行，右边的点代表列，二分图的边代表原图上的点。题目描述的规则就变成了：对于任意一条边连接的点对<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a,b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span></span></span></span>，与<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span>点之间有边的点集为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span></span></span></span>，与<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span>点之间有边的点集为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>。 那么点集<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>中的点必定两两有边。所以对于一个二分图上连通块，二分图两边的点必定有边。</p>
 <p>因为题意中的点是一个一个加入的，那就相当于每次加入一条边。我们只需要合并这两个边连接的连通块就好了。因为我们需要数二分图有多少边，所以我们需要只需要维护一下一个连通块左边和右边分别有多少个点即可。</p>
 <p>问题转化为了：每次加边/删边，询问连通块的一些信息。那么显然用一个按秩合并可撤销并查集+线段树分治即可。</p>
+<pre><code class="language-cpp">/*
+                                                  
+  _|_|                              _|  _|    _|  
+_|    _|  _|  _|_|  _|_|_|_|        _|  _|  _|    
+_|    _|  _|_|          _|          _|  _|_|      
+_|    _|  _|          _|      _|    _|  _|  _|    
+  _|_|    _|        _|_|_|_|    _|_|    _|    _|  
+                                                                                                    
+*/ 
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#include&lt;set&gt;
+#include&lt;map&gt;
+#define ls (rt&lt;&lt;1)
+#define rs (rt&lt;&lt;1|1)
+#define vi vector&lt;int&gt;
+#define pb push_back
+#define mk make_pair
+#define pii pair&lt;int,int&gt;
+#define rep(i,a,b) for(int i=(a),i##end=(b);i&lt;=i##end;i++)
+#define fi first
+#define se second
+typedef long long ll;
+using namespace std;
+const int maxn=3e5+1000;
+map&lt;pii,int&gt;lst;
+ll tmpans;
+struct dsu{
+	int fa[2*maxn],size[2*maxn],rowsize[2*maxn],colsize[2*maxn];
+	//row points idx :i
+	//col  points idx:i+maxn 
+	pii his[maxn];//&lt;son,fa&gt;
+	int top;
+	dsu(){
+		top=0;
+		rep(i,0,maxn*2-1)fa[i]=i,size[i]=1;
+		rep(i,1,maxn)rowsize[i]=1,colsize[i+maxn]=1;
+	}
+	int get(int x){return (fa[x]==x)?x:get(fa[x]);}
+	void merge(int s,int f){
+		s=get(s),f=get(f);
+		if(size[s]&gt;size[f])swap(s,f);
+		tmpans-=1ll*rowsize[f]*colsize[f]+1ll*rowsize[s]*colsize[s];
+		size[f]+=size[s];rowsize[f]+=rowsize[s];colsize[f]+=colsize[s];
+		tmpans+=1ll*rowsize[f]*colsize[f];
+		fa[s]=f;his[++top]=mk(s,f);
+	}
+	void roll_back(int n){
+		rep(i,1,n){
+			int f=his[top].se,s=his[top].fi;top--;
+			tmpans-=1ll*rowsize[f]*colsize[f];
+			size[f]-=size[s];rowsize[f]-=rowsize[s];colsize[f]-=colsize[s];
+			tmpans+=1ll*rowsize[f]*colsize[f]+1ll*rowsize[s]*colsize[s];
+			fa[s]=s;
+		}
+	}
+}d;
+ll ans[maxn];
+
+struct segment_tree{
+	vector&lt;pii&gt; tag[maxn&lt;&lt;2];
+	void add_op(int l,int r,int rt,int tl,int tr,pii val){
+		if(tl&lt;=l&amp;&amp;r&lt;=tr){
+			tag[rt].pb(val);return;
+		}
+		int mid=(l+r)&gt;&gt;1;
+		if(tl&lt;=mid)add_op(l,mid,ls,tl,tr,val);
+		if(tr&gt;=mid+1)add_op(mid+1,r,rs,tl,tr,val);
+	}
+	void vamos(int l,int r,int rt){
+		int cnt=0;
+	//	cout&lt;&lt;&quot;IN:&quot;&lt;&lt;l&lt;&lt;' '&lt;&lt;r&lt;&lt;' '&lt;&lt;tmpans&lt;&lt;endl;
+		for(int i=0;i&lt;tag[rt].size();i++){
+			pii tmp=tag[rt][i];
+			if(d.get(tmp.fi)!=d.get(tmp.se+maxn)){
+				d.merge(tmp.fi,tmp.se+maxn);cnt++;
+			}
+		}
+		if(l==r){ans[l]=tmpans;d.roll_back(cnt);return;}
+		int mid=(l+r)&gt;&gt;1;
+		vamos(l,mid,ls);
+		vamos(mid+1,r,rs);
+		d.roll_back(cnt);
+		//cout&lt;&lt;&quot;OUT:&quot;&lt;&lt;l&lt;&lt;' '&lt;&lt;r&lt;&lt;' '&lt;&lt;tmpans&lt;&lt;endl;
+		int gg=1;
+	}
+}t;
+vector&lt;pii&gt;res;
+int main(){
+	ios::sync_with_stdio(0);
+	int q;cin&gt;&gt;q;
+	rep(i,1,q){
+		pii tmp;cin&gt;&gt;tmp.fi&gt;&gt;tmp.se;res.pb(tmp);
+		if(lst[tmp]){
+			t.add_op(1,q,1,lst[tmp],i-1,tmp);
+			lst[tmp]=0;
+		}else{
+			lst[tmp]=i;
+		}
+	}
+	for(int i=0;i&lt;res.size();i++){
+		pii tmp=res[i];
+		if(lst[tmp]){
+			t.add_op(1,q,1,lst[tmp],q,tmp);
+			lst[tmp]=0;
+		}
+	}
+	t.vamos(1,q,1);
+	rep(i,1,q)cout&lt;&lt;ans[i]&lt;&lt;' ';
+	return 0;
+}
+</code></pre>
 
               </div>
               <div class="toc-container">
