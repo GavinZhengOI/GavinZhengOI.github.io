@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wzmhtr.coding-pages.com</id>
     <title>GVZ&apos;s Blog</title>
-    <updated>2021-01-10T12:23:28.063Z</updated>
+    <updated>2021-01-10T13:21:45.473Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wzmhtr.coding-pages.com"/>
     <link rel="self" href="https://wzmhtr.coding-pages.com/atom.xml"/>
@@ -21,6 +21,122 @@
 <p>然后考虑维护了这个东西之后如何求解答案。对于询问<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(u,v)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">)</span></span></span></span>来说，当以1为根时，若<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>不在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span>子树内，那当<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>为根时,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span>换根前的子树一定等于换根后的子树。答案就是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi><mo>=</mo><mi>t</mi><mi>r</mi><mi>a</mi><mi>n</mi><mi>s</mi><mo>(</mo><mi>v</mi><mo separator="true">,</mo><mi>d</mi><mi>i</mi><mi>s</mi><mo>(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo>)</mo><mo>)</mo><mo>−</mo><mo>(</mo><mi>s</mi><mi>u</mi><mi>m</mi><mn>2</mn><mo>(</mo><mi>u</mi><mo>)</mo><mo>−</mo><mi>t</mi><mi>r</mi><mi>a</mi><mi>n</mi><mi>s</mi><mo>(</mo><mi>v</mi><mo separator="true">,</mo><mi>d</mi><mi>i</mi><mi>s</mi><mo>(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo>)</mo><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">ans=trans(v,dis(u,v))-(sum2(u)-trans(v,dis(u,v)))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">)</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mord">2</span><span class="mopen">(</span><span class="mord mathdefault">u</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">)</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span>。</p>
 <p>然后我们考虑换根前，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span>子树内的情况。令<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span>换根前的父亲为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">fa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span></span></span></span>，答案就是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi><mo>=</mo><mo>(</mo><mi>s</mi><mi>u</mi><mi>m</mi><mn>2</mn><mo>(</mo><mi>u</mi><mo>)</mo><mo>−</mo><mi>t</mi><mi>r</mi><mi>a</mi><mi>n</mi><mi>s</mi><mo>(</mo><mi>f</mi><mi>a</mi><mo separator="true">,</mo><mi>d</mi><mi>i</mi><mi>s</mi><mo>(</mo><mi>f</mi><mi>a</mi><mo separator="true">,</mo><mi>u</mi><mo>)</mo><mo>)</mo><mo>)</mo><mo>−</mo><mi>t</mi><mi>r</mi><mi>a</mi><mi>n</mi><mi>s</mi><mo>(</mo><mi>f</mi><mi>a</mi><mo separator="true">,</mo><mi>d</mi><mi>i</mi><mi>s</mi><mo>(</mo><mi>f</mi><mi>a</mi><mo separator="true">,</mo><mi>u</mi><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">ans=(sum2(u)-trans(fa,dis(fa,u)))-trans(fa,dis(fa,u))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mord">2</span><span class="mopen">(</span><span class="mord mathdefault">u</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">u</span><span class="mclose">)</span><span class="mclose">)</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">u</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span>。</p>
 <p>不需要任何高级数据结构，只需要一个倍增即可。（卓为啥要把这道题放数据结构专题啊喂）</p>
+<pre><code class="language-cpp">/*
+                                                  
+  _|_|                              _|  _|    _|  
+_|    _|  _|  _|_|  _|_|_|_|        _|  _|  _|    
+_|    _|  _|_|          _|          _|  _|_|      
+_|    _|  _|          _|      _|    _|  _|  _|    
+  _|_|    _|        _|_|_|_|    _|_|    _|    _|  
+                                                                                                    
+*/ 
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#include&lt;set&gt;
+//#define ls (rt&lt;&lt;1)
+//#define rs (rt&lt;&lt;1|1)
+#define vi vector&lt;int&gt;
+#define pb push_back
+#define mk make_pair
+#define pii pair&lt;int,int&gt;
+#define rep(i,a,b) for(int i=(a),i##end=(b);i&lt;=i##end;i++)
+#define fi first
+#define se second
+typedef long long ll;
+using namespace std;
+const int maxn=1e5+100;
+const int mod=1e9+7;
+ll sum1[maxn],sum2[maxn],size[maxn];
+int dfn[maxn],dfncnt,f[maxn][20],d[maxn][20],n,dep[maxn];
+vi side[maxn],w[maxn];
+int trans(int u,int val){
+	return (sum2[u]+size[u]*val%mod*val%mod+2*val*sum1[u]%mod)%mod;
+}
+void dfs1(int u,int fa){
+	f[u][0]=fa;dfn[u]=++dfncnt;size[u]=1;dep[u]=dep[fa]+1;
+	for(int i=0;i&lt;side[u].size();i++){
+		int v=side[u][i];if(v==fa)continue;
+		dfs1(v,u);size[u]+=size[v];d[v][0]=w[u][i];
+		sum1[u]=(sum1[u]+sum1[v]+w[u][i]*size[v]%mod)%mod;
+		sum2[u]=(sum2[u]+trans(v,w[u][i]))%mod;
+	}
+}
+void init(){
+	rep(i,1,19)rep(j,1,n)f[j][i]=f[f[j][i-1]][i-1];
+	rep(i,1,19)rep(j,1,n)d[j][i]=(d[j][i-1]+d[f[j][i-1]][i-1])%mod;
+}
+int get_dis(int u,int v){
+	ll ans=0;
+	if(dep[u]&lt;dep[v])swap(u,v);
+	for(int i=19;i&gt;=0;i--)if(dep[f[u][i]]&gt;=dep[v])ans=(ans+d[u][i])%mod,u=f[u][i];
+	if(u==v)return ans;
+	for(int i=19;i&gt;=0;i--)if(f[u][i]!=f[v][i])ans=(1ll*ans+d[u][i]+d[v][i])%mod,u=f[u][i],v=f[v][i];
+	return (1ll*ans+d[u][0]+d[v][0])%mod;
+}
+struct Query{
+	int u,v,idx;
+	bool insubtree;
+}q[maxn];
+int ans[maxn];
+bool cmp(Query a,Query b){return dfn[a.u]&lt;dfn[b.u];}
+int now=1,t;
+void dfs2(int u,int fa){
+	while(now&lt;=t&amp;&amp;q[now].u==u){
+		int v=q[now].v,idx=q[now].idx;
+		if(q[now].insubtree){
+			ans[idx]=(sum2[u]-2*trans(f[v][0],get_dis(f[v][0],u)))%mod;
+			ans[idx]=(ans[idx]+mod)%mod;
+		}
+		else{
+			ans[idx]=(2*trans(v,get_dis(u,v))-sum2[u])%mod;
+			ans[idx]=(ans[idx]+mod)%mod;
+		}
+		now++;
+	}
+	for(int i=0;i&lt;side[u].size();i++){
+		int v=side[u][i];if(v==fa)continue;
+		ll bku1=sum1[u],bku2=sum2[u],bku3=size[u];
+		ll bkv1=sum1[v],bkv2=sum2[v],bkv3=size[v];
+		int tmp1=trans(v,w[u][i]),tmp2=trans(u,w[u][i])-trans(v,2*w[u][i]%mod);tmp2=(tmp2%mod+mod)%mod;
+		sum1[u]=(bku1-(bkv1+w[u][i]*bkv3)%mod)%mod;sum1[u]=(sum1[u]%mod+mod)%mod;
+		sum1[v]=((bku1-(bkv1+w[u][i]*bkv3)%mod)+(bku3-bkv3)*w[u][i]%mod+bkv1)%mod;sum1[v]=(sum1[v]%mod+mod)%mod;
+		
+		sum2[u]=(bku2-tmp1)%mod;sum2[u]=(sum2[u]%mod+mod)%mod;
+		sum2[v]=tmp2+bkv2;sum2[v]=(sum2[v]%mod+mod)%mod;
+		
+		size[u]=bku3-bkv3;size[v]=bku3;
+		dfs2(v,u);
+		sum1[u]=bku1,sum2[u]=bku2,size[u]=bku3;
+		sum1[v]=bkv1,sum2[v]=bkv2,size[v]=bkv3;
+	}
+}
+int main(){
+	ios::sync_with_stdio(0);
+	cin&gt;&gt;n;
+	rep(i,1,n-1){
+		int u,v,val;cin&gt;&gt;u&gt;&gt;v&gt;&gt;val;
+		side[u].pb(v);w[u].pb(val);
+		side[v].pb(u);w[v].pb(val);
+	}
+	dfs1(1,0);
+	init();cin&gt;&gt;t;
+	rep(i,1,t){
+		cin&gt;&gt;q[i].u&gt;&gt;q[i].v;q[i].idx=i;
+		if(dfn[q[i].v]&lt;=dfn[q[i].u]&amp;&amp;dfn[q[i].u]&lt;=dfn[q[i].v]+size[q[i].v]-1)q[i].insubtree=1;
+	}
+	sort(q+1,q+1+t,cmp);
+	dfs2(1,0);
+	rep(i,1,t){
+		cout&lt;&lt;(ans[i]%mod+mod)%mod&lt;&lt;endl;
+	}
+	return 0;
+}
+</code></pre>
 ]]></content>
     </entry>
     <entry>
