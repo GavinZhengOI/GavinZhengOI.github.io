@@ -2,13 +2,175 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wzmhtr.coding-pages.com</id>
     <title>GVZ&apos;s Blog</title>
-    <updated>2021-01-18T01:26:40.212Z</updated>
+    <updated>2021-03-03T12:53:11.323Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wzmhtr.coding-pages.com"/>
     <link rel="self" href="https://wzmhtr.coding-pages.com/atom.xml"/>
     <logo>https://wzmhtr.coding-pages.com/images/avatar.png</logo>
     <icon>https://wzmhtr.coding-pages.com/favicon.ico</icon>
     <rights>All rights reserved 2021, GVZ&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[CF1061E Politics]]></title>
+        <id>https://wzmhtr.coding-pages.com/post/cf1061e-politics/</id>
+        <link href="https://wzmhtr.coding-pages.com/post/cf1061e-politics/">
+        </link>
+        <updated>2021-03-02T00:01:14.000Z</updated>
+        <content type="html"><![CDATA[<p>我们思考一下这个问题的性质。因为限制是：子树内被标记的点的个数。同时子树内所有以有限制的点为根的子树，标记点数量都是确定的。所以我们发现，一个点<code>x</code>是否选择，对且只对一个点<code>f</code>的限制是否满足有影响，这个点<code>f</code>就是<code>x</code>在树上最近的有限制的父亲。所以我们把<code>x</code>是否选择交给<code>f</code>来决定。这种限制以及数据范围提示我们费用流。</p>
+<p>建图就很好建了。对于每个有限制的点<code>i</code>，连边<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mo>−</mo><mo>&gt;</mo><msub><mi>i</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">S-&gt; i_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，费用为0容量为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>i</mi><msub><mi>m</mi><mi>i</mi></msub><mo>−</mo><mo>∑</mo><msub><mi>i</mi><mn>1</mn></msub><mi mathvariant="normal">在</mi><mi mathvariant="normal">子</mi><mi mathvariant="normal">树</mi><mi mathvariant="normal">内</mi><mi mathvariant="normal">不</mi><mi mathvariant="normal">能</mi><mi mathvariant="normal">控</mi><mi mathvariant="normal">制</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">点</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">已</mi><mi mathvariant="normal">经</mi><mi mathvariant="normal">确</mi><mi mathvariant="normal">定</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">大</mi><mi mathvariant="normal">小</mi></mrow><annotation encoding="application/x-tex">lim_i-\sum i_1在子树内不能控制的点的已经确定的大小</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord"><span class="mord mathdefault">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.00001em;vertical-align:-0.25001em;"></span><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord cjk_fallback">在</span><span class="mord cjk_fallback">子</span><span class="mord cjk_fallback">树</span><span class="mord cjk_fallback">内</span><span class="mord cjk_fallback">不</span><span class="mord cjk_fallback">能</span><span class="mord cjk_fallback">控</span><span class="mord cjk_fallback">制</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">点</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">已</span><span class="mord cjk_fallback">经</span><span class="mord cjk_fallback">确</span><span class="mord cjk_fallback">定</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">大</span><span class="mord cjk_fallback">小</span></span></span></span>，另一边连边<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>i</mi><mn>2</mn></msub><mo>−</mo><mo>&gt;</mo><mi>T</mi></mrow><annotation encoding="application/x-tex">i_2-&gt;T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span>同理，容量调整为树2的限制即可。</p>
+<p>我们现在已经满足了两棵树上所有限制点的合法（树1每个点流入，树2每个点流出的流量都等于他们各自控制的点集中选择了的点的个数）。然后我们考虑怎么把两棵树联系起来计算贡献。对于一个点<code>i</code>在树1和树2上的映射<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>i</mi><mn>1</mn><mo separator="true">,</mo><mi>i</mi><mn>2</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">(i1,i2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">i</span><span class="mord">2</span><span class="mclose">)</span></span></span></span>，代表他们两个点是否选择的流量都在距离他们最近的有限制的父亲中，记为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>f</mi><msub><mi>a</mi><mn>1</mn></msub><mo separator="true">,</mo><mi>f</mi><msub><mi>a</mi><mn>2</mn></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">(fa_1,fa_2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>。那我们就连一条边<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><msub><mi>a</mi><mn>1</mn></msub><mo>−</mo><mo>&gt;</mo><mi>f</mi><msub><mi>a</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">fa_1-&gt;fa_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，容量为1，费用为其贡献，这条边流过就代表选择点<code>i</code>，然后<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><msub><mi>a</mi><mn>1</mn></msub><mo separator="true">,</mo><mi>f</mi><msub><mi>a</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">fa_1,fa_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>限制都要-1。</p>
+<p>最后跑最大费用最大流即可。</p>
+<pre><code class="language-cpp">/*
+                                                  
+  _|_|                              _|  _|    _|  
+_|    _|  _|  _|_|  _|_|_|_|        _|  _|  _|    
+_|    _|  _|_|          _|          _|  _|_|      
+_|    _|  _|          _|      _|    _|  _|  _|    
+  _|_|    _|        _|_|_|_|    _|_|    _|    _|  
+                                                                                                    
+*/ 
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#include&lt;set&gt;
+//#define ls (rt&lt;&lt;1)
+//#define rs (rt&lt;&lt;1|1)
+#define vi vector&lt;int&gt;
+#define pb push_back
+#define mk make_pair
+#define pii pair&lt;int,int&gt;
+#define rep(i,a,b) for(int i=(a),i##end=(b);i&lt;=i##end;i++)
+#define fi first
+#define se second
+typedef long long ll;
+using namespace std;
+const int maxn=2*505;
+const int base=505;
+const int S=maxn-2;
+const int T=maxn-3;
+int a[maxn];
+vi ori[2][maxn];
+int head[maxn],cnt=1;
+struct gg{
+	int u,v,w,cost,next;
+}side[(maxn*3)*2+1000];
+int size[2][maxn];
+int lim[2][maxn];
+int n,x,y,q1,q2;
+int f[2][maxn];
+void dfs1(int u,int fa,int floor){
+	size[floor][u]=1;f[floor][u]=fa;
+	rep(i,0,ori[floor][u].size()-1){
+		int v=ori[floor][u][i];if(v==fa)continue;
+		dfs1(v,u,floor);size[floor][u]+=size[floor][v];
+	}
+}
+void ins(int u,int v,int w,int cost){
+	side[++cnt]=(gg){u,v,w,cost,head[u]};head[u]=cnt;
+	side[++cnt]=(gg){v,u,0,-cost,head[v]};head[v]=cnt;
+//	cout&lt;&lt;u&lt;&lt;' '&lt;&lt;v&lt;&lt;' '&lt;&lt;cost&lt;&lt;endl;
+}
+int flag=-1;
+int dfs2(int u,int fa,int floor){
+	if(lim[floor][u]&amp;&amp;flag!=u)return lim[floor][u];
+	int res=0;
+	rep(i,0,ori[floor][u].size()-1){
+		int v=ori[floor][u][i];if(v==fa)continue;
+		res+=dfs2(v,u,floor);
+	}
+	return res;
+}
+ll ans;
+
+int dis[maxn];
+int inf=2e9;
+queue&lt;int&gt;q;
+int vis[maxn];
+bool spfa(int s,int t){
+	memset(dis,-0x3f,sizeof(dis));while(!q.empty())q.pop();
+	dis[s]=0;vis[s]=1;q.push(s);
+	while(!q.empty()){
+		int u=q.front();q.pop();vis[u]=0;
+		for(int i=head[u];i;i=side[i].next){
+			int v=side[i].v,val=side[i].cost;
+			if(dis[u]+val&gt;dis[v]&amp;&amp;side[i].w&gt;0){
+				dis[v]=dis[u]+val;
+				if(!vis[v]){vis[v]=1;q.push(v);}
+			}
+		}
+	}
+	if(dis[t]&lt;-1e8)return 0;
+	return 1;
+}
+int cur[maxn];
+int dfs3(int u,int flow){
+	if(u==T)return flow;
+	vis[u]=1;
+	int used=0;
+	for(int &amp;i=cur[u];i&amp;&amp;used&lt;flow;i=side[i].next){
+		int v=side[i].v,w=side[i].w,cost=side[i].cost;
+		if(!vis[v]&amp;&amp;dis[u]+cost==dis[v]&amp;&amp;w){
+			int send=dfs3(v,min(w,flow-used));
+			ans+=1ll*send*cost;
+			side[i].w-=send;side[i^1].w+=send;used+=send;
+		}
+	}
+	vis[u]=0;
+	return used;
+}
+int mcfx(){
+	int mxflow=0;
+	while(spfa(S,T)){
+		memcpy(cur,head,sizeof(cur));	
+		mxflow+=dfs3(S,inf);
+	}
+	return mxflow;
+}
+int main(){
+	ios::sync_with_stdio(0);
+	cin&gt;&gt;n&gt;&gt;x&gt;&gt;y;
+	rep(i,1,n)cin&gt;&gt;a[i];
+	rep(i,1,n-1){int u,v;cin&gt;&gt;u&gt;&gt;v;ori[0][u].pb(v);ori[0][v].pb(u);}
+	rep(i,1,n-1){int u,v;cin&gt;&gt;u&gt;&gt;v;ori[1][u].pb(v);ori[1][v].pb(u);}
+	cin&gt;&gt;q1;rep(i,1,q1){int k;cin&gt;&gt;k;cin&gt;&gt;lim[0][k];}
+	cin&gt;&gt;q2;rep(i,1,q2){int k;cin&gt;&gt;k;cin&gt;&gt;lim[1][k];}
+	dfs1(x,0,0);dfs1(y,0,1);
+//	if(!lim[0][x])lim[0][x]=inf;
+//	if(!lim[1][y])lim[1][y]=inf;
+	rep(i,1,n){
+		flag=i;
+		if(lim[0][i]){
+			ins(S,i,lim[0][i]-dfs2(i,f[0][i],0),0);
+			//ins(i,S,0,0);
+		}
+		if(lim[1][i]){
+			ins(i+base,T,lim[1][i]-dfs2(i,f[1][i],1),0);
+		//	ins(T,i+base,0,0);
+		}
+		flag=-1;
+		int fa1=i,fa2=i;
+		while(!lim[0][fa1]&amp;&amp;fa1!=x){fa1=f[0][fa1];}
+		while(!lim[1][fa2]&amp;&amp;fa2!=y){fa2=f[1][fa2];}
+		//cout
+		ins(fa1,fa2+base,1,a[i]);
+	//	ins(fa2+base,fa1,0,-a[i]);
+	}
+	mcfx();
+	for(int i=head[S];i;i=side[i].next){
+		if(side[i].w){cout&lt;&lt;&quot;-1&quot;;return 0;}
+	}
+	for(int i=head[T];i;i=side[i].next){
+		if(side[i^1].w){cout&lt;&lt;&quot;-1&quot;;return 0;}
+	}
+	cout&lt;&lt;ans;
+	return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[CF976F Minimal k-covering]]></title>
         <id>https://wzmhtr.coding-pages.com/post/cf976f-minimal-k-covering/</id>
@@ -715,28 +877,6 @@ int main(){
 	return 0;
 }
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[二分图的最大独立集]]></title>
-        <id>https://wzmhtr.coding-pages.com/post/er-fen-tu-de-zui-da-du-li-ji/</id>
-        <link href="https://wzmhtr.coding-pages.com/post/er-fen-tu-de-zui-da-du-li-ji/">
-        </link>
-        <updated>2020-10-16T01:45:55.000Z</updated>
-        <content type="html"><![CDATA[<p>众所周知，一般图的最大独立集是NP-hard的。但是二分图的最大独立集是可以做的。<br>
-首先有一个结论：对于任何图，最大独立集=n-最小点覆盖=二分图最大匹配</p>
-<h2 id="最大独立集n-最小点覆盖">最大独立集=n-最小点覆盖</h2>
-<p>我们考虑把最小点覆盖选择的点全部删去，剩余的图将不会存在边（否则存在一条边未被覆盖）。所以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>−</mo><mi mathvariant="normal">最</mi><mi mathvariant="normal">小</mi><mi mathvariant="normal">点</mi><mi mathvariant="normal">覆</mi><mi mathvariant="normal">盖</mi></mrow><annotation encoding="application/x-tex">n-最小点覆盖</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">最</span><span class="mord cjk_fallback">小</span><span class="mord cjk_fallback">点</span><span class="mord cjk_fallback">覆</span><span class="mord cjk_fallback">盖</span></span></span></span>一定是一个独立集。而最小点覆盖删去的点最少，所以剩下的点最多，所以这个独立集一定是最大独立集。</p>
-<h2 id="最大独立集二分图最大匹配">最大独立集=二分图最大匹配</h2>
-<p>二分图最大匹配的问题可以用这样一个网络流算法解决：左边所有点连源点，容量为1，右边所有点连汇点，容量也为1。中间点按照原图连边，容量为inf。这样跑最大流出来是最大匹配。<br>
-而我们考虑最大独立集如何用最小割解决：还是那张图，如果一个点连向源点/汇点的边被割掉，代表这个点不选择，否则代表选择。因为二分图上的点之间的连边是无法删除的，所以任意一条二分图上的边连接的两个点同时存在，就不合法。所以只要图联通就不合法。当图不联通时，就一定不会存在一条<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mo>−</mo><mo>&gt;</mo><mi mathvariant="normal">左</mi><mi mathvariant="normal">边</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">点</mi><mo>−</mo><mo>&gt;</mo><mi mathvariant="normal">右</mi><mi mathvariant="normal">边</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">点</mi><mo>−</mo><mo>&gt;</mo><mi>T</mi></mrow><annotation encoding="application/x-tex">S-&gt;左边的点-&gt;右边的点-&gt;T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord cjk_fallback">左</span><span class="mord cjk_fallback">边</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">点</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord cjk_fallback">右</span><span class="mord cjk_fallback">边</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">点</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span>的路径，所以不连通图代表的方案一定是个独立集。所以最小割=最大流=二分图最大匹配=最大独立集。<br>
-BTW，一个最大流最小割定理的感性理解：跑完最大流后把满流的边全部挑出来，让这条边容量-1，重新跑，可能有两种情况：</p>
-<ol>
-<li>对答案没有影响，另外一条/一组没有满流的边接替了这条边的作用。</li>
-<li>答案-1，没有其他替代方案。</li>
-</ol>
-<p>我们把第二种边全部删掉，那么最大流会变为0，即图不连通。所以最大流=最小割。</p>
-<p>最小割方案输出就是，从<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>开始在残余网络上DFS。对于一条边，如果他一个节点被跑到了，另一个没跑到，就要割掉（注意跑的时候要带个vis标记，不然死循环）。</p>
 ]]></content>
     </entry>
 </feed>
