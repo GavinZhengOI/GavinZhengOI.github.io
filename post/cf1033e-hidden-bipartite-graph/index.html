@@ -1,0 +1,341 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CF1033E Hidden Bipartite Graph | GVZ&#39;s Blog</title>
+<link rel="shortcut icon" href="https://wzmhtr.coding-pages.com/favicon.ico?v=1614989755479">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wzmhtr.coding-pages.com/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="CF1033E Hidden Bipartite Graph | GVZ&#39;s Blog - Atom Feed" href="https://wzmhtr.coding-pages.com/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="题目中只能询问一个集合内部的边，我们先考虑如何询问一个点到其他点的边，显然可以把这个询问拆成两个询问，然后我们发现可以在log⁡2\log_2log2​的时间内寻找一个点的任意一条出边（二分）。所以我们考虑先整出一个dfs树。复杂度为2∗n..." />
+    <meta name="keywords" content="交互,二分图,图论" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wzmhtr.coding-pages.com">
+  <img class="avatar" src="https://wzmhtr.coding-pages.com/images/avatar.png?v=1614989755479" alt="">
+  </a>
+  <h1 class="site-title">
+    GVZ&#39;s Blog
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://wzmhtr.coding-pages.com/post/you-lian" class="menu">
+          友链
+        </a>
+      
+    
+      
+        <a href="https://wzmhtr.coding-pages.com/post/tou-wen-jian-ji-hong-ding-yi" class="menu">
+          头文件
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/GavinZhengOI" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/yIIJfce0wywQQOb" target="_blank">
+          <i class="ri-twitter-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              CF1033E Hidden Bipartite Graph
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-03-03
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+                <a href="https://wzmhtr.coding-pages.com/tag/FAcxalQjM/" class="post-tag">
+                  # 交互
+                </a>
+              
+                <a href="https://wzmhtr.coding-pages.com/tag/b9yOUoiT39/" class="post-tag">
+                  # 二分图
+                </a>
+              
+                <a href="https://wzmhtr.coding-pages.com/tag/nLBCJajrI5/" class="post-tag">
+                  # 图论
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>题目中只能询问一个集合内部的边，我们先考虑如何询问一个点到其他点的边，显然可以把这个询问拆成两个询问，然后我们发现可以在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>log</mi><mo>⁡</mo><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\log_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.93858em;vertical-align:-0.24414em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.20696799999999996em;"><span style="top:-2.4558600000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.24414em;"><span></span></span></span></span></span></span></span></span></span>的时间内寻找一个点的任意一条出边（二分）。所以我们考虑先整出一个dfs树。复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mo>∗</mo><mi>n</mi><msub><mi>log</mi><mo>⁡</mo><mn>2</mn></msub><mi>n</mi></mrow><annotation encoding="application/x-tex">2*n\log_2n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.93858em;vertical-align:-0.24414em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.20696799999999996em;"><span style="top:-2.4558600000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.24414em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span></span></span></span>。</p>
+<p>这样我们就得到了二分图的“两半”。只需要询问一下两半内部有没有边就能确定是否是二分图。如果是就直接输出。不是的话则遍历内部有边的那一半节点，然后依次询问每个点出发到自己所在的一半有没有边，有边的话暴力找出即可。复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mo>∗</mo><mi>n</mi><mo>+</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">2*n+n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>。</p>
+<p>计算得出最坏需要<code>13800</code>次询问，符合要求。</p>
+<pre><code class="language-cpp">/*
+                                                  
+  _|_|                              _|  _|    _|  
+_|    _|  _|  _|_|  _|_|_|_|        _|  _|  _|    
+_|    _|  _|_|          _|          _|  _|_|      
+_|    _|  _|          _|      _|    _|  _|  _|    
+  _|_|    _|        _|_|_|_|    _|_|    _|    _|  
+                                                                                                    
+*/ 
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#include&lt;set&gt;
+//#define ls (rt&lt;&lt;1)
+//#define rs (rt&lt;&lt;1|1)
+#define vi vector&lt;int&gt;
+#define pb push_back
+#define mk make_pair
+#define pii pair&lt;int,int&gt;
+#define rep(i,a,b) for(int i=(a),i##end=(b);i&lt;=i##end;i++)
+#define fi first
+#define se second
+typedef long long ll;
+using namespace std;
+const int maxn=605;
+int nask(vi tmp){
+	if(!tmp.size()||tmp.size()==1)return 0;
+	cout&lt;&lt;&quot;? &quot;&lt;&lt;tmp.size()&lt;&lt;endl;
+	rep(i,0,(int)tmp.size()-1)cout&lt;&lt;tmp[i]&lt;&lt;' ';
+	cout&lt;&lt;endl;
+	cout.flush();
+	int ans;cin&gt;&gt;ans;
+	if(ans==-1)exit(0);
+	return ans;
+}
+int dask(int u,vi tar){
+	int cntsig=nask(tar);tar.pb(u);
+	int cnttot=nask(tar);
+	return cnttot-cntsig;
+}
+int n;
+bool vis[maxn];
+int bl[maxn];
+int find(int u,vi tmp){
+	vi c1,c2;
+	if(tmp.size()==1)return tmp[0];
+	rep(i,0,(int)(tmp.size())-1){
+		if(c1.size()&lt;tmp.size()/2)c1.pb(tmp[i]);
+		else c2.pb(tmp[i]);
+	}
+	if(dask(u,c1))return find(u,c1);
+	else return find(u,c2);
+}
+vi half[2];
+vi side[maxn];
+void dfs(int u){
+	half[bl[u]].pb(u);
+	while(1){
+		vi tmp;rep(i,1,n)if(!vis[i])tmp.pb(i);
+		if(dask(u,tmp)==0)return;
+		int tar=find(u,tmp);side[u].pb(tar);side[tar].pb(u);
+	//	cout&lt;&lt;&quot;&gt;&gt;&gt;&quot;&lt;&lt;u&lt;&lt;&quot;----&gt;&quot;&lt;&lt;tar&lt;&lt;endl;
+		vis[tar]=1;bl[tar]=bl[u]^1;dfs(tar);
+	}
+}
+int stk[maxn],top;
+vi ans;
+void cfs(int u,int tar){
+	stk[++top]=u;
+	if(u==tar){
+		rep(i,1,top)ans.pb(stk[i]);
+		return;
+	}
+	rep(i,0,side[u].size()-1){
+		int v=side[u][i];
+		if(!vis[v]){
+			vis[v]=1;
+			cfs(v,tar);
+		}
+	}
+	top--;
+}
+void ans_out(int u,int v){
+	memset(vis,0,sizeof(vis));
+	vis[u]=1;cfs(u,v);
+	cout&lt;&lt;&quot;N &quot;&lt;&lt;ans.size()&lt;&lt;endl;
+	rep(i,0,(int)(ans.size())-1)cout&lt;&lt;ans[i]&lt;&lt;' ';
+	return;
+}
+int main(){
+//	freopen(&quot;in&quot;,&quot;r&quot;,stdin);
+	ios::sync_with_stdio(0);
+	cin&gt;&gt;n;
+	vis[1]=1;dfs(1);
+	if(!nask(half[0])&amp;&amp;!nask(half[1])){
+		cout&lt;&lt;&quot;Y &quot;&lt;&lt;half[0].size()&lt;&lt;endl;
+		rep(i,0,(int)(half[0].size())-1)cout&lt;&lt;half[0][i]&lt;&lt;' ';
+		return 0;
+	}
+	else{
+		rep(i,0,1)rep(j,0,(int)(half[i].size())-1){
+			vi tmp;int u=half[i][j];
+			rep(k,0,(int)(half[i].size())-1)if(half[i][k]!=u)tmp.pb(half[i][k]);
+			if(dask(u,tmp)){
+				rep(k,0,(int)(tmp.size())-1){
+					vi gg;gg.pb(u);gg.pb(tmp[k]);
+					if(nask(gg)){
+						ans_out(u,tmp[k]);return 0;
+					}
+				}
+			}
+		}
+	}
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wzmhtr.coding-pages.com/post/cf1061e-politics/">
+              <h3 class="post-title">
+                CF1061E Politics
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+
+          
+            <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script>
+
+var options = {
+  shortname: 'gvablog',
+  apikey: 'GaTDI1iKdBspu9eatH3bb3vkRipD45khhPrE1OZvNtqC43gwRa22Noy6Yx2WW1YQ',
+}
+if ('https://disqus.skk.moe/disqus/') {
+  options.api = 'https://disqus.skk.moe/disqus/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://wzmhtr.coding-pages.com/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
