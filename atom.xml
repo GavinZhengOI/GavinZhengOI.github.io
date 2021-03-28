@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://gavinzhengoi.github.io</id>
     <title>GVZ&apos;s Blog</title>
-    <updated>2021-03-28T09:58:05.244Z</updated>
+    <updated>2021-03-28T13:21:46.331Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://gavinzhengoi.github.io"/>
     <link rel="self" href="https://gavinzhengoi.github.io/atom.xml"/>
@@ -20,6 +20,185 @@
 <p>对于集合<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span></span></span></span>中的岛屿，就是要求有多少个岛屿满足<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><msub><mi>a</mi><mi>i</mi></msub><mo>⊕</mo><mi>c</mi><mo>)</mo><mo>≤</mo><msub><mi>b</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">(a_i \oplus c)\leq b_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。我们发现<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>很小，所以可以用和上面类似的方法来做。我们在空的一棵字典树上一次插入二元组<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><msub><mi>a</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>b</mi><mi>i</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">(a_i,b_i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>。具体规则就是，如果这一位<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⊕</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">\oplus c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">⊕</span><span class="mord mathdefault">c</span></span></span></span>之后小于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>b</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">b_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，就给这个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>目前位置的点打上一个标记，代表这个子树里面的所有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>，都能满足<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><msub><mi>a</mi><mi>i</mi></msub><mo>⊕</mo><mi>c</mi><mo>)</mo><mo>≤</mo><msub><mi>b</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">(a_i \oplus c)\leq b_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。如果如果这一位<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⊕</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">\oplus c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">⊕</span><span class="mord mathdefault">c</span></span></span></span>之后等于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>b</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">b_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，递归解决。这上面所说的在初始化时解决即可。然后每次查询<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>的时候遍历祖先统计祖先标记和即可。查询一次复杂度也是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>log</mi><mo>⁡</mo><msub><mi>a</mi><mi>i</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">O(\log a_i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>的。</p>
 <p>然后我们发现，因为对于不同询问<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">d</span></span></span></span>是会变的。所以我们只需要把<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">d</span></span></span></span>排序，然后每次在询问前把一些<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>集合的点挪到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span></span></span></span>集合即可。初始化及移动的复杂度都是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>q</mi><mi>log</mi><mo>⁡</mo><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">q\log a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>的。</p>
 <p>最后来考虑如何来解决带<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mo separator="true">,</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">l,r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>的区间询问。可以直接使用线段树分治。把每个询问拆成<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>log</mi><mo>⁡</mo></mrow><annotation encoding="application/x-tex">\log</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span></span></span></span>个区间，每次进入一个区间时所有点都在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>区间。因为线段树所有区间长度和为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n\log n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span></span></span></span>，所以复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>q</mi><mi>log</mi><mo>⁡</mo><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">n\log q\log a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。</p>
+<p>细节有点多</p>
+<pre><code class="language-cpp">/*
+                                                  
+  _|_|                              _|  _|    _|  
+_|    _|  _|  _|_|  _|_|_|_|        _|  _|  _|    
+_|    _|  _|_|          _|          _|  _|_|      
+_|    _|  _|          _|      _|    _|  _|  _|    
+  _|_|    _|        _|_|_|_|    _|_|    _|    _|  
+                                                                                                    
+*/ 
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#include&lt;set&gt;
+#define ls (rt&lt;&lt;1)
+#define rs (rt&lt;&lt;1|1)
+#define vi vector&lt;int&gt;
+#define pb push_back
+#define mk make_pair
+#define pii pair&lt;int,int&gt;
+#define rep(i,a,b) for(int i=(a),i##end=(b);i&lt;=i##end;i++)
+#define fi first
+#define se second
+typedef long long ll;
+using namespace std;
+const int maxn=1e5+100;
+pii ild[maxn];
+struct trie{
+	int ch[maxn*50][2],size[maxn*50],mk[maxn*50],cnt,stk[50];
+	trie(){cnt=0;}
+	void clear(){ch[0][0]=ch[0][1]=0;size[0]=mk[0]=0;cnt=0;}
+	void insa(int a,int b){
+		int x=0,top=0;stk[++top]=x;
+		for(int i=24;i&gt;=0;i--){
+			int nxt;
+			rep(tar,0,1){
+				if(!ch[x][tar])ch[x][tar]=++cnt,ch[cnt][0]=ch[cnt][1]=size[cnt]=mk[cnt]=0;
+				if(((a&amp;(1&lt;&lt;i))^(tar&lt;&lt;i))&lt;(b&amp;(1&lt;&lt;i)))size[ch[x][tar]]++;
+				if(((a&amp;(1&lt;&lt;i))^(tar&lt;&lt;i))==(b&amp;(1&lt;&lt;i)))nxt=ch[x][tar];
+			}
+			x=nxt;
+		}
+		size[x]++;
+	}
+	void dela(int a,int b){
+		int x=0,top=0;stk[++top]=x;
+		for(int i=24;i&gt;=0;i--){
+			int nxt;
+			rep(tar,0,1){
+				if(((a&amp;(1&lt;&lt;i))^(tar&lt;&lt;i))&lt;(b&amp;(1&lt;&lt;i)))size[ch[x][tar]]--;
+				if(((a&amp;(1&lt;&lt;i))^(tar&lt;&lt;i))==(b&amp;(1&lt;&lt;i))){
+					nxt=ch[x][tar];
+				}
+			}
+			x=nxt;
+		}
+		size[x]--;
+	}
+	void insb(int a){
+		int x=0,top=0;stk[++top]=x;
+		for(int i=24;i&gt;=0;i--){
+			int tar=(a&amp;(1&lt;&lt;i))&gt;&gt;i;
+			
+			if(!ch[x][tar])ch[x][tar]=++cnt,ch[cnt][0]=ch[cnt][1]=size[cnt]=mk[cnt]=0;
+			x=ch[x][tar];
+			stk[++top]=x;
+		}
+		mk[x]++;
+		while(top){int x=stk[top--];size[x]=mk[x];rep(i,0,1)if(ch[x][i])size[x]+=size[ch[x][i]];}
+	}
+	void delb(int a){
+		int x=0,top=0;stk[++top]=x;
+		for(int i=24;i&gt;=0;i--){
+			int tar=(a&amp;(1&lt;&lt;i))&gt;&gt;i;
+			x=ch[x][tar];
+			stk[++top]=x;
+		}
+		mk[x]--;
+		while(top){int x=stk[top--];size[x]=mk[x];rep(i,0,1)if(ch[x][i])size[x]+=size[ch[x][i]];}
+	}
+	int querya(int c){
+		int x=0;int ans=0;
+		for(int i=24;i&gt;=0;i--){
+			int tar=(c&amp;(1&lt;&lt;i))&gt;&gt;i;
+			if(!ch[x][tar])break;
+			x=ch[x][tar];
+			ans+=size[x];
+		}
+		return ans;
+	}
+	int queryb(int c,int d){
+		int x=0;int ans=0;bool flag=0;
+		for(int i=24;i&gt;=0;i--){
+			int nxt=-1;
+			rep(tar,0,1){
+				if(!ch[x][tar])continue;
+				if(((c&amp;(1&lt;&lt;i))^(tar&lt;&lt;i))&lt;(d&amp;(1&lt;&lt;i)))ans+=size[ch[x][tar]];
+				if(((c&amp;(1&lt;&lt;i))^(tar&lt;&lt;i))==(d&amp;(1&lt;&lt;i)))nxt=ch[x][tar];
+			}
+			if(nxt==-1){flag=1;break;}
+			x=nxt;
+		}
+		if(!flag)ans+=size[x];
+		return ans;
+	}
+}ta,tb;
+int out[maxn];
+struct segment_tree{
+	struct query{
+		int c,d,idx;
+	};
+	struct island{
+		int a,b;
+	};
+	vector&lt;island&gt;is;
+	vector&lt;query&gt;q[maxn&lt;&lt;4];
+	static bool cmp1(query a,query b){return a.d&lt;b.d;}
+	static bool cmp2(island x,island y){return x.b&lt;y.b;}
+	void ins(int l,int r,int rt,int tl,int tr,int c,int d,int num){
+		if(tl&lt;=l&amp;&amp;r&lt;=tr){
+			q[rt].pb((query){c,d,num});return;
+		}
+		int mid=(l+r)&gt;&gt;1;
+		if(tl&lt;=mid)ins(l,mid,ls,tl,tr,c,d,num);
+		if(tr&gt;=mid+1)ins(mid+1,r,rs,tl,tr,c,d,num);
+	}
+	void solve(int l,int r,int rt){
+		ta.clear();tb.clear();
+		sort(q[rt].begin(),q[rt].end(),cmp1);is.clear();
+		rep(i,l,r){
+			is.pb((island){ild[i].fi,ild[i].se});
+			tb.insb(ild[i].fi);
+		}
+		sort(is.begin(),is.end(),cmp2);
+		int aline=-1;
+		rep(i,0,(int)(q[rt].size())-1){
+			int lim=q[rt][i].d,idx=q[rt][i].idx;
+			while((aline+1)&lt;(int)is.size()&amp;&amp;is[aline+1].b&lt;=lim){
+				ta.insa(is[aline+1].a,is[aline+1].b);
+				tb.delb(is[aline+1].a);aline++;
+			}
+			out[idx]+=ta.querya(q[rt][i].c)+
+			tb.queryb(q[rt][i].c,q[rt][i].d);
+		}
+		if(l==r)return;
+		int mid=(l+r)&gt;&gt;1;
+		solve(l,mid,ls);solve(mid+1,r,rs);
+	}
+}t;
+inline char nc(){
+    static char buf[100000],*p1=buf,*p2=buf;
+    return p1==p2&amp;&amp;(p2=(p1=buf)+fread(buf,1,100000,stdin),p1==p2)?EOF:*p1++;
+}
+inline int rd(){
+    char ch=nc();int sum=0;
+    while(!(ch&gt;='0'&amp;&amp;ch&lt;='9'))ch=nc();
+    while(ch&gt;='0'&amp;&amp;ch&lt;='9')sum=sum*10+ch-48,ch=nc();
+    return sum;
+}
+int main(){
+	int n=rd(),q=rd();
+	rep(i,1,n){
+		ild[i].fi=rd();ild[i].se=rd();
+	}
+	rep(i,1,q){
+		int l=rd(),r=rd(),c=rd(),d=rd();
+		t.ins(1,n,1,l,r,c,d,i);
+	}
+	t.solve(1,n,1);
+	rep(i,1,q){
+		printf(&quot;%d\n&quot;,out[i]);
+	}
+	return 0;
+}
+</code></pre>
 ]]></content>
     </entry>
     <entry>
