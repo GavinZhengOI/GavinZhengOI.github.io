@@ -2,13 +2,113 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://gavinzhengoi.github.io</id>
     <title>GVZ&apos;s Blog</title>
-    <updated>2021-03-28T23:37:15.855Z</updated>
+    <updated>2021-03-30T09:32:03.731Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://gavinzhengoi.github.io"/>
     <link rel="self" href="https://gavinzhengoi.github.io/atom.xml"/>
     <logo>https://gavinzhengoi.github.io/images/avatar.png</logo>
     <icon>https://gavinzhengoi.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, GVZ&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[CF1498F Christmas Game - Nim游戏的推广]]></title>
+        <id>https://gavinzhengoi.github.io/post/cf1498f-christmas-game-nim-you-xi-de-tui-guang/</id>
+        <link href="https://gavinzhengoi.github.io/post/cf1498f-christmas-game-nim-you-xi-de-tui-guang/">
+        </link>
+        <updated>2021-03-30T08:36:27.000Z</updated>
+        <content type="html"><![CDATA[<p>先来复习一下基本的Nim游戏：有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>堆石子，每次选择任意一堆拿走任意多个，不能走的人败。我们知道Nim游戏先手必胜的结论是每一堆个数的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mi>o</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">xor</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>和不为0（证明可以自行搜索）。</p>
+<p>那么我们考虑把这种Nim游戏推广到树上：一棵树，每个节点都有若干个石子，每次可以选择任意一个节点将任意多个石子移动到其父亲，不能走的人败。假设根节点的深度为0，我们可以发现，如果先手玩家希望把一个偶数深度的棋子移动到奇数深度，那么后手玩家可以将那些棋子再次移动到偶数深度，相当于撤销了先手的操作。</p>
+<p>所以先手只有把奇数深度的棋子移动到偶数深度，才能实现先后手玩家互换。因为如果后手试图“撤销”先手的这部操作，将这些棋子再次移动到奇数深度。那么先手可以再次将他们移动到偶数深度。一直这样往复移动，最后一步操作是先手把棋子移动到根节点（深度为0），后手无法接着移动，就实现了先后手互换。</p>
+<p>我们刚刚证明了从任何人将棋子从偶数深度拿到奇数深度的操作都对局面没有影响，所以我们可以忽略所有从偶数深度出发的棋子。因此偶数深度就变成了“垃圾桶”，只进不出。我们发现，当我们把每个奇数节点看作独立的一堆石子，这个游戏就转化成了普通的Nim游戏。即每次选择一堆石子，拿掉任意多个丢进垃圾桶，不能操作的人败。所以我们只需要计算所有奇数深度节点的石子个数异或和就能判断局面是否是先手必胜了。</p>
+<p>对于这道题来说，因为他是把棋子移动到第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>个祖先，就相当于每个点向其第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>个祖先连了一条有向边，然后在新的树上做树上Nim游戏。我们可以计算出每个节点在新树上是多少层，就能得知他的石子数有没有对答案的贡献。</p>
+<p>因为这个题要对每个根都计算，所以换根DP即可，复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">nk</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>。</p>
+<pre><code class="language-cpp">/*
+                                                  
+  _|_|                              _|  _|    _|  
+_|    _|  _|  _|_|  _|_|_|_|        _|  _|  _|    
+_|    _|  _|_|          _|          _|  _|_|      
+_|    _|  _|          _|      _|    _|  _|  _|    
+  _|_|    _|        _|_|_|_|    _|_|    _|    _|  
+                                                                                                    
+*/ 
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#include&lt;set&gt;
+//#define ls (rt&lt;&lt;1)
+//#define rs (rt&lt;&lt;1|1)
+#define vi vector&lt;int&gt;
+#define pb push_back
+#define mk make_pair
+#define pii pair&lt;int,int&gt;
+#define rep(i,a,b) for(int i=(a),i##end=(b);i&lt;=i##end;i++)
+#define fi first
+#define se second
+typedef long long ll;
+using namespace std;
+const int maxn=1e5+1000;
+int dp[maxn][40];
+int a[maxn];
+int now[40],trans[40],tmp[40];
+int n,k;
+int ans[maxn];
+int JK[maxn][40];
+vi side[maxn];
+void dfs1(int u,int fa){
+	dp[u][0]=a[u];
+	rep(i,0,side[u].size()-1){
+		int v=side[u][i];if(v==fa)continue;
+		dfs1(v,u);
+		rep(i,0,2*k-1){
+			int nxt=(i+1)%(2*k);
+			dp[u][nxt]^=dp[v][i];
+		}
+	}
+}
+void dfs2(int u,int fa){
+	int tot=0;
+	rep(i,k,2*k-1)tot^=now[i];
+	if(tot)ans[u]=1;
+	
+	rep(i,0,side[u].size()-1){
+		int v=side[u][i];if(v==fa)continue;
+		memcpy(trans,now,sizeof(trans));
+		rep(j,0,2*k-1){
+			int nxt=(j+1)%(2*k);
+			trans[nxt]^=dp[v][j];
+		}
+		memset(tmp,0,sizeof(tmp));
+		rep(j,0,2*k-1){
+			int nxt=(j+1)%(2*k);
+			tmp[nxt]^=trans[j];
+		}
+		rep(j,0,2*k-1){
+			tmp[j]^=dp[v][j];
+		}
+		memcpy(JK[u],now,sizeof(JK[u]));
+		memcpy(now,tmp,sizeof(tmp));
+		dfs2(v,u);
+		memcpy(now,JK[u],sizeof(JK[u])); 
+	}
+}
+int main(){
+	ios::sync_with_stdio(0);cin&gt;&gt;n&gt;&gt;k;
+	rep(i,1,n-1){
+		int u,v;cin&gt;&gt;u&gt;&gt;v;
+		side[u].pb(v);side[v].pb(u);
+	}
+	rep(i,1,n)cin&gt;&gt;a[i];
+	dfs1(1,0);memcpy(now,dp[1],sizeof(now));
+	dfs2(1,0);
+	rep(i,1,n)cout&lt;&lt;ans[i]&lt;&lt;' ';
+	return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[NOI Online 2021 提高组] 岛屿探险]]></title>
         <id>https://gavinzhengoi.github.io/post/noi-online-2021-ti-gao-zu-dao-yu-tan-xian/</id>
@@ -903,163 +1003,6 @@ int main(){
 	cout&lt;&lt;ans;
 	return 0;
 }
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[CF976F Minimal k-covering]]></title>
-        <id>https://gavinzhengoi.github.io/post/cf976f-minimal-k-covering/</id>
-        <link href="https://gavinzhengoi.github.io/post/cf976f-minimal-k-covering/">
-        </link>
-        <updated>2021-01-15T23:40:42.000Z</updated>
-        <content type="html"><![CDATA[<p>因为限制是“至少被k条边覆盖”，不太好搞，我们把它转化成，&quot;对于点u，至多选择<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>e</mi><mi>g</mi><mi>r</mi><mi>e</mi><msub><mi>e</mi><mi>u</mi></msub><mo>−</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">degree_u-k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>条边不覆盖&quot;。而这个“至多”的限制，就可以看作是流量。所以建图很好建。<br>
-类似这样：<br>
-<img src="https://i.loli.net/2021/01/16/9ZtXyCTLjwKvNz7.png" alt="" loading="lazy"><br>
-但是有个问题，如果对于所有的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>都暴力重新跑一遍，复杂度最坏是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>m</mi><msqrt><mi>n</mi></msqrt><msup><mo>)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(m\sqrt n)^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8002800000000001em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathdefault" style="padding-left:0.833em;">n</span></span><span style="top:-2.76028em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
--10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
--50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
-35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
--221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
-s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
-s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.23972em;"><span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>的显然不太行。但是我们注意到这道题有个特殊的性质：最大流的最大值是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>。所以最多只会增广<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>次，单次增广的复杂度显然是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>+</mo><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n+m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span>的。最后算下来总复杂度应该是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>n</mi><mo>+</mo><mi>m</mi><msup><mo>)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(n+m)^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>的。</p>
-<pre><code class="language-cpp">/*
-                                                  
-  _|_|                              _|  _|    _|  
-_|    _|  _|  _|_|  _|_|_|_|        _|  _|  _|    
-_|    _|  _|_|          _|          _|  _|_|      
-_|    _|  _|          _|      _|    _|  _|  _|    
-  _|_|    _|        _|_|_|_|    _|_|    _|    _|  
-                                                                                                    
-*/ 
-#include&lt;iostream&gt;
-#include&lt;cstdio&gt;
-#include&lt;algorithm&gt;
-#include&lt;cmath&gt;
-#include&lt;cstring&gt;
-#include&lt;vector&gt;
-#include&lt;queue&gt;
-#include&lt;set&gt;
-//#define ls (rt&lt;&lt;1)
-//#define rs (rt&lt;&lt;1|1)
-#define vi vector&lt;int&gt;
-#define pb push_back
-#define mk make_pair
-#define pii pair&lt;int,int&gt;
-#define rep(i,a,b) for(int i=(a),i##end=(b);i&lt;=i##end;i++)
-#define fi first
-#define se second
-typedef long long ll;
-using namespace std;
-const int maxn=2*2e3+100;
-const int base=2000;
-const int s=maxn-2,t=maxn-1;
-const int inf=1e9+100;
-int head[maxn];
-pii ori[maxn];
-int cnt=1;
-struct gg{
-	int u,v,w,idx,next;
-}side[maxn*4];
-void ins(int u,int v,int w,int idx){
-	side[++cnt]=(gg){u,v,w,idx,head[u]};head[u]=cnt;
-	side[++cnt]=(gg){v,u,0,idx,head[v]};head[v]=cnt;
-}
-int d[maxn];
-vector&lt;vi&gt;ans;
-int cur[maxn],rk[maxn];
-queue&lt;int&gt;q;
-bool bfs(){
-	memset(rk,0,sizeof(rk));while(!q.empty())q.pop();
-	q.push(s);rk[s]=1;
-	while(!q.empty()){
-		int u=q.front();q.pop();
-		for(int i=head[u];i;i=side[i].next){
-			int v=side[i].v;if(rk[v]||!side[i].w)continue;
-			rk[v]=rk[u]+1;q.push(v);
-		}
-	}
-	if(rk[t])return 1;
-	return 0;
-}
-int dfs(int u,int flow){
-	if(u==t||!flow)return flow;
-	int tot=0;
-	for(int &amp;i=cur[u];i;i=side[i].next){
-		int v=side[i].v;if(side[i].w&lt;=0||rk[v]!=rk[u]+1)continue;
-		int sent=dfs(v,min(flow,side[i].w));
-		//cout&lt;&lt;v&lt;&lt;&quot;----------&gt;&quot;&lt;&lt;u&lt;&lt;&quot;   flow=&quot;&lt;&lt;sent&lt;&lt;endl;
-		flow-=sent,tot+=sent;side[i].w-=sent,side[i^1].w+=sent;
-		if(!flow)break;
-	}
-	return tot;
-}
-void dinic(){
-	while(bfs()){
-		memcpy(cur,head,sizeof(head));
-		dfs(s,inf);		
-	}
-}
-int n1,n2,m;
-void debug(){
-	rep(i,1,n1)for(int j=head[i];j;j=side[j].next)cout&lt;&lt;&quot;&gt;&gt;&quot;&lt;&lt;side[j].u&lt;&lt;' '&lt;&lt;side[j].v&lt;&lt;' '&lt;&lt;side[j].w&lt;&lt;endl;
-	rep(i,1,n2)for(int j=head[i+base];j;j=side[j].next)cout&lt;&lt;&quot;&gt;&gt;&quot;&lt;&lt;side[j].u&lt;&lt;' '&lt;&lt;side[j].v&lt;&lt;' '&lt;&lt;side[j].w&lt;&lt;endl;
-	for(int j=head[s];j;j=side[j].next)cout&lt;&lt;&quot;&gt;&gt;&quot;&lt;&lt;side[j].u&lt;&lt;' '&lt;&lt;side[j].v&lt;&lt;' '&lt;&lt;side[j].w&lt;&lt;endl;
-	cout&lt;&lt;&quot;END&quot;&lt;&lt;endl;
-}
-int main(){
-	ios::sync_with_stdio(0);
-	cin&gt;&gt;n1&gt;&gt;n2&gt;&gt;m;
-	int mi_d=1e9,mx_d=0;
-	rep(i,1,m){
-		int u,v;cin&gt;&gt;u&gt;&gt;v;ori[i]=mk(u,v);d[u]++,d[v+base]++;
-		ins(u,v+base,1,i);
-	}
-	rep(i,1,n1)mi_d=min(mi_d,d[i]),mx_d=max(mx_d,d[i]);
-	rep(i,1,n2)mi_d=min(mi_d,d[i+base]),mx_d=max(mx_d,d[i+base]);
-	//容量 \in [u_degree-mi_degree,u_degree];
-	rep(i,1,n1){
-		ins(s,i,d[i]-mi_d-1,0);
-	}
-	rep(i,1,n2){
-		ins(i+base,t,d[i+base]-mi_d-1,0);
-	}
-	
-	//debug();
-	for(int k=mi_d;k&gt;=0;k--){
-		for(int i=head[s];i;i=side[i].next){
-			//int v=side[i].v;
-			if(!side[i].idx)side[i].w++;
-		}
-		rep(i,1,n2){
-			for(int j=head[i+base];j;j=side[j].next){
-				int v=side[j].v;
-				if(!side[j].idx&amp;&amp;v==t)side[j].w++;
-			}
-		}
-	//	debug();
-		dinic();
-		vi tmp;vi jk;
-		rep(gg,base+1,base+n2)for(int i=head[gg];i;i=side[i].next)
-		if(side[i].idx&amp;&amp;side[i].v&lt;=n1&amp;&amp;side[i].w)
-		tmp.pb(side[i].idx);
-		sort(tmp.begin(),tmp.end());
-		int now=0;
-		rep(i,1,m){
-			if(now&lt;tmp.size()&amp;&amp;tmp[now]==i){
-				now++;continue;
-			}
-			jk.pb(i);
-		}
-		ans.pb(jk);
-	}
-	for(int i=ans.size()-1;i&gt;=0;i--){
-		vi tmp=ans[i];cout&lt;&lt;tmp.size()&lt;&lt;' ';
-		rep(j,0,tmp.size()-1)cout&lt;&lt;tmp[j]&lt;&lt;' ';
-		cout&lt;&lt;endl;
-	}
-	return 0;
-}
-
 </code></pre>
 ]]></content>
     </entry>
