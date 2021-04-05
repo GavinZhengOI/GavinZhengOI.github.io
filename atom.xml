@@ -2,13 +2,178 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://gavinzhengoi.github.io</id>
     <title>GVZ&apos;s Blog</title>
-    <updated>2021-03-31T02:40:13.396Z</updated>
+    <updated>2021-04-05T23:42:22.658Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://gavinzhengoi.github.io"/>
     <link rel="self" href="https://gavinzhengoi.github.io/atom.xml"/>
     <logo>https://gavinzhengoi.github.io/images/avatar.png</logo>
     <icon>https://gavinzhengoi.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, GVZ&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[IOI2018 werewolf 狼人]]></title>
+        <id>https://gavinzhengoi.github.io/post/ioi2018-werewolf-lang-ren/</id>
+        <link href="https://gavinzhengoi.github.io/post/ioi2018-werewolf-lang-ren/">
+        </link>
+        <updated>2021-04-05T23:27:38.000Z</updated>
+        <content type="html"><![CDATA[<p>憨憨题。<br>
+我们发现，狼人形态可以走的点一定是一段前缀，人形可以走的点一定是一段后缀。而且如果需要有解，那就要满足人形状态下从起点出发能走到的点和狼人状态下从终点出发能走到的点一定有交。</p>
+<p>因为这个能走到哪些点的限制不太常规，我们可以很容易的把他转换成边权的限制（狼人图和人形图的边权分别取<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">max</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">min</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span></span></span></span>），这样我们的问题就转换成了：狼人从终点开始再狼人图上走，不能经过权值大于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>i</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">lim</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord mathdefault">m</span></span></span></span>，能走到哪些点。人形同理。然后看看能走到的点有没有交即可。</p>
+<p>最小/最大边权能走到哪些点，显然就是个Kruskal重构树中的一个子树。所以我们需要统计两棵不同树的子树内有没有同标号的节点。直接二位数点即可。</p>
+<pre><code class="language-cpp">/*
+                                                  
+  _|_|                              _|  _|    _|  
+_|    _|  _|  _|_|  _|_|_|_|        _|  _|  _|    
+_|    _|  _|_|          _|          _|  _|_|      
+_|    _|  _|          _|      _|    _|  _|  _|    
+  _|_|    _|        _|_|_|_|    _|_|    _|    _|  
+                                                                                                    
+*/ 
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#include&lt;set&gt;
+//#define ls (rt&lt;&lt;1)
+//#define rs (rt&lt;&lt;1|1)
+#define vi vector&lt;int&gt;
+#define pb push_back
+#define mk make_pair
+#define pii pair&lt;int,int&gt;
+#define rep(i,a,b) for(int i=(a),i##end=(b);i&lt;=i##end;i++)
+#define fi first
+#define se second
+typedef long long ll;
+using namespace std;
+const int maxn=2*2e5+100;
+int n,m,q;
+struct kruskal{
+	int fa[maxn],cnt,w[maxn],rt,ava,f[maxn][20];
+	vi son[maxn];
+	kruskal(){rep(i,0,maxn-1)fa[i]=i;ava=0;}
+	int get(int x){return (fa[x]==x)?x:(fa[x]=get(fa[x]));}
+	void uni(int x,int y,int val){
+	
+		x=get(x),y=get(y);cnt++;fa[x]=cnt,fa[y]=cnt;
+		son[cnt].pb(x);son[cnt].pb(y);w[cnt]=val;
+	//	cout&lt;&lt;&quot;New Virtual Point Established. Root:&quot;&lt;&lt;cnt&lt;&lt;&quot;  Val is&quot;&lt;&lt;val&lt;&lt;endl;
+//		cout&lt;&lt;&quot;To: &quot;&lt;&lt;x&lt;&lt;' '&lt;&lt;y&lt;&lt;endl;
+	}
+	struct gg{
+		int u,v,w;
+	}ori[maxn];
+	static bool cmp1(gg a,gg b){return a.w&lt;b.w;}
+	static bool cmp2(gg a,gg b){return a.w&gt;b.w;}
+	void ins(int idx,int u,int v,int w){
+		ori[idx]=(gg){u,v,w};
+	}
+	int l[maxn],r[maxn],size[maxn];
+	void dfs(int u,int fa){
+		f[u][0]=fa;rep(i,1,19)f[u][i]=f[f[u][i-1]][i-1];
+		if(!son[u].size()){
+			l[u]=r[u]=++ava;size[u]=1;return;
+		}
+		l[u]=ava+1;
+		rep(i,0,(int)(son[u].size())-1){int v=son[u][i];
+	//		cout&lt;&lt;u&lt;&lt;&quot; ---&gt; &quot;&lt;&lt;v&lt;&lt;&quot;   val of father is:&quot;&lt;&lt;w[u]&lt;&lt;endl;
+			dfs(v,u);size[u]+=size[v];
+		}
+		r[u]=l[u]+size[u]-1;
+	//	cout&lt;&lt;&quot;Node is: &quot;&lt;&lt;u&lt;&lt;&quot;     Segment Get: &quot;&lt;&lt;l[u]&lt;&lt;' '&lt;&lt;r[u]&lt;&lt;endl;
+	}
+	void build(){
+		cnt=n;
+	//	cout&lt;&lt;&quot;Kruskal Tree Init. Listing...&quot;&lt;&lt;endl;
+		rep(i,1,m){
+			int u=ori[i].u,v=ori[i].v,val=ori[i].w;
+		//	cout&lt;&lt;u&lt;&lt;' '&lt;&lt;v&lt;&lt;' '&lt;&lt;val&lt;&lt;endl;
+			if(get(u)!=get(v))uni(u,v,val);
+		}
+		rt=cnt;
+	//	cout&lt;&lt;&quot;Kruskal Tree Built. Listing...&quot;&lt;&lt;endl;
+		dfs(rt,0);
+	}
+	pii get_lim(int u,int lim,int ty){
+		if(!ty){
+			for(int i=19;i&gt;=0;i--)if(f[u][i]&amp;&amp;w[f[u][i]]&lt;=lim)u=f[u][i];
+		}
+		else{
+			for(int i=19;i&gt;=0;i--)if(f[u][i]&amp;&amp;w[f[u][i]]&gt;=lim)u=f[u][i];
+		}
+		return mk(l[u],r[u]);
+	}
+}wolf,human;//wolf 边权越小越好 
+int ans[maxn];
+struct query{
+	int x,ly,ry,ty,idx;
+};
+vector&lt;query&gt;qu;
+vector&lt;pii&gt; point;
+int out[maxn];
+bool cmp(query a,query b){return a.x&lt;b.x;}
+struct BIT{
+	int c[maxn];
+	void add(int loc,int val){for(int i=loc;i&lt;maxn;i+=i&amp;-i)c[i]+=val;}
+	int query(int loc){int res=0;for(int i=loc;i;i-=i&amp;-i)res+=c[i];return res;}
+	int seg(int l,int r){return query(r)-query(l-1);}
+}t;
+int main(){
+	ios::sync_with_stdio(0);
+	cin&gt;&gt;n&gt;&gt;m&gt;&gt;q;
+	rep(i,1,m){
+		int u,v;cin&gt;&gt;u&gt;&gt;v;u++;v++;
+		wolf.ins(i,u,v,max(u,v));
+		human.ins(i,u,v,min(u,v));
+	}
+	sort(wolf.ori+1,wolf.ori+1+m,wolf.cmp1);
+	sort(human.ori+1,human.ori+1+m,human.cmp2);
+	wolf.build();human.build();
+	rep(i,1,n){
+		point.pb(mk(wolf.l[i],human.l[i]));
+	//	cout&lt;&lt;&quot;New Point: (&quot;&lt;&lt;wolf.l[i]&lt;&lt;&quot;,&quot;&lt;&lt;human.l[i]&lt;&lt;&quot;)&quot;&lt;&lt;endl;;
+	}
+	rep(i,1,q){
+		int s,e,l,r;
+		cin&gt;&gt;s&gt;&gt;e&gt;&gt;l&gt;&gt;r;s++,e++,l++,r++;
+		pii lima=wolf.get_lim(e,r,0);//0：边权不能大于r    wolf的限制控制主区间 (x轴)
+		pii limb=human.get_lim(s,l,1);//1：边权不能小于l 
+	//	cout&lt;&lt;&quot;New Query: [&quot;&lt;&lt;lima.fi&lt;&lt;&quot;,&quot;&lt;&lt;lima.se&lt;&lt;&quot;]  [&quot;&lt;&lt;limb.fi&lt;&lt;&quot;,&quot;&lt;&lt;limb.se&lt;&lt;&quot;]&quot;&lt;&lt;endl;
+		qu.pb((query){lima.se,limb.fi,limb.se,1,i});
+		if(lima.fi&gt;1)qu.pb((query){lima.fi-1,limb.fi,limb.se,-1,i});
+	}
+	sort(point.begin(),point.end());
+	sort(qu.begin(),qu.end(),cmp);
+	int pptr=0,qptr=0;
+	rep(i,1,n){
+		while(pptr&lt;point.size()&amp;&amp;point[pptr].fi==i)t.add(point[pptr].se,1),pptr++;
+		while(qptr&lt;qu.size()&amp;&amp;qu[qptr].x==i){
+			out[qu[qptr].idx]+=qu[qptr].ty*t.seg(qu[qptr].ly,qu[qptr].ry);
+			qptr++;
+		}
+	}
+	rep(i,1,q){
+		cout&lt;&lt;(bool)(out[i])&lt;&lt;endl; 
+	}
+	return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CF757F Team Rocket Rises Again - DAG上的支配树]]></title>
+        <id>https://gavinzhengoi.github.io/post/cf757f-team-rocket-rises-again-dag-shang-de-zhi-pei-shu/</id>
+        <link href="https://gavinzhengoi.github.io/post/cf757f-team-rocket-rises-again-dag-shang-de-zhi-pei-shu/">
+        </link>
+        <updated>2021-04-01T02:32:03.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="支配树">支配树</h2>
+<p>对于一个有固定起点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span>的有向图，如果点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span>被删除后，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span>无法到达<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span></span></span></span>，那么称<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span>支配<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span>是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span></span></span></span>的支配点。如果每个节点都从它的直接支配点（支配这个点而支配的其他点不支配这个点）连了一条有向边指向自己，得到的东西就是支配树。对于一个点来说，支配树上的所有祖先必定支配它。</p>
+<p>一般有向图的支配树有些复杂，这里只讨论DAG上的支配树。对于一个点来说，它的直接支配点就是所有DAG上的父亲在支配树上的LCA。证明显然，因为其支配点必须同时支配这个点的所有父亲。</p>
+<h2 id="这道题">这道题</h2>
+<p>学习了支配树这个科技之后这道题就变得十分SB了,可以弄一个最短路图搞搞就好了（不过和一般的最短路图定义有些区别）。“最短路距离改变”可以直接转化成“最短路图上这个点不可达”。所以我们只需要跑一个最短路图出来，然后把最短路图建支配树。对于每个点删除的影响，我们直接看它在支配树上的子树大小即可。因为删除了这个点之后，这个点在支配树上整个子树都无法通过最短路图到达了。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[ARC093C] Bichrome Spanning Tree - 最小生成树]]></title>
         <id>https://gavinzhengoi.github.io/post/arc093c-bichrome-spanning-tree-zui-xiao-sheng-cheng-shu/</id>
@@ -831,148 +996,6 @@ int main(){
 	rep(i,1,n)ans=(ans+dp[i])%mod;
 	cout&lt;&lt;ans;
 	return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[最短路问题-CF1442C Graph Transpositions]]></title>
-        <id>https://gavinzhengoi.github.io/post/zui-duan-lu-wen-ti-cf1442c-graph-transpositions/</id>
-        <link href="https://gavinzhengoi.github.io/post/zui-duan-lu-wen-ti-cf1442c-graph-transpositions/">
-        </link>
-        <updated>2021-03-14T09:44:10.000Z</updated>
-        <content type="html"><![CDATA[<p>最近开了道CF1442C，感觉还是要总结一下最短路类型题的一些特征，这样写的时候能快一点。</p>
-<p>个人感觉最短路其实是一种变相的动态规划。无论转移方式整什么花活，套路还是差不多的。我们把二元组<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi mathvariant="normal">位</mi><mi mathvariant="normal">置</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">路</mi><mi mathvariant="normal">径</mi><mi mathvariant="normal">信</mi><mi mathvariant="normal">息</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(位置，路径信息)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord cjk_fallback">位</span><span class="mord cjk_fallback">置</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">路</span><span class="mord cjk_fallback">径</span><span class="mord cjk_fallback">信</span><span class="mord cjk_fallback">息</span><span class="mclose">)</span></span></span></span>称为一个状态。对于每一个位置，我们只需要记录下那条最优秀的路径信息即可。这也就是普通的最短路。</p>
-<p>但是有些时候</p>
-<p>(先咕咕咕 有空再说)</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[CF1033E Hidden Bipartite Graph]]></title>
-        <id>https://gavinzhengoi.github.io/post/cf1033e-hidden-bipartite-graph/</id>
-        <link href="https://gavinzhengoi.github.io/post/cf1033e-hidden-bipartite-graph/">
-        </link>
-        <updated>2021-03-03T12:53:27.000Z</updated>
-        <content type="html"><![CDATA[<p>题目中只能询问一个集合内部的边，我们先考虑如何询问一个点到其他点的边，显然可以把这个询问拆成两个询问，然后我们发现可以在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>log</mi><mo>⁡</mo><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\log_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.93858em;vertical-align:-0.24414em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.20696799999999996em;"><span style="top:-2.4558600000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.24414em;"><span></span></span></span></span></span></span></span></span></span>的时间内寻找一个点的任意一条出边（二分）。所以我们考虑先整出一个dfs树。复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mo>∗</mo><mi>n</mi><msub><mi>log</mi><mo>⁡</mo><mn>2</mn></msub><mi>n</mi></mrow><annotation encoding="application/x-tex">2*n\log_2n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.93858em;vertical-align:-0.24414em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.20696799999999996em;"><span style="top:-2.4558600000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.24414em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span></span></span></span>。</p>
-<p>这样我们就得到了二分图的“两半”。只需要询问一下两半内部有没有边就能确定是否是二分图。如果是就直接输出。不是的话则遍历内部有边的那一半节点，然后依次询问每个点出发到自己所在的一半有没有边，有边的话暴力找出即可。复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mo>∗</mo><mi>n</mi><mo>+</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">2*n+n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>。</p>
-<p>计算得出最坏需要<code>13800</code>次询问，符合要求。</p>
-<pre><code class="language-cpp">/*
-                                                  
-  _|_|                              _|  _|    _|  
-_|    _|  _|  _|_|  _|_|_|_|        _|  _|  _|    
-_|    _|  _|_|          _|          _|  _|_|      
-_|    _|  _|          _|      _|    _|  _|  _|    
-  _|_|    _|        _|_|_|_|    _|_|    _|    _|  
-                                                                                                    
-*/ 
-#include&lt;iostream&gt;
-#include&lt;cstdio&gt;
-#include&lt;algorithm&gt;
-#include&lt;cmath&gt;
-#include&lt;cstring&gt;
-#include&lt;vector&gt;
-#include&lt;queue&gt;
-#include&lt;set&gt;
-//#define ls (rt&lt;&lt;1)
-//#define rs (rt&lt;&lt;1|1)
-#define vi vector&lt;int&gt;
-#define pb push_back
-#define mk make_pair
-#define pii pair&lt;int,int&gt;
-#define rep(i,a,b) for(int i=(a),i##end=(b);i&lt;=i##end;i++)
-#define fi first
-#define se second
-typedef long long ll;
-using namespace std;
-const int maxn=605;
-int nask(vi tmp){
-	if(!tmp.size()||tmp.size()==1)return 0;
-	cout&lt;&lt;&quot;? &quot;&lt;&lt;tmp.size()&lt;&lt;endl;
-	rep(i,0,(int)tmp.size()-1)cout&lt;&lt;tmp[i]&lt;&lt;' ';
-	cout&lt;&lt;endl;
-	cout.flush();
-	int ans;cin&gt;&gt;ans;
-	if(ans==-1)exit(0);
-	return ans;
-}
-int dask(int u,vi tar){
-	int cntsig=nask(tar);tar.pb(u);
-	int cnttot=nask(tar);
-	return cnttot-cntsig;
-}
-int n;
-bool vis[maxn];
-int bl[maxn];
-int find(int u,vi tmp){
-	vi c1,c2;
-	if(tmp.size()==1)return tmp[0];
-	rep(i,0,(int)(tmp.size())-1){
-		if(c1.size()&lt;tmp.size()/2)c1.pb(tmp[i]);
-		else c2.pb(tmp[i]);
-	}
-	if(dask(u,c1))return find(u,c1);
-	else return find(u,c2);
-}
-vi half[2];
-vi side[maxn];
-void dfs(int u){
-	half[bl[u]].pb(u);
-	while(1){
-		vi tmp;rep(i,1,n)if(!vis[i])tmp.pb(i);
-		if(dask(u,tmp)==0)return;
-		int tar=find(u,tmp);side[u].pb(tar);side[tar].pb(u);
-	//	cout&lt;&lt;&quot;&gt;&gt;&gt;&quot;&lt;&lt;u&lt;&lt;&quot;----&gt;&quot;&lt;&lt;tar&lt;&lt;endl;
-		vis[tar]=1;bl[tar]=bl[u]^1;dfs(tar);
-	}
-}
-int stk[maxn],top;
-vi ans;
-void cfs(int u,int tar){
-	stk[++top]=u;
-	if(u==tar){
-		rep(i,1,top)ans.pb(stk[i]);
-		return;
-	}
-	rep(i,0,side[u].size()-1){
-		int v=side[u][i];
-		if(!vis[v]){
-			vis[v]=1;
-			cfs(v,tar);
-		}
-	}
-	top--;
-}
-void ans_out(int u,int v){
-	memset(vis,0,sizeof(vis));
-	vis[u]=1;cfs(u,v);
-	cout&lt;&lt;&quot;N &quot;&lt;&lt;ans.size()&lt;&lt;endl;
-	rep(i,0,(int)(ans.size())-1)cout&lt;&lt;ans[i]&lt;&lt;' ';
-	return;
-}
-int main(){
-//	freopen(&quot;in&quot;,&quot;r&quot;,stdin);
-	ios::sync_with_stdio(0);
-	cin&gt;&gt;n;
-	vis[1]=1;dfs(1);
-	if(!nask(half[0])&amp;&amp;!nask(half[1])){
-		cout&lt;&lt;&quot;Y &quot;&lt;&lt;half[0].size()&lt;&lt;endl;
-		rep(i,0,(int)(half[0].size())-1)cout&lt;&lt;half[0][i]&lt;&lt;' ';
-		return 0;
-	}
-	else{
-		rep(i,0,1)rep(j,0,(int)(half[i].size())-1){
-			vi tmp;int u=half[i][j];
-			rep(k,0,(int)(half[i].size())-1)if(half[i][k]!=u)tmp.pb(half[i][k]);
-			if(dask(u,tmp)){
-				rep(k,0,(int)(tmp.size())-1){
-					vi gg;gg.pb(u);gg.pb(tmp[k]);
-					if(nask(gg)){
-						ans_out(u,tmp[k]);return 0;
-					}
-				}
-			}
-		}
-	}
 }
 </code></pre>
 ]]></content>

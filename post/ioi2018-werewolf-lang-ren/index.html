@@ -1,0 +1,361 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>IOI2018 werewolf 狼人 | GVZ&#39;s Blog</title>
+<link rel="shortcut icon" href="https://gavinzhengoi.github.io/favicon.ico?v=1617666138105">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://gavinzhengoi.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="IOI2018 werewolf 狼人 | GVZ&#39;s Blog - Atom Feed" href="https://gavinzhengoi.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="憨憨题。
+我们发现，狼人形态可以走的点一定是一段前缀，人形可以走的点一定是一段后缀。而且如果需要有解，那就要满足人形状态下从起点出发能走到的点和狼人状态下从终点出发能走到的点一定有交。
+因为这个能走到哪些点的限制不太常规，我们可以很容易的把..." />
+    <meta name="keywords" content="Kruskal重构树,数据结构" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://gavinzhengoi.github.io">
+  <img class="avatar" src="https://gavinzhengoi.github.io/images/avatar.png?v=1617666138105" alt="">
+  </a>
+  <h1 class="site-title">
+    GVZ&#39;s Blog
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://gavinzhengoi.github.io/post/you-lian" class="menu">
+          友链
+        </a>
+      
+    
+      
+        <a href="https://gavinzhengoi.github.io/post/tou-wen-jian-ji-hong-ding-yi" class="menu">
+          头文件
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/GavinZhengOI" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/yIIJfce0wywQQOb" target="_blank">
+          <i class="ri-twitter-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              IOI2018 werewolf 狼人
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-04-06
+              </span>
+              <span>
+                8 min read
+              </span>
+              
+                <a href="https://gavinzhengoi.github.io/tag/Je-NT1KiR/" class="post-tag">
+                  # Kruskal重构树
+                </a>
+              
+                <a href="https://gavinzhengoi.github.io/tag/fYokUYov9/" class="post-tag">
+                  # 数据结构
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>憨憨题。<br>
+我们发现，狼人形态可以走的点一定是一段前缀，人形可以走的点一定是一段后缀。而且如果需要有解，那就要满足人形状态下从起点出发能走到的点和狼人状态下从终点出发能走到的点一定有交。</p>
+<p>因为这个能走到哪些点的限制不太常规，我们可以很容易的把他转换成边权的限制（狼人图和人形图的边权分别取<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">max</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">min</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span></span></span></span>），这样我们的问题就转换成了：狼人从终点开始再狼人图上走，不能经过权值大于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>i</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">lim</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord mathdefault">m</span></span></span></span>，能走到哪些点。人形同理。然后看看能走到的点有没有交即可。</p>
+<p>最小/最大边权能走到哪些点，显然就是个Kruskal重构树中的一个子树。所以我们需要统计两棵不同树的子树内有没有同标号的节点。直接二位数点即可。</p>
+<pre><code class="language-cpp">/*
+                                                  
+  _|_|                              _|  _|    _|  
+_|    _|  _|  _|_|  _|_|_|_|        _|  _|  _|    
+_|    _|  _|_|          _|          _|  _|_|      
+_|    _|  _|          _|      _|    _|  _|  _|    
+  _|_|    _|        _|_|_|_|    _|_|    _|    _|  
+                                                                                                    
+*/ 
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#include&lt;set&gt;
+//#define ls (rt&lt;&lt;1)
+//#define rs (rt&lt;&lt;1|1)
+#define vi vector&lt;int&gt;
+#define pb push_back
+#define mk make_pair
+#define pii pair&lt;int,int&gt;
+#define rep(i,a,b) for(int i=(a),i##end=(b);i&lt;=i##end;i++)
+#define fi first
+#define se second
+typedef long long ll;
+using namespace std;
+const int maxn=2*2e5+100;
+int n,m,q;
+struct kruskal{
+	int fa[maxn],cnt,w[maxn],rt,ava,f[maxn][20];
+	vi son[maxn];
+	kruskal(){rep(i,0,maxn-1)fa[i]=i;ava=0;}
+	int get(int x){return (fa[x]==x)?x:(fa[x]=get(fa[x]));}
+	void uni(int x,int y,int val){
+	
+		x=get(x),y=get(y);cnt++;fa[x]=cnt,fa[y]=cnt;
+		son[cnt].pb(x);son[cnt].pb(y);w[cnt]=val;
+	//	cout&lt;&lt;&quot;New Virtual Point Established. Root:&quot;&lt;&lt;cnt&lt;&lt;&quot;  Val is&quot;&lt;&lt;val&lt;&lt;endl;
+//		cout&lt;&lt;&quot;To: &quot;&lt;&lt;x&lt;&lt;' '&lt;&lt;y&lt;&lt;endl;
+	}
+	struct gg{
+		int u,v,w;
+	}ori[maxn];
+	static bool cmp1(gg a,gg b){return a.w&lt;b.w;}
+	static bool cmp2(gg a,gg b){return a.w&gt;b.w;}
+	void ins(int idx,int u,int v,int w){
+		ori[idx]=(gg){u,v,w};
+	}
+	int l[maxn],r[maxn],size[maxn];
+	void dfs(int u,int fa){
+		f[u][0]=fa;rep(i,1,19)f[u][i]=f[f[u][i-1]][i-1];
+		if(!son[u].size()){
+			l[u]=r[u]=++ava;size[u]=1;return;
+		}
+		l[u]=ava+1;
+		rep(i,0,(int)(son[u].size())-1){int v=son[u][i];
+	//		cout&lt;&lt;u&lt;&lt;&quot; ---&gt; &quot;&lt;&lt;v&lt;&lt;&quot;   val of father is:&quot;&lt;&lt;w[u]&lt;&lt;endl;
+			dfs(v,u);size[u]+=size[v];
+		}
+		r[u]=l[u]+size[u]-1;
+	//	cout&lt;&lt;&quot;Node is: &quot;&lt;&lt;u&lt;&lt;&quot;     Segment Get: &quot;&lt;&lt;l[u]&lt;&lt;' '&lt;&lt;r[u]&lt;&lt;endl;
+	}
+	void build(){
+		cnt=n;
+	//	cout&lt;&lt;&quot;Kruskal Tree Init. Listing...&quot;&lt;&lt;endl;
+		rep(i,1,m){
+			int u=ori[i].u,v=ori[i].v,val=ori[i].w;
+		//	cout&lt;&lt;u&lt;&lt;' '&lt;&lt;v&lt;&lt;' '&lt;&lt;val&lt;&lt;endl;
+			if(get(u)!=get(v))uni(u,v,val);
+		}
+		rt=cnt;
+	//	cout&lt;&lt;&quot;Kruskal Tree Built. Listing...&quot;&lt;&lt;endl;
+		dfs(rt,0);
+	}
+	pii get_lim(int u,int lim,int ty){
+		if(!ty){
+			for(int i=19;i&gt;=0;i--)if(f[u][i]&amp;&amp;w[f[u][i]]&lt;=lim)u=f[u][i];
+		}
+		else{
+			for(int i=19;i&gt;=0;i--)if(f[u][i]&amp;&amp;w[f[u][i]]&gt;=lim)u=f[u][i];
+		}
+		return mk(l[u],r[u]);
+	}
+}wolf,human;//wolf 边权越小越好 
+int ans[maxn];
+struct query{
+	int x,ly,ry,ty,idx;
+};
+vector&lt;query&gt;qu;
+vector&lt;pii&gt; point;
+int out[maxn];
+bool cmp(query a,query b){return a.x&lt;b.x;}
+struct BIT{
+	int c[maxn];
+	void add(int loc,int val){for(int i=loc;i&lt;maxn;i+=i&amp;-i)c[i]+=val;}
+	int query(int loc){int res=0;for(int i=loc;i;i-=i&amp;-i)res+=c[i];return res;}
+	int seg(int l,int r){return query(r)-query(l-1);}
+}t;
+int main(){
+	ios::sync_with_stdio(0);
+	cin&gt;&gt;n&gt;&gt;m&gt;&gt;q;
+	rep(i,1,m){
+		int u,v;cin&gt;&gt;u&gt;&gt;v;u++;v++;
+		wolf.ins(i,u,v,max(u,v));
+		human.ins(i,u,v,min(u,v));
+	}
+	sort(wolf.ori+1,wolf.ori+1+m,wolf.cmp1);
+	sort(human.ori+1,human.ori+1+m,human.cmp2);
+	wolf.build();human.build();
+	rep(i,1,n){
+		point.pb(mk(wolf.l[i],human.l[i]));
+	//	cout&lt;&lt;&quot;New Point: (&quot;&lt;&lt;wolf.l[i]&lt;&lt;&quot;,&quot;&lt;&lt;human.l[i]&lt;&lt;&quot;)&quot;&lt;&lt;endl;;
+	}
+	rep(i,1,q){
+		int s,e,l,r;
+		cin&gt;&gt;s&gt;&gt;e&gt;&gt;l&gt;&gt;r;s++,e++,l++,r++;
+		pii lima=wolf.get_lim(e,r,0);//0：边权不能大于r    wolf的限制控制主区间 (x轴)
+		pii limb=human.get_lim(s,l,1);//1：边权不能小于l 
+	//	cout&lt;&lt;&quot;New Query: [&quot;&lt;&lt;lima.fi&lt;&lt;&quot;,&quot;&lt;&lt;lima.se&lt;&lt;&quot;]  [&quot;&lt;&lt;limb.fi&lt;&lt;&quot;,&quot;&lt;&lt;limb.se&lt;&lt;&quot;]&quot;&lt;&lt;endl;
+		qu.pb((query){lima.se,limb.fi,limb.se,1,i});
+		if(lima.fi&gt;1)qu.pb((query){lima.fi-1,limb.fi,limb.se,-1,i});
+	}
+	sort(point.begin(),point.end());
+	sort(qu.begin(),qu.end(),cmp);
+	int pptr=0,qptr=0;
+	rep(i,1,n){
+		while(pptr&lt;point.size()&amp;&amp;point[pptr].fi==i)t.add(point[pptr].se,1),pptr++;
+		while(qptr&lt;qu.size()&amp;&amp;qu[qptr].x==i){
+			out[qu[qptr].idx]+=qu[qptr].ty*t.seg(qu[qptr].ly,qu[qptr].ry);
+			qptr++;
+		}
+	}
+	rep(i,1,q){
+		cout&lt;&lt;(bool)(out[i])&lt;&lt;endl; 
+	}
+	return 0;
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://gavinzhengoi.github.io/post/cf757f-team-rocket-rises-again-dag-shang-de-zhi-pei-shu/">
+              <h3 class="post-title">
+                CF757F Team Rocket Rises Again - DAG上的支配树
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+
+          
+            <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script>
+
+var options = {
+  shortname: 'gvablog',
+  apikey: 'GaTDI1iKdBspu9eatH3bb3vkRipD45khhPrE1OZvNtqC43gwRa22Noy6Yx2WW1YQ',
+}
+if ('https://disqus.skk.moe/disqus/') {
+  options.api = 'https://disqus.skk.moe/disqus/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://gavinzhengoi.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
