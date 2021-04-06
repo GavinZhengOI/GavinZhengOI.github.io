@@ -2,18 +2,18 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CF954H Path Counting | GVZ&#39;s Blog</title>
+<title>JOISC2020 首都 | GVZ&#39;s Blog</title>
 <link rel="shortcut icon" href="https://gavinzhengoi.github.io/favicon.ico?v=1617667476029">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://gavinzhengoi.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="CF954H Path Counting | GVZ&#39;s Blog - Atom Feed" href="https://gavinzhengoi.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="JOISC2020 首都 | GVZ&#39;s Blog - Atom Feed" href="https://gavinzhengoi.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="又是一道树上数路径条数，但是这题感觉蛮educational的。之前的题基本都是在LCA处统计这条路径的值，但是这次是在端点处统计。
-首先，对于一个点SSS出发的长度为kkk路径有两种情况：向下或者向上。选择向下的话，路径条数是很容易求得，..." />
-    <meta name="keywords" content="动态规划" />
+    <meta name="description" content="一开始所有人都以为，答案就是统计每种颜色所有点之间的路径上有多少种不同的颜色。后来才发现这是假的。因为如果两种颜色路径上有其他颜色ccc，那么不仅仅是这个点，颜色ccc的所有点都要连入联通块。
+对于这种“选了一个颜色，就必须选其他颜色”的问..." />
+    <meta name="keywords" content="强连通分量,虚树" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -95,33 +95,32 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              CF954H Path Counting
+              JOISC2020 首都
             </h2>
             <div class="post-info">
               <span>
-                2021-03-16
+                2021-04-06
               </span>
               <span>
-                4 min read
+                6 min read
               </span>
               
-                <a href="https://gavinzhengoi.github.io/tag/FV3gFpZKH/" class="post-tag">
-                  # 动态规划
+                <a href="https://gavinzhengoi.github.io/tag/FLVQLTyWy/" class="post-tag">
+                  # 强连通分量
+                </a>
+              
+                <a href="https://gavinzhengoi.github.io/tag/eQ28uunGt/" class="post-tag">
+                  # 虚树
                 </a>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>又是一道树上数路径条数，但是这题感觉蛮educational的。之前的题基本都是在LCA处统计这条路径的值，但是这次是在端点处统计。</p>
-<p>首先，对于一个点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>出发的长度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>路径有两种情况：向下或者向上。选择向下的话，路径条数是很容易求得，主要考虑第一步向上。</p>
-<p>向上的之后又有两种情况：</p>
-<ul>
-<li>接着向上</li>
-<li>选择一个儿子向下（且不能选择S）</li>
-</ul>
-<p>我们令<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo>[</mo><mi>s</mi><mo>]</mo><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">dp[s][i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">s</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span>代表从点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>开始第一步向上，走<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>步的方案数。第一种情况就可以直接转移了，而第二种情况也很好解决，不能选择S这个限制稍微处理下即可。</p>
-<p>这道题主要是想到比较反套路的在端点初统计路径，其他的就很好想了。</p>
+                <p>一开始所有人都以为，答案就是统计每种颜色所有点之间的路径上有多少种不同的颜色。后来才发现这是假的。因为如果两种颜色路径上有其他颜色<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>，那么不仅仅是这个点，颜色<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>的<strong>所有</strong>点都要连入联通块。</p>
+<p>对于这种“选了一个颜色，就必须选其他颜色”的问题，可以想到把关系连边之后用强连通分量解决。我们把得到的关系图用tarjan缩成DAG。然后没有出度的那些点里选<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>C</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">SCC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>最小的就好了（因为选又出度的必定不优秀）。</p>
+<p>那么问题来了，如何在所有颜色之间依靠关系连边呢？一种方法是建虚树，然后把虚树上每条边代表的原树上的链用倍增优化连边（或者直接树剖也行？）连一下关系即可。但是这样搞有些麻烦，我们发现这张图连一些重边也不会有啥影响，所以我们每次可以把要加入虚树的所有点和这些点的的LCA之间的链连一条边，这样就很方便了。</p>
+<p>有点细节。</p>
 <pre><code class="language-cpp">/*
                                                   
   _|_|                              _|  _|    _|  
@@ -150,44 +149,97 @@ _|    _|  _|          _|      _|    _|  _|  _|
 #define se second
 typedef long long ll;
 using namespace std;
-const int maxn=5005;
-const int mod=1e9+7;
-int a[maxn*2];
-int prod[maxn*4];
-int cnt(int dep){
-	return prod[dep-1];
-}
-int invp[2*maxn];
-int ksm(int num,int t){
-	int res=1;
-	for(;t;t&gt;&gt;=1,num=1ll*num*num%mod){
-		if(t&amp;1)res=1ll*res*num%mod;
+const int maxn=(2e5+10);
+const int po=maxn*20;
+int f[maxn][20],vpointid[maxn][20],cnt;
+vi edge[maxn],side[po];
+int color[maxn],dep[maxn],dfn[po],dfn_cnt;
+int ans=1e9;
+void dfs1(int u,int fa){
+	dep[u]=dep[fa]+1;dfn[u]=++dfn_cnt;
+	f[u][0]=fa;rep(i,1,18)f[u][i]=f[f[u][i-1]][i-1];
+	vpointid[u][0]=++cnt;if(fa)side[cnt].pb(color[fa]);
+	rep(i,1,18){
+		vpointid[u][i]=++cnt;
+		if(vpointid[u][i-1])side[cnt].pb(vpointid[u][i-1]);
+		if(vpointid[f[u][i-1]][i-1])side[cnt].pb(vpointid[f[u][i-1]][i-1]);
 	}
-	return res;
+	rep(i,0,edge[u].size()-1){
+		int v=edge[u][i];if(v==fa)continue;
+		dfs1(v,u);
+	}
 }
-int down(int lev,int len){
-	//a[lev]*a[lev+1]*...*a[lev+len-1]
-	return (1ll*prod[lev+len-1]*invp[lev-1]%mod);
+int lca(int u,int v){
+	if(dep[u]&lt;dep[v])swap(u,v);
+	for(int i=18;i&gt;=0;i--)if(dep[f[u][i]]&gt;=dep[v])u=f[u][i];
+	if(u==v)return u;
+	for(int i=18;i&gt;=0;i--)if(f[u][i]!=f[v][i])u=f[u][i],v=f[v][i];
+	return f[u][0];
 }
-int dp[maxn][2*maxn];
-int inv[2*maxn];
-int ans[2*maxn];
+int stk[po];
+vi town[maxn],tmp;
+bool ontree[po];
+bool cmp1(int a,int b){return dfn[a]&lt;dfn[b];}
+void add_chain(int u,int fa,int c){
+	for(int i=18;i&gt;=0;i--){
+		if(dep[f[u][i]]&gt;=dep[fa]){
+			side[c].pb(vpointid[u][i]);
+			u=f[u][i];
+		}
+	}
+}
+int low[po],scc[po],scc_cnt,top;
+int n,k;
+vi buc;
+void tarjan(int u){
+	dfn[u]=low[u]=++dfn_cnt;stk[++top]=u;
+	rep(i,0,(int)(side[u].size())-1){
+		int v=side[u][i];
+		if(!dfn[v])tarjan(v),low[u]=min(low[u],low[v]);
+		else if(!scc[v])low[u]=min(low[u],dfn[v]);
+	}
+	if(dfn[u]==low[u]){
+		buc.clear();
+		scc_cnt++;int x=0;int sz=0;
+		do{	
+			x=stk[top--];
+			scc[x]=scc_cnt;
+			if(x&lt;=k)sz++;
+			buc.pb(x);
+		}while(x!=u);bool flag=0;
+		rep(j,0,buc.size()-1)if(!flag){
+			int idx=buc[j];
+			rep(k,0,(int)(side[idx].size())-1){
+				int v=side[idx][k];
+				if(scc[v]!=scc_cnt){
+					flag=1;break;
+				}
+			}
+		}
+		if(!flag)ans=min(ans,sz);
+	}
+}
 int main(){
-	ios::sync_with_stdio(0);
-	int n;cin&gt;&gt;n;int lim=2*n-2;
-	prod[0]=1;
-	rep(i,1,n-1)cin&gt;&gt;a[i],prod[i]=1ll*prod[i-1]*a[i]%mod,inv[i]=ksm(a[i],mod-2);
-	rep(i,0,n)invp[i]=ksm(prod[i],mod-2);
-	rep(i,1,n)dp[i][0]=1;
-	rep(i,2,n)rep(k,1,lim){
-		dp[i][k]=dp[i-1][k-1];
-		if(k&gt;=2)dp[i][k]=(dp[i][k]+1ll*down(i-1,k-1)*inv[i-1]%mod*(a[i-1]-1)%mod)%mod;
-	}int inv2=ksm(2,mod-2);
-	rep(i,1,n)rep(j,1,lim){
-		ans[j]=(ans[j]+1ll*(dp[i][j]+down(i,j))*cnt(i))%mod;
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;k);cnt=k;
+	rep(i,1,n-1){
+		int u,v;scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
+		edge[u].pb(v);edge[v].pb(u);
 	}
-	rep(i,1,lim)ans[i]=(1ll*ans[i]*inv2%mod+mod)%mod;
-	rep(i,1,lim)cout&lt;&lt;ans[i]&lt;&lt;' ';
+	rep(i,1,n)scanf(&quot;%d&quot;,&amp;color[i]),town[color[i]].pb(i);
+	dfs1(1,0);
+	rep(i,1,k){
+		tmp=town[i];int sz=tmp.size();
+		int l=tmp[0];
+		rep(j,1,sz-1){
+			l=lca(tmp[j],l);
+		}
+		rep(j,0,(int)(tmp.size())-1){
+			add_chain(tmp[j],l,i);
+		}
+	}
+	memset(dfn,0,sizeof(dfn));dfn_cnt=0;top=0;
+	rep(i,1,k)if(!dfn[i])tarjan(i);
+	cout&lt;&lt;ans-1;
 	return 0;
 }
 </code></pre>
@@ -203,9 +255,9 @@ int main(){
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://gavinzhengoi.github.io/post/cf1034c-region-separation/">
+            <a href="https://gavinzhengoi.github.io/post/ioi2018-werewolf-lang-ren/">
               <h3 class="post-title">
-                CF1034C Region Separation
+                IOI2018 werewolf 狼人
               </h3>
             </a>
           </div>
