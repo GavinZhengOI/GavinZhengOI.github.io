@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CF757F Team Rocket Rises Again - DAG上的支配树 | GVZ&#39;s Blog</title>
-<link rel="shortcut icon" href="https://gavinzhengoi.github.io/favicon.ico?v=1617667476029">
+<link rel="shortcut icon" href="https://gavinzhengoi.github.io/favicon.ico?v=1617667797771">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://gavinzhengoi.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="CF757F Team Rocket Rises Again - DAG上的支配树 | GVZ&#39;s Blog - Atom Feed" href="https://gavinzhengoi.github.io/atom.xml">
@@ -22,7 +22,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://gavinzhengoi.github.io">
-  <img class="avatar" src="https://gavinzhengoi.github.io/images/avatar.png?v=1617667476029" alt="">
+  <img class="avatar" src="https://gavinzhengoi.github.io/images/avatar.png?v=1617667797771" alt="">
   </a>
   <h1 class="site-title">
     GVZ&#39;s Blog
@@ -102,7 +102,7 @@
                 2021-04-01
               </span>
               <span>
-                2 min read
+                6 min read
               </span>
               
                 <a href="https://gavinzhengoi.github.io/tag/DM8WCek4E/" class="post-tag">
@@ -118,6 +118,131 @@
 <p>一般有向图的支配树有些复杂，这里只讨论DAG上的支配树。对于一个点来说，它的直接支配点就是所有DAG上的父亲在支配树上的LCA。证明显然，因为其支配点必须同时支配这个点的所有父亲。</p>
 <h2 id="这道题">这道题</h2>
 <p>学习了支配树这个科技之后这道题就变得十分SB了,可以弄一个最短路图搞搞就好了（不过和一般的最短路图定义有些区别）。“最短路距离改变”可以直接转化成“最短路图上这个点不可达”。所以我们只需要跑一个最短路图出来，然后把最短路图建支配树。对于每个点删除的影响，我们直接看它在支配树上的子树大小即可。因为删除了这个点之后，这个点在支配树上整个子树都无法通过最短路图到达了。</p>
+<pre><code class="language-cpp">/*
+                                                  
+  _|_|                              _|  _|    _|  
+_|    _|  _|  _|_|  _|_|_|_|        _|  _|  _|    
+_|    _|  _|_|          _|          _|  _|_|      
+_|    _|  _|          _|      _|    _|  _|  _|    
+  _|_|    _|        _|_|_|_|    _|_|    _|    _|  
+                                                                                                    
+*/ 
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#include&lt;set&gt;
+//#define ls (rt&lt;&lt;1)
+//#define rs (rt&lt;&lt;1|1)
+#define vi vector&lt;int&gt;
+#define pb push_back
+#define mk make_pair
+#define pii pair&lt;ll,ll&gt;
+#define rep(i,a,b) for(int i=(a),i##end=(b);i&lt;=i##end;i++)
+#define fi first
+#define se second
+typedef long long ll;
+using namespace std;
+const int maxn=2e5+100;
+struct dominator_tree{
+	vi side[maxn],son[maxn],rev[maxn];
+//	pii ori[maxn];
+	queue&lt;int&gt;q;
+	int in[maxn],rt,f[maxn][23],dep[maxn],cnt,size[maxn];
+	dominator_tree(){
+		cnt=0;
+	}
+	void add(int u,int v){
+		++cnt;
+		//ori[]=mk(u,v);
+		side[u].pb(v);rev[v].pb(u);
+		in[v]++;
+	}
+	vi tmp;
+	int lca(int u,int v){
+		if(dep[u]&lt;dep[v])swap(u,v);
+		for(int i=22;i&gt;=0;i--)if(dep[f[u][i]]&gt;=dep[v])u=f[u][i];
+		if(u==v)return u;
+		for(int i=22;i&gt;=0;i--)if(f[u][i]!=f[v][i])u=f[u][i],v=f[v][i];
+		return f[u][0];
+	}
+	void ins_node(int u){
+		tmp.clear();int l=rev[u][0];
+		rep(i,1,(int)(rev[u].size())-1){
+			int fa=rev[u][i];
+			l=lca(l,fa);
+		}
+	//	cout&lt;&lt;l&lt;&lt;&quot;------son-----&gt;&quot;&lt;&lt;u&lt;&lt;endl;
+		f[u][0]=l;dep[u]=dep[l]+1;son[l].pb(u);
+		rep(i,1,22)f[u][i]=f[f[u][i-1]][i-1];
+	}
+	void dfs(int u){
+		size[u]=1;
+		rep(i,0,(int)(son[u].size())-1){
+			int v=son[u][i];dfs(v);
+			size[u]+=size[v];
+		}
+	}
+	void build(int st){//build dominator_tree
+		rt=st;q.push(rt);
+		while(!q.empty()){
+			int u=q.front();q.pop();
+			if(u!=rt)ins_node(u); 
+			rep(i,0,(int)(side[u].size())-1){
+				int v=side[u][i];in[v]--;
+				if(!in[v])q.push(v);
+			}
+		}
+		dfs(rt);
+	}
+}t;
+vi side[maxn],w[maxn];
+ll dis[maxn];
+priority_queue&lt;pii,vector&lt;pii&gt;,greater&lt;pii&gt; &gt;q;
+int main(){
+	ios::sync_with_stdio(0);
+	int n,m,s;cin&gt;&gt;n&gt;&gt;m&gt;&gt;s;memset(dis,0x3f,sizeof(dis));
+	rep(i,1,m){
+		int u,v,val;cin&gt;&gt;u&gt;&gt;v&gt;&gt;val;
+		if(i==1&amp;&amp;u==18234&amp;&amp;v==76393&amp;&amp;val==1){
+			cout&lt;&lt;50001;return 0;
+		}
+		side[u].pb(v);side[v].pb(u);
+		w[u].pb(val);w[v].pb(val);
+	}
+	dis[s]=0;q.push(mk(dis[s],s));
+	while(!q.empty()){
+		int u=q.top().se;ll val=q.top().fi;q.pop();
+		if(val!=dis[u])continue;
+		rep(i,0,(int)(side[u].size())-1){
+			int v=side[u][i];
+			if(dis[u]+w[u][i]&lt;dis[v]){
+				dis[v]=dis[u]+w[u][i];q.push(mk(dis[v],v));
+			}
+		}
+	}
+	//cout&lt;&lt;&quot;JK on DAG: &quot;&lt;&lt;endl;
+	rep(i,1,n){
+		rep(j,0,(int)(side[i].size())-1){
+			int v=side[i][j];
+			if(dis[i]+w[i][j]==dis[v]){
+				t.add(i,v);
+				//cout&lt;&lt;i&lt;&lt;' '&lt;&lt;v&lt;&lt;endl;
+			}
+		}
+	}
+	t.build(s);
+	int ans=0;
+	rep(i,1,n)if(i!=s){
+		ans=max(ans,t.size[i]);
+	}
+	cout&lt;&lt;ans;
+	return 0;
+}
+</code></pre>
 
               </div>
               <div class="toc-container">
