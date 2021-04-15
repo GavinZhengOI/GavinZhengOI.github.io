@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://gavinzhengoi.github.io</id>
     <title>GVZ&apos;s Blog</title>
-    <updated>2021-04-15T04:08:46.922Z</updated>
+    <updated>2021-04-15T09:14:45.748Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://gavinzhengoi.github.io"/>
     <link rel="self" href="https://gavinzhengoi.github.io/atom.xml"/>
@@ -21,6 +21,155 @@
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.2407700000000004em;vertical-align:-0.8804400000000001em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804400000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:2.04633em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">x</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
 <p>其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span>都是随着<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>的选择不断变换的。这道题就变成了选择一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>，最大化/最小化<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><msub><mi>x</mi><mi>i</mi></msub><mo>+</mo><mi>b</mi><msub><mi>y</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">kx_i+by_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">b</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>这种形式，每次询问<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mo separator="true">,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">k,b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span></span></span></span>单独给出。有一道类似的题：<a href="https://0x131cc05.github.io/2019/04/14/SCOI2019-%E6%B8%B8%E8%AE%B0/#D2T1-%E6%B9%96%E4%B9%8B%E7%B2%BE%E7%81%B5%E7%9A%84%E6%B8%B8%E6%88%8F">SCOI2019-湖之精灵的游戏</a>。<br>
 把这个式子变一下形式：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>y</mi><mi>i</mi></msub><mo>=</mo><mi>k</mi><msub><mi>x</mi><mi>i</mi></msub><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">y_i=kx_i+b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span>，目标是让b最大/最小。我们发现这个式子的几何意义就是用一个斜率为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>的直线去切一个凸包，直线的最大/最小截距是多少。所以可以直接建凸包二分。</p>
+<pre><code class="language-cpp">/*
+                                                  
+  _|_|                              _|  _|    _|  
+_|    _|  _|  _|_|  _|_|_|_|        _|  _|  _|    
+_|    _|  _|_|          _|          _|  _|_|      
+_|    _|  _|          _|      _|    _|  _|  _|    
+  _|_|    _|        _|_|_|_|    _|_|    _|    _|  
+                                                                                                    
+*/ 
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#include&lt;set&gt;
+//#define ls (rt&lt;&lt;1)
+//#define rs (rt&lt;&lt;1|1)
+#define vi vector&lt;int&gt;
+#define pb push_back
+#define mk make_pair
+#define pii pair&lt;int,int&gt;
+#define rep(i,a,b) for(int i=(a),i##end=(b);i&lt;=i##end;i++)
+#define fi first
+#define se second
+typedef long long ll;
+typedef long double ldb;
+#define int long long
+using namespace std;
+const ldb eps=1e-13;
+const int maxn=50105;
+const int gg=1000;
+const int inf=1e9+100;
+int a[maxn];
+int bl[maxn];
+int debug=0;
+ll N,P;
+struct BIT{
+	ll c[maxn];
+	void add(int loc,int val){for(int i=loc;i&lt;maxn;i+=i&amp;-i)c[i]+=val;}
+	ll query(int loc)
+	{
+
+		
+	ll ans=0;for(int i=loc;i;i-=i&amp;-i)ans+=c[i];return ans;}
+}po,na;
+struct convex{
+	int num[gg],cnt,stk[gg],top,base;
+	pair&lt;ll,ll&gt; val[gg];
+	convex(){cnt=0;}
+	void ins(int x){
+		num[++cnt]=x;
+		if(a[x]&gt;0)P+=a[x],po.add(x,a[x]);
+		else N+=-a[x],na.add(x,-a[x]);
+	}
+	ldb slope(int a,int b){
+		if(val[a].fi==val[b].fi){
+			if(val[a].se&gt;val[b].se)return -1e18;
+			else return 1e18;
+		}
+	return 1.0*(val[a].se-val[b].se)/(val[a].fi-val[b].fi);}
+	void insertp(int idx){
+		if(debug)cout&lt;&lt;&quot;add point: &quot;&lt;&lt;idx+num[1]-1&lt;&lt;&quot;     (&quot;&lt;&lt;val[idx].fi&lt;&lt;&quot;,&quot;&lt;&lt;val[idx].se&lt;&lt;&quot;)&quot;&lt;&lt;endl;
+		while(top&gt;=2&amp;&amp;slope(stk[top],idx)&gt;slope(stk[top-1],stk[top])+eps)top--;
+		stk[++top]=idx;
+	}
+	void build(){
+		if(debug)cout&lt;&lt;&quot;Rebuilding...&quot;&lt;&lt;endl;
+		base=num[1]-1;
+		if(num[1]==0){
+			int jk=1;
+		}
+		ll prep=po.query(num[1]-1),pren=na.query(num[1]-1);
+		top=0;
+		rep(i,1,cnt){
+			int x=num[i];
+			if(a[x]&gt;0)prep+=a[x];
+			else pren+=-a[x];
+			val[i]=mk(pren,prep);insertp(i);
+		}
+	
+		//for(int i=cnt;i&gt;=1;i--)insertp(i);
+	}
+	int query(ldb k){
+		int l=1,r=top;
+		while(l&lt;r){
+			int mid=(l+r)&gt;&gt;1;
+			if(slope(stk[mid],stk[mid+1])&gt;k+eps)l=mid+1;
+			else r=mid;
+		}
+		return stk[l]+base;
+	}
+}part[gg];
+int cnt;int n,m;
+int q(){
+	ldb ans=-1e18,loc=-1;ldb k=(ldb)(P)/N;if(debug)cout&lt;&lt;&quot;Searching.... k is &quot;&lt;&lt;k&lt;&lt;endl;
+	rep(i,1,cnt){
+		int idx=part[i].query(k);
+		ll prep=po.query(idx),pren=na.query(idx);
+		ldb tmp=(ldb)(prep)/(P)-(ldb)(pren)/(N);
+		if(debug)cout&lt;&lt;&quot;Ans in block &quot;&lt;&lt;i&lt;&lt;&quot; is:&quot;&lt;&lt;tmp&lt;&lt;endl;
+	//	if(fabs(ans-tmp)&lt;eps)continue;
+	//	else 
+		if(tmp&gt;ans+eps){
+			ans=tmp;loc=idx;
+		}
+	}
+	while(loc&gt;1){
+		ll prep=po.query(loc),pren=na.query(loc);
+		ldb tmp1=(ldb)(prep)/(P)-(ldb)(pren)/(N);
+		prep=po.query(loc-1),pren=na.query(loc-1);
+		ldb tmp2=(ldb)(prep)/(P)-(ldb)(pren)/(N);
+		if(tmp2+eps&gt;tmp1)loc--;
+		else break;
+	}
+	while(loc&lt;n){
+		ll prep=po.query(loc),pren=na.query(loc);
+		ldb tmp1=(ldb)(prep)/(P)-(ldb)(pren)/(N);
+		prep=po.query(loc+1),pren=na.query(loc+1);
+		ldb tmp2=(ldb)(prep)/(P)-(ldb)(pren)/(N);
+		if(tmp2&gt;tmp1+eps)loc++;
+		else break;
+	}
+	return loc;
+}
+signed main(){
+	freopen(&quot;joker.in&quot;,&quot;r&quot;,stdin);
+	freopen(&quot;joker.out&quot;,&quot;w&quot;,stdout);
+	scanf(&quot;%lld%lld&quot;,&amp;n,&amp;m);
+	int bk=sqrt(n);
+	rep(i,1,n)scanf(&quot;%lld&quot;,&amp;a[i]);
+	rep(i,1,n)bl[i]=i/bk+1;cnt=n/bk+1;
+	rep(i,1,n)part[bl[i]].ins(i);
+	rep(i,1,cnt)if(part[i].cnt)part[i].build();
+	printf(&quot;%lld\n&quot;,q());
+	rep(i,1,m){
+		int p,v;scanf(&quot;%lld%lld&quot;,&amp;p,&amp;v);
+		if(a[p]&gt;0)po.add(p,-a[p]),P+=-a[p];
+		else na.add(p,a[p]),N+=a[p];
+		a[p]=v;
+		if(a[p]&gt;0)po.add(p,a[p]),P+=a[p];
+		else na.add(p,-a[p]),N+=-a[p];
+		part[bl[p]].build();
+		printf(&quot;%lld\n&quot;,q());
+	}
+	return 0;
+}
+</code></pre>
 ]]></content>
     </entry>
     <entry>
